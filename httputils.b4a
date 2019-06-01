@@ -1,15 +1,27 @@
 ﻿Build1=Default,b4a.example
-File1=login.bal
+File1=01.png
+File2=02.png
+File3=login.bal
+File4=menu.bal
+File5=stack-512.png
+File6=tempaltaaaeqas-512.png
 FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
 Group=Default Group
 IconFile=
 Library1=core
 Library2=okhttputils2
+Library3=animation
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="26"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~
 Module1=Starter
-NumberOfFiles=1
-NumberOfLibraries=2
-NumberOfModules=1
+Module2=menu
+NumberOfFiles=6
+NumberOfLibraries=3
+NumberOfModules=2
 Version=8.3
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -38,6 +50,8 @@ Sub Globals
 	Dim job2 As HttpJob
 	Private EditText1 As EditText
 	Private EditText2 As EditText
+	Dim domain As String
+	domain="http://a14b1b5f.ngrok.io/"
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -55,6 +69,13 @@ Sub JobDone (Job As HttpJob)
 			Case "Job2"
 				'print the result to the logs
 				Log(Job.GetString)
+				If Job.GetString="1" Then
+				Log("Login Success")
+				StartActivity("menu")
+				Else
+					Log("Login Failed")
+				End If
+			
 		End Select
 	Else
 		Log("Error: " & Job.ErrorMessage)
@@ -83,6 +104,6 @@ Sub Button1_Click
 	
 	'Send a POST request
 	job2.Initialize("Job2", Me)
-	job2.PostString("http://8bd6c0d6.ngrok.io/ta_v2/endpoint/login.php", "email=" & email &"&password=" & password)
+	job2.PostString(domain&"ta_v2/endpoint/login.php", "email=" & email &"&password=" & password)
 	
 End Sub

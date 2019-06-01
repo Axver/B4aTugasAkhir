@@ -14,8 +14,8 @@ import anywheresoftware.b4a.B4AUncaughtException;
 import anywheresoftware.b4a.debug.*;
 import java.lang.ref.WeakReference;
 
-public class main extends Activity implements B4AActivity{
-	public static main mostCurrent;
+public class menu extends Activity implements B4AActivity{
+	public static menu mostCurrent;
 	static boolean afterFirstLayout;
 	static boolean isFirst = true;
     private static boolean processGlobalsRun = false;
@@ -33,7 +33,7 @@ public class main extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new BA(this.getApplicationContext(), null, null, "b4a.example", "b4a.example.main");
+			processBA = new BA(this.getApplicationContext(), null, null, "b4a.example", "b4a.example.menu");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -42,7 +42,7 @@ public class main extends Activity implements B4AActivity{
 		else if (previousOne != null) {
 			Activity p = previousOne.get();
 			if (p != null && p != this) {
-                BA.LogInfo("Killing previous instance (main).");
+                BA.LogInfo("Killing previous instance (menu).");
 				p.finish();
 			}
 		}
@@ -85,7 +85,7 @@ public class main extends Activity implements B4AActivity{
 	private void afterFirstLayout() {
         if (this != mostCurrent)
 			return;
-		activityBA = new BA(this, layout, processBA, "b4a.example", "b4a.example.main");
+		activityBA = new BA(this, layout, processBA, "b4a.example", "b4a.example.menu");
         
         processBA.sharedProcessBA.activityBA = new java.lang.ref.WeakReference<BA>(activityBA);
         anywheresoftware.b4a.objects.ViewWrapper.lastId = 0;
@@ -94,19 +94,19 @@ public class main extends Activity implements B4AActivity{
         if (BA.isShellModeRuntimeCheck(processBA)) {
 			if (isFirst)
 				processBA.raiseEvent2(null, true, "SHELL", false);
-			processBA.raiseEvent2(null, true, "CREATE", true, "b4a.example.main", processBA, activityBA, _activity, anywheresoftware.b4a.keywords.Common.Density, mostCurrent);
+			processBA.raiseEvent2(null, true, "CREATE", true, "b4a.example.menu", processBA, activityBA, _activity, anywheresoftware.b4a.keywords.Common.Density, mostCurrent);
 			_activity.reinitializeForShell(activityBA, "activity");
 		}
         initializeProcessGlobals();		
         initializeGlobals();
         
-        BA.LogInfo("** Activity (main) Create, isFirst = " + isFirst + " **");
+        BA.LogInfo("** Activity (menu) Create, isFirst = " + isFirst + " **");
         processBA.raiseEvent2(null, true, "activity_create", false, isFirst);
 		isFirst = false;
 		if (this != mostCurrent)
 			return;
         processBA.setActivityPaused(false);
-        BA.LogInfo("** Activity (main) Resume **");
+        BA.LogInfo("** Activity (menu) Resume **");
         processBA.raiseEvent(null, "activity_resume");
         if (android.os.Build.VERSION.SDK_INT >= 11) {
 			try {
@@ -195,7 +195,7 @@ public class main extends Activity implements B4AActivity{
 		}
 	}
     public static Class<?> getObject() {
-		return main.class;
+		return menu.class;
 	}
     private Boolean onKeySubExist = null;
     private Boolean onKeyUpSubExist = null;
@@ -266,7 +266,7 @@ public class main extends Activity implements B4AActivity{
         if (this != mostCurrent)
 			return;
 		anywheresoftware.b4a.Msgbox.dismiss(true);
-        BA.LogInfo("** Activity (main) Pause, UserClosed = " + activityBA.activity.isFinishing() + " **");
+        BA.LogInfo("** Activity (menu) Pause, UserClosed = " + activityBA.activity.isFinishing() + " **");
         if (mostCurrent != null)
             processBA.raiseEvent2(_activity, true, "activity_pause", false, activityBA.activity.isFinishing());		
         processBA.setActivityPaused(true);
@@ -300,11 +300,11 @@ public class main extends Activity implements B4AActivity{
     		this.activity = new WeakReference<Activity>(activity);
     	}
 		public void run() {
-            main mc = mostCurrent;
+            menu mc = mostCurrent;
 			if (mc == null || mc != activity.get())
 				return;
 			processBA.setActivityPaused(false);
-            BA.LogInfo("** Activity (main) Resume **");
+            BA.LogInfo("** Activity (menu) Resume **");
             if (mc != mostCurrent)
                 return;
 		    processBA.raiseEvent(mc._activity, "activity_resume", (Object[])null);
@@ -329,123 +329,54 @@ public class main extends Activity implements B4AActivity{
     }
 
 public anywheresoftware.b4a.keywords.Common __c = null;
-public anywheresoftware.b4a.samples.httputils2.httpjob _job2 = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _edittext1 = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _edittext2 = null;
-public static String _domain = "";
+public anywheresoftware.b4a.objects.PanelWrapper _panel9 = null;
+public anywheresoftware.b4a.objects.PanelWrapper _panel11 = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
+public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
-public b4a.example.menu _menu = null;
 
-public static boolean isAnyActivityVisible() {
-    boolean vis = false;
-vis = vis | (main.mostCurrent != null);
-vis = vis | (menu.mostCurrent != null);
-return vis;}
+public static void initializeProcessGlobals() {
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+}
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 31;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 32;BA.debugLine="Activity.LoadLayout(\"login\")";
-mostCurrent._activity.LoadLayout("login",mostCurrent.activityBA);
- //BA.debugLineNum = 37;BA.debugLine="End Sub";
-return "";
-}
-public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 65;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 67;BA.debugLine="End Sub";
-return "";
-}
-public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 61;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 63;BA.debugLine="End Sub";
-return "";
-}
-public static String  _button1_click() throws Exception{
-String _email = "";
-String _password = "";
- //BA.debugLineNum = 70;BA.debugLine="Sub Button1_Click";
- //BA.debugLineNum = 72;BA.debugLine="Dim email As String";
-_email = "";
- //BA.debugLineNum = 73;BA.debugLine="Dim password As String";
-_password = "";
- //BA.debugLineNum = 74;BA.debugLine="email=EditText1.Text";
-_email = mostCurrent._edittext1.getText();
- //BA.debugLineNum = 75;BA.debugLine="password=EditText2.Text";
-_password = mostCurrent._edittext2.getText();
- //BA.debugLineNum = 80;BA.debugLine="job2.Initialize(\"Job2\", Me)";
-mostCurrent._job2._initialize(processBA,"Job2",main.getObject());
- //BA.debugLineNum = 81;BA.debugLine="job2.PostString(domain&\"ta_v2/endpoint/login.php\"";
-mostCurrent._job2._poststring(mostCurrent._domain+"ta_v2/endpoint/login.php","email="+_email+"&password="+_password);
- //BA.debugLineNum = 83;BA.debugLine="End Sub";
-return "";
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 21;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 24;BA.debugLine="Dim job2 As HttpJob";
-mostCurrent._job2 = new anywheresoftware.b4a.samples.httputils2.httpjob();
- //BA.debugLineNum = 25;BA.debugLine="Private EditText1 As EditText";
-mostCurrent._edittext1 = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 26;BA.debugLine="Private EditText2 As EditText";
-mostCurrent._edittext2 = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 27;BA.debugLine="Dim domain As String";
-mostCurrent._domain = "";
- //BA.debugLineNum = 28;BA.debugLine="domain=\"http://a14b1b5f.ngrok.io/\"";
-mostCurrent._domain = "http://a14b1b5f.ngrok.io/";
+ //BA.debugLineNum = 20;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 23;BA.debugLine="Activity.LoadLayout(\"menu\")";
+mostCurrent._activity.LoadLayout("menu",mostCurrent.activityBA);
+ //BA.debugLineNum = 24;BA.debugLine="Panel9.Height=Activity.Height";
+mostCurrent._panel9.setHeight(mostCurrent._activity.getHeight());
+ //BA.debugLineNum = 25;BA.debugLine="Panel9.Width=Activity.Width";
+mostCurrent._panel9.setWidth(mostCurrent._activity.getWidth());
+ //BA.debugLineNum = 26;BA.debugLine="Panel11.Top = Panel9.Height - 20dip";
+mostCurrent._panel11.setTop((int) (mostCurrent._panel9.getHeight()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))));
  //BA.debugLineNum = 29;BA.debugLine="End Sub";
 return "";
 }
-public static String  _jobdone(anywheresoftware.b4a.samples.httputils2.httpjob _job) throws Exception{
- //BA.debugLineNum = 39;BA.debugLine="Sub JobDone (Job As HttpJob)";
- //BA.debugLineNum = 40;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
-anywheresoftware.b4a.keywords.Common.Log("JobName = "+_job._jobname+", Success = "+BA.ObjectToString(_job._success));
- //BA.debugLineNum = 41;BA.debugLine="If Job.Success = True Then";
-if (_job._success==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 42;BA.debugLine="Select Job.JobName";
-switch (BA.switchObjectToInt(_job._jobname,"Job2")) {
-case 0: {
- //BA.debugLineNum = 45;BA.debugLine="Log(Job.GetString)";
-anywheresoftware.b4a.keywords.Common.Log(_job._getstring());
- //BA.debugLineNum = 46;BA.debugLine="If Job.GetString=\"1\" Then";
-if ((_job._getstring()).equals("1")) { 
- //BA.debugLineNum = 47;BA.debugLine="Log(\"Login Success\")";
-anywheresoftware.b4a.keywords.Common.Log("Login Success");
- //BA.debugLineNum = 48;BA.debugLine="StartActivity(\"menu\")";
-anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("menu"));
- }else {
- //BA.debugLineNum = 50;BA.debugLine="Log(\"Login Failed\")";
-anywheresoftware.b4a.keywords.Common.Log("Login Failed");
- };
- break; }
-}
-;
- }else {
- //BA.debugLineNum = 55;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.Log("Error: "+_job._errormessage);
- //BA.debugLineNum = 56;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
-anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage),anywheresoftware.b4a.keywords.Common.True);
- };
- //BA.debugLineNum = 58;BA.debugLine="Job.Release";
-_job._release();
- //BA.debugLineNum = 59;BA.debugLine="End Sub";
+public static String  _activity_pause(boolean _userclosed) throws Exception{
+ //BA.debugLineNum = 35;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 37;BA.debugLine="End Sub";
 return "";
 }
-
-public static void initializeProcessGlobals() {
-    
-    if (main.processGlobalsRun == false) {
-	    main.processGlobalsRun = true;
-		try {
-		        anywheresoftware.b4a.samples.httputils2.httputils2service._process_globals();
-main._process_globals();
-starter._process_globals();
-menu._process_globals();
-		
-        } catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-    }
-}public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 15;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 19;BA.debugLine="End Sub";
+public static String  _activity_resume() throws Exception{
+ //BA.debugLineNum = 31;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 33;BA.debugLine="End Sub";
+return "";
+}
+public static String  _globals() throws Exception{
+ //BA.debugLineNum = 12;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 16;BA.debugLine="Private Panel9 As Panel";
+mostCurrent._panel9 = new anywheresoftware.b4a.objects.PanelWrapper();
+ //BA.debugLineNum = 17;BA.debugLine="Private Panel11 As Panel";
+mostCurrent._panel11 = new anywheresoftware.b4a.objects.PanelWrapper();
+ //BA.debugLineNum = 18;BA.debugLine="End Sub";
+return "";
+}
+public static String  _process_globals() throws Exception{
+ //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 10;BA.debugLine="End Sub";
 return "";
 }
 }
