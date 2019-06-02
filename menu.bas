@@ -21,6 +21,10 @@ Sub Globals
 
 	Private Panel9 As Panel
 	Private Panel11 As Panel
+	Private Button1 As Button
+	Private Button2 As Button
+	Private Button3 As Button
+	Private Button4 As Button
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -40,4 +44,23 @@ End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
 
+End Sub
+
+
+Sub Button1_Click
+	
+	StartActivity("layer")
+	
+End Sub
+
+Sub Button2_Click
+	
+End Sub
+
+Sub Button3_Click
+	
+End Sub
+
+Sub Button4_Click
+	
 End Sub

@@ -331,9 +331,14 @@ public class menu extends Activity implements B4AActivity{
 public anywheresoftware.b4a.keywords.Common __c = null;
 public anywheresoftware.b4a.objects.PanelWrapper _panel9 = null;
 public anywheresoftware.b4a.objects.PanelWrapper _panel11 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _button1 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _button2 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _button3 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _button4 = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
+public b4a.example.layer _layer = null;
 
 public static void initializeProcessGlobals() {
              try {
@@ -343,26 +348,48 @@ public static void initializeProcessGlobals() {
             }
 }
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 20;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 23;BA.debugLine="Activity.LoadLayout(\"menu\")";
+ //BA.debugLineNum = 24;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 27;BA.debugLine="Activity.LoadLayout(\"menu\")";
 mostCurrent._activity.LoadLayout("menu",mostCurrent.activityBA);
- //BA.debugLineNum = 24;BA.debugLine="Panel9.Height=Activity.Height";
+ //BA.debugLineNum = 28;BA.debugLine="Panel9.Height=Activity.Height";
 mostCurrent._panel9.setHeight(mostCurrent._activity.getHeight());
- //BA.debugLineNum = 25;BA.debugLine="Panel9.Width=Activity.Width";
+ //BA.debugLineNum = 29;BA.debugLine="Panel9.Width=Activity.Width";
 mostCurrent._panel9.setWidth(mostCurrent._activity.getWidth());
- //BA.debugLineNum = 26;BA.debugLine="Panel11.Top = Panel9.Height - 20dip";
+ //BA.debugLineNum = 30;BA.debugLine="Panel11.Top = Panel9.Height - 20dip";
 mostCurrent._panel11.setTop((int) (mostCurrent._panel9.getHeight()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))));
- //BA.debugLineNum = 29;BA.debugLine="End Sub";
+ //BA.debugLineNum = 33;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 35;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 37;BA.debugLine="End Sub";
+ //BA.debugLineNum = 39;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 41;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 31;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 33;BA.debugLine="End Sub";
+ //BA.debugLineNum = 35;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 37;BA.debugLine="End Sub";
+return "";
+}
+public static String  _button1_click() throws Exception{
+ //BA.debugLineNum = 44;BA.debugLine="Sub Button1_Click";
+ //BA.debugLineNum = 46;BA.debugLine="StartActivity(\"layer\")";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("layer"));
+ //BA.debugLineNum = 48;BA.debugLine="End Sub";
+return "";
+}
+public static String  _button2_click() throws Exception{
+ //BA.debugLineNum = 50;BA.debugLine="Sub Button2_Click";
+ //BA.debugLineNum = 52;BA.debugLine="End Sub";
+return "";
+}
+public static String  _button3_click() throws Exception{
+ //BA.debugLineNum = 54;BA.debugLine="Sub Button3_Click";
+ //BA.debugLineNum = 56;BA.debugLine="End Sub";
+return "";
+}
+public static String  _button4_click() throws Exception{
+ //BA.debugLineNum = 58;BA.debugLine="Sub Button4_Click";
+ //BA.debugLineNum = 60;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -371,7 +398,15 @@ public static String  _globals() throws Exception{
 mostCurrent._panel9 = new anywheresoftware.b4a.objects.PanelWrapper();
  //BA.debugLineNum = 17;BA.debugLine="Private Panel11 As Panel";
 mostCurrent._panel11 = new anywheresoftware.b4a.objects.PanelWrapper();
- //BA.debugLineNum = 18;BA.debugLine="End Sub";
+ //BA.debugLineNum = 18;BA.debugLine="Private Button1 As Button";
+mostCurrent._button1 = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 19;BA.debugLine="Private Button2 As Button";
+mostCurrent._button2 = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 20;BA.debugLine="Private Button3 As Button";
+mostCurrent._button3 = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 21;BA.debugLine="Private Button4 As Button";
+mostCurrent._button4 = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 22;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{

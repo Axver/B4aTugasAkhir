@@ -17,6 +17,10 @@
 		android:icon="@drawable/icon"
 		android:label="B4A Example"
 		android:theme="@style/DarkTheme">
+		
+		<meta-data
+		  android:name="com.google.android.geo.API_KEY"
+		  android:value="AIzaSyD_XJwmM7H284wWbkd7kSVA-Jwq1tKlkd8"/>
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
@@ -37,6 +41,13 @@
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
 			android:name=".menu"
+			android:label="B4A Example"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".layer"
 			android:label="B4A Example"
 			android:screenOrientation="unspecified">
 		</activity>

@@ -25,7 +25,7 @@ public class main extends Activity implements B4AActivity{
     ActivityWrapper _activity;
     java.util.ArrayList<B4AMenuItem> menuItems;
 	public static final boolean fullScreen = false;
-	public static final boolean includeTitle = true;
+	public static final boolean includeTitle = false;
     public static WeakReference<Activity> previousOne;
 
 	@Override
@@ -333,49 +333,62 @@ public anywheresoftware.b4a.samples.httputils2.httpjob _job2 = null;
 public anywheresoftware.b4a.objects.EditTextWrapper _edittext1 = null;
 public anywheresoftware.b4a.objects.EditTextWrapper _edittext2 = null;
 public static String _domain = "";
+public anywheresoftware.b4a.objects.ImageViewWrapper _imageview1 = null;
+public anywheresoftware.b4a.objects.PanelWrapper _panel1 = null;
+public anywheresoftware.b4a.objects.PanelWrapper _panel2 = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
 public b4a.example.starter _starter = null;
 public b4a.example.menu _menu = null;
+public b4a.example.layer _layer = null;
 
 public static boolean isAnyActivityVisible() {
     boolean vis = false;
 vis = vis | (main.mostCurrent != null);
 vis = vis | (menu.mostCurrent != null);
+vis = vis | (layer.mostCurrent != null);
 return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 31;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 32;BA.debugLine="Activity.LoadLayout(\"login\")";
+ //BA.debugLineNum = 36;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 37;BA.debugLine="Activity.LoadLayout(\"login\")";
 mostCurrent._activity.LoadLayout("login",mostCurrent.activityBA);
- //BA.debugLineNum = 37;BA.debugLine="End Sub";
+ //BA.debugLineNum = 49;BA.debugLine="Panel1.Height=Activity.Height";
+mostCurrent._panel1.setHeight(mostCurrent._activity.getHeight());
+ //BA.debugLineNum = 50;BA.debugLine="Panel1.Width=Activity.Width";
+mostCurrent._panel1.setWidth(mostCurrent._activity.getWidth());
+ //BA.debugLineNum = 51;BA.debugLine="ImageView1.Height=Activity.Height";
+mostCurrent._imageview1.setHeight(mostCurrent._activity.getHeight());
+ //BA.debugLineNum = 52;BA.debugLine="ImageView1.Width=Activity.Width";
+mostCurrent._imageview1.setWidth(mostCurrent._activity.getWidth());
+ //BA.debugLineNum = 59;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 65;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 67;BA.debugLine="End Sub";
+ //BA.debugLineNum = 87;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 89;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 61;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 63;BA.debugLine="End Sub";
+ //BA.debugLineNum = 83;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 85;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button1_click() throws Exception{
 String _email = "";
 String _password = "";
- //BA.debugLineNum = 70;BA.debugLine="Sub Button1_Click";
- //BA.debugLineNum = 72;BA.debugLine="Dim email As String";
+ //BA.debugLineNum = 92;BA.debugLine="Sub Button1_Click";
+ //BA.debugLineNum = 94;BA.debugLine="Dim email As String";
 _email = "";
- //BA.debugLineNum = 73;BA.debugLine="Dim password As String";
+ //BA.debugLineNum = 95;BA.debugLine="Dim password As String";
 _password = "";
- //BA.debugLineNum = 74;BA.debugLine="email=EditText1.Text";
+ //BA.debugLineNum = 96;BA.debugLine="email=EditText1.Text";
 _email = mostCurrent._edittext1.getText();
- //BA.debugLineNum = 75;BA.debugLine="password=EditText2.Text";
+ //BA.debugLineNum = 97;BA.debugLine="password=EditText2.Text";
 _password = mostCurrent._edittext2.getText();
- //BA.debugLineNum = 80;BA.debugLine="job2.Initialize(\"Job2\", Me)";
+ //BA.debugLineNum = 102;BA.debugLine="job2.Initialize(\"Job2\", Me)";
 mostCurrent._job2._initialize(processBA,"Job2",main.getObject());
- //BA.debugLineNum = 81;BA.debugLine="job2.PostString(domain&\"ta_v2/endpoint/login.php\"";
+ //BA.debugLineNum = 103;BA.debugLine="job2.PostString(domain&\"ta_v2/endpoint/login.php\"";
 mostCurrent._job2._poststring(mostCurrent._domain+"ta_v2/endpoint/login.php","email="+_email+"&password="+_password);
- //BA.debugLineNum = 83;BA.debugLine="End Sub";
+ //BA.debugLineNum = 105;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -388,44 +401,50 @@ mostCurrent._edittext1 = new anywheresoftware.b4a.objects.EditTextWrapper();
 mostCurrent._edittext2 = new anywheresoftware.b4a.objects.EditTextWrapper();
  //BA.debugLineNum = 27;BA.debugLine="Dim domain As String";
 mostCurrent._domain = "";
- //BA.debugLineNum = 28;BA.debugLine="domain=\"http://a14b1b5f.ngrok.io/\"";
-mostCurrent._domain = "http://a14b1b5f.ngrok.io/";
- //BA.debugLineNum = 29;BA.debugLine="End Sub";
+ //BA.debugLineNum = 28;BA.debugLine="domain=\"http://4a0e8215.ngrok.io/\"";
+mostCurrent._domain = "http://4a0e8215.ngrok.io/";
+ //BA.debugLineNum = 31;BA.debugLine="Private ImageView1 As ImageView";
+mostCurrent._imageview1 = new anywheresoftware.b4a.objects.ImageViewWrapper();
+ //BA.debugLineNum = 32;BA.debugLine="Dim Panel1 As Panel";
+mostCurrent._panel1 = new anywheresoftware.b4a.objects.PanelWrapper();
+ //BA.debugLineNum = 33;BA.debugLine="Dim Panel2 As Panel";
+mostCurrent._panel2 = new anywheresoftware.b4a.objects.PanelWrapper();
+ //BA.debugLineNum = 34;BA.debugLine="End Sub";
 return "";
 }
 public static String  _jobdone(anywheresoftware.b4a.samples.httputils2.httpjob _job) throws Exception{
- //BA.debugLineNum = 39;BA.debugLine="Sub JobDone (Job As HttpJob)";
- //BA.debugLineNum = 40;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
+ //BA.debugLineNum = 61;BA.debugLine="Sub JobDone (Job As HttpJob)";
+ //BA.debugLineNum = 62;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
 anywheresoftware.b4a.keywords.Common.Log("JobName = "+_job._jobname+", Success = "+BA.ObjectToString(_job._success));
- //BA.debugLineNum = 41;BA.debugLine="If Job.Success = True Then";
+ //BA.debugLineNum = 63;BA.debugLine="If Job.Success = True Then";
 if (_job._success==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 42;BA.debugLine="Select Job.JobName";
+ //BA.debugLineNum = 64;BA.debugLine="Select Job.JobName";
 switch (BA.switchObjectToInt(_job._jobname,"Job2")) {
 case 0: {
- //BA.debugLineNum = 45;BA.debugLine="Log(Job.GetString)";
+ //BA.debugLineNum = 67;BA.debugLine="Log(Job.GetString)";
 anywheresoftware.b4a.keywords.Common.Log(_job._getstring());
- //BA.debugLineNum = 46;BA.debugLine="If Job.GetString=\"1\" Then";
+ //BA.debugLineNum = 68;BA.debugLine="If Job.GetString=\"1\" Then";
 if ((_job._getstring()).equals("1")) { 
- //BA.debugLineNum = 47;BA.debugLine="Log(\"Login Success\")";
+ //BA.debugLineNum = 69;BA.debugLine="Log(\"Login Success\")";
 anywheresoftware.b4a.keywords.Common.Log("Login Success");
- //BA.debugLineNum = 48;BA.debugLine="StartActivity(\"menu\")";
+ //BA.debugLineNum = 70;BA.debugLine="StartActivity(\"menu\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("menu"));
  }else {
- //BA.debugLineNum = 50;BA.debugLine="Log(\"Login Failed\")";
+ //BA.debugLineNum = 72;BA.debugLine="Log(\"Login Failed\")";
 anywheresoftware.b4a.keywords.Common.Log("Login Failed");
  };
  break; }
 }
 ;
  }else {
- //BA.debugLineNum = 55;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
+ //BA.debugLineNum = 77;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
 anywheresoftware.b4a.keywords.Common.Log("Error: "+_job._errormessage);
- //BA.debugLineNum = 56;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
+ //BA.debugLineNum = 78;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage),anywheresoftware.b4a.keywords.Common.True);
  };
- //BA.debugLineNum = 58;BA.debugLine="Job.Release";
+ //BA.debugLineNum = 80;BA.debugLine="Job.Release";
 _job._release();
- //BA.debugLineNum = 59;BA.debugLine="End Sub";
+ //BA.debugLineNum = 81;BA.debugLine="End Sub";
 return "";
 }
 
@@ -438,6 +457,7 @@ public static void initializeProcessGlobals() {
 main._process_globals();
 starter._process_globals();
 menu._process_globals();
+layer._process_globals();
 		
         } catch (Exception e) {
 			throw new RuntimeException(e);
