@@ -36,6 +36,7 @@ public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
 public b4a.example.menu _menu = null;
 public b4a.example.layer _layer = null;
+public b4a.example.citizen _citizen = null;
 public static class _actionitem{
 public boolean IsInitialized;
 public String Text;

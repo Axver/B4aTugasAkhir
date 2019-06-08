@@ -340,12 +340,14 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.starter _starter = null;
 public b4a.example.menu _menu = null;
 public b4a.example.layer _layer = null;
+public b4a.example.citizen _citizen = null;
 
 public static boolean isAnyActivityVisible() {
     boolean vis = false;
 vis = vis | (main.mostCurrent != null);
 vis = vis | (menu.mostCurrent != null);
 vis = vis | (layer.mostCurrent != null);
+vis = vis | (citizen.mostCurrent != null);
 return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
  //BA.debugLineNum = 36;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
@@ -401,8 +403,8 @@ mostCurrent._edittext1 = new anywheresoftware.b4a.objects.EditTextWrapper();
 mostCurrent._edittext2 = new anywheresoftware.b4a.objects.EditTextWrapper();
  //BA.debugLineNum = 27;BA.debugLine="Dim domain As String";
 mostCurrent._domain = "";
- //BA.debugLineNum = 28;BA.debugLine="domain=\"http://e1779cf0.ngrok.io/\"";
-mostCurrent._domain = "http://e1779cf0.ngrok.io/";
+ //BA.debugLineNum = 28;BA.debugLine="domain=\"http://4e1037e4.ngrok.io/\"";
+mostCurrent._domain = "http://4e1037e4.ngrok.io/";
  //BA.debugLineNum = 31;BA.debugLine="Private ImageView1 As ImageView";
 mostCurrent._imageview1 = new anywheresoftware.b4a.objects.ImageViewWrapper();
  //BA.debugLineNum = 32;BA.debugLine="Dim Panel1 As Panel";
@@ -458,6 +460,7 @@ main._process_globals();
 starter._process_globals();
 menu._process_globals();
 layer._process_globals();
+citizen._process_globals();
 		
         } catch (Exception e) {
 			throw new RuntimeException(e);

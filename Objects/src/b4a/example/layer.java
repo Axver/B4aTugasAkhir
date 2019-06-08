@@ -25,7 +25,7 @@ public class layer extends Activity implements B4AActivity{
     ActivityWrapper _activity;
     java.util.ArrayList<B4AMenuItem> menuItems;
 	public static final boolean fullScreen = false;
-	public static final boolean includeTitle = true;
+	public static final boolean includeTitle = false;
     public static WeakReference<Activity> previousOne;
 
 	@Override
@@ -341,6 +341,7 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
 public b4a.example.menu _menu = null;
+public b4a.example.citizen _citizen = null;
 
 public static void initializeProcessGlobals() {
              try {
@@ -445,8 +446,8 @@ mostCurrent._webview1 = new anywheresoftware.b4a.objects.WebViewWrapper();
 mostCurrent._panel2 = new anywheresoftware.b4a.objects.PanelWrapper();
  //BA.debugLineNum = 19;BA.debugLine="Dim domain As String";
 mostCurrent._domain = "";
- //BA.debugLineNum = 20;BA.debugLine="domain=\"http://e1779cf0.ngrok.io/\"";
-mostCurrent._domain = "http://e1779cf0.ngrok.io/";
+ //BA.debugLineNum = 20;BA.debugLine="domain=\"http://4e1037e4.ngrok.io/\"";
+mostCurrent._domain = "http://4e1037e4.ngrok.io/";
  //BA.debugLineNum = 21;BA.debugLine="Private Panel3 As Panel";
 mostCurrent._panel3 = new anywheresoftware.b4a.objects.PanelWrapper();
  //BA.debugLineNum = 22;BA.debugLine="Dim wvXtender As WebViewXtender";

@@ -54,7 +54,7 @@ Sub Button1_Click
 End Sub
 
 Sub Button2_Click
-	
+	StartActivity("citizen")
 End Sub
 
 Sub Button3_Click
