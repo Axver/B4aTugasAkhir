@@ -12,7 +12,7 @@ Version=8.3
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-
+	Dim tmrLoad As Timer
 End Sub
 
 Sub Globals
@@ -23,8 +23,10 @@ Sub Globals
 	Private WebView1 As WebView
 	Private Panel2 As Panel
 	Dim domain As String
-	domain="http://4a0e8215.ngrok.io/"
+	domain="http://e1779cf0.ngrok.io/"
 	Private Panel3 As Panel
+	Dim wvXtender As WebViewXtender
+	Private Label1 As Label
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -35,18 +37,20 @@ Sub Activity_Create(FirstTime As Boolean)
 
 	sm.AddItem("All Items", LoadBitmap(File.DirAssets, "bomb.png"), 1)
 	sm.AddItem("Block A", LoadBitmap(File.DirAssets, "book_add.png"), 2)
-	sm.AddItem("Block B", LoadBitmap(File.DirAssets, "book_open.png"), 3)
-	sm.AddItem("Block C", LoadBitmap(File.DirAssets, "wrench.png"), 4)
-	sm.AddItem("Block D", LoadBitmap(File.DirAssets, "wrench_orange.png"), 5)
-	sm.AddItem("Block E", Null, 6)
-	sm.AddItem("Block F", Null, 7)
-	sm.AddItem("Block G", Null, 8)
-	sm.AddItem("Block H", Null, 9)
+	sm.AddItem("Block B", LoadBitmap(File.DirAssets, "book_add.png"), 3)
+	sm.AddItem("Block C", LoadBitmap(File.DirAssets, "book_add.png"), 4)
+	sm.AddItem("Block D", LoadBitmap(File.DirAssets, "book_add.png"), 5)
+	sm.AddItem("Block E", LoadBitmap(File.DirAssets, "book_add.png"), 6)
+	sm.AddItem("Block F", LoadBitmap(File.DirAssets, "book_add.png"), 7)
+	sm.AddItem("Block G", LoadBitmap(File.DirAssets, "book_add.png"), 8)
+	sm.AddItem("Block H", LoadBitmap(File.DirAssets, "book_add.png"), 9)
 	WebView1.Width=Activity.Width
 	WebView1.Height=Activity.Height
 	Panel2.Width=WebView1.Width
 	Panel2.Height=WebView1.Height
+	tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
 	WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
+	tmrLoad.Enabled = True
 	
 	Log(domain&"ta_v2/endpoint/view/layers.php")
 	Panel3.Height=Activity.Height/2
@@ -54,6 +58,20 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	
 
+End Sub
+
+
+Sub tmrLoad_Tick
+	'Handle tick events
+	DoEvents
+	Label1.Text = "Loading "&wvXtender.getProgress(WebView1) & "%"
+	DoEvents
+	If Label1.Text = "Loading 100%" Then
+		tmrLoad.Enabled = False
+		Label1.Text=""
+		
+	End If
+	
 End Sub
 
 Sub Activity_Resume
@@ -88,7 +106,41 @@ End Sub
 Sub SlideMenu_Click(Item As Object)
 	ToastMessageShow("Item clicked: " & Item, False)
 	If Item=1 Then
+		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
 		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=all")
+		tmrLoad.Enabled = True
+	Else If Item=2 Then
+		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
+	    WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=A")
+		tmrLoad.Enabled = True
+	Else If Item=3 Then
+		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
+		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=B")
+		tmrLoad.Enabled = True
+	Else If Item=4 Then
+		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
+		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=C")
+		tmrLoad.Enabled = True
+	Else If Item=5 Then
+		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
+		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=D")
+		tmrLoad.Enabled = True
+	Else If Item=6 Then
+		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
+		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=E")
+		tmrLoad.Enabled = True
+	Else If Item=7 Then
+		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
+		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=F")
+		tmrLoad.Enabled = True
+	Else If Item=8 Then
+		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
+		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=G")
+		tmrLoad.Enabled = True
+	Else If Item=9 Then
+		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
+		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=H")
+		tmrLoad.Enabled = True
 	End If
 End Sub
 

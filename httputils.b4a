@@ -34,13 +34,14 @@ IconFile=
 Library1=core
 Library2=okhttputils2
 Library3=animation
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="26"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~~\n~AddApplicationText(~\n~<meta-data~\n~  android:name="com.google.android.geo.API_KEY"~\n~  android:value="AIzaSyD_XJwmM7H284wWbkd7kSVA-Jwq1tKlkd8"/>~\n~)~\n~
+Library4=webviewxtended
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="26"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~~\n~AddApplicationText(~\n~<meta-data~\n~  android:name="com.google.android.geo.API_KEY"~\n~  android:value=""/>~\n~)~\n~
 Module1=Starter
 Module2=menu
 Module3=layer
 Module4=SlideMenu
 NumberOfFiles=15
-NumberOfLibraries=3
+NumberOfLibraries=4
 NumberOfModules=4
 Version=8.3
 @EndOfDesignText@
@@ -71,7 +72,7 @@ Sub Globals
 	Private EditText1 As EditText
 	Private EditText2 As EditText
 	Dim domain As String
-	domain="http://4a0e8215.ngrok.io/"
+	domain="http://e1779cf0.ngrok.io/"
 
 	
 	Private ImageView1 As ImageView
