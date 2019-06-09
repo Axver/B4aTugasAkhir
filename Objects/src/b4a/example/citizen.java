@@ -350,6 +350,7 @@ public anywheresoftware.b4a.objects.LabelWrapper _label4 = null;
 public anywheresoftware.b4a.objects.LabelWrapper _label5 = null;
 public anywheresoftware.b4a.objects.LabelWrapper _label6 = null;
 public anywheresoftware.b4a.objects.PanelWrapper _panel5 = null;
+public anywheresoftware.b4a.objects.WebViewWrapper _webview1 = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
@@ -364,85 +365,91 @@ public static void initializeProcessGlobals() {
             }
 }
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 41;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 44;BA.debugLine="Activity.LoadLayout(\"citizen\")";
+ //BA.debugLineNum = 42;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 45;BA.debugLine="Activity.LoadLayout(\"citizen\")";
 mostCurrent._activity.LoadLayout("citizen",mostCurrent.activityBA);
- //BA.debugLineNum = 45;BA.debugLine="Panel4.Visible=False";
+ //BA.debugLineNum = 46;BA.debugLine="Panel4.Visible=False";
 mostCurrent._panel4.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 47;BA.debugLine="sm.Initialize(Activity, Me, \"SlideMenu\", 42dip, 1";
+ //BA.debugLineNum = 47;BA.debugLine="Panel5.Visible=False";
+mostCurrent._panel5.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 48;BA.debugLine="Panel3.Visible=False";
+mostCurrent._panel3.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 50;BA.debugLine="sm.Initialize(Activity, Me, \"SlideMenu\", 42dip, 1";
 mostCurrent._sm._initialize(mostCurrent.activityBA,mostCurrent._activity,citizen.getObject(),"SlideMenu",anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (42)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (180)));
- //BA.debugLineNum = 49;BA.debugLine="sm.AddItem(\"Citizen\", LoadBitmap(File.DirAssets,";
+ //BA.debugLineNum = 52;BA.debugLine="sm.AddItem(\"Citizen\", LoadBitmap(File.DirAssets,";
 mostCurrent._sm._additem("Citizen",anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"user.png"),(Object)(1));
- //BA.debugLineNum = 50;BA.debugLine="sm.AddItem(\"Birth Data\", LoadBitmap(File.DirAsset";
+ //BA.debugLineNum = 53;BA.debugLine="sm.AddItem(\"Birth Data\", LoadBitmap(File.DirAsset";
 mostCurrent._sm._additem("Birth Data",anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"baby.png"),(Object)(2));
- //BA.debugLineNum = 51;BA.debugLine="sm.AddItem(\"Mortality Data\", LoadBitmap(File.DirA";
+ //BA.debugLineNum = 54;BA.debugLine="sm.AddItem(\"Mortality Data\", LoadBitmap(File.DirA";
 mostCurrent._sm._additem("Mortality Data",anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"funeral.png"),(Object)(3));
- //BA.debugLineNum = 52;BA.debugLine="sm.AddItem(\"Family Cards\", LoadBitmap(File.DirAss";
+ //BA.debugLineNum = 55;BA.debugLine="sm.AddItem(\"Family Cards\", LoadBitmap(File.DirAss";
 mostCurrent._sm._additem("Family Cards",anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"citizen.png"),(Object)(4));
- //BA.debugLineNum = 55;BA.debugLine="Panel2.Width=Activity.Width";
+ //BA.debugLineNum = 58;BA.debugLine="Panel2.Width=Activity.Width";
 mostCurrent._panel2.setWidth(mostCurrent._activity.getWidth());
- //BA.debugLineNum = 56;BA.debugLine="Panel2.Height=Activity.Height/2";
+ //BA.debugLineNum = 59;BA.debugLine="Panel2.Height=Activity.Height/2";
 mostCurrent._panel2.setHeight((int) (mostCurrent._activity.getHeight()/(double)2));
- //BA.debugLineNum = 59;BA.debugLine="Log(domain&\"ta_v2/endpoint/view/layers.php\")";
+ //BA.debugLineNum = 62;BA.debugLine="Log(domain&\"ta_v2/endpoint/view/layers.php\")";
 anywheresoftware.b4a.keywords.Common.Log(mostCurrent._domain+"ta_v2/endpoint/view/layers.php");
- //BA.debugLineNum = 60;BA.debugLine="Panel3.Height=Activity.Height/2";
+ //BA.debugLineNum = 63;BA.debugLine="Panel3.Height=Activity.Height/2";
 mostCurrent._panel3.setHeight((int) (mostCurrent._activity.getHeight()/(double)2));
- //BA.debugLineNum = 61;BA.debugLine="Panel3.Width=Activity.Width";
+ //BA.debugLineNum = 64;BA.debugLine="Panel3.Width=Activity.Width";
 mostCurrent._panel3.setWidth(mostCurrent._activity.getWidth());
- //BA.debugLineNum = 65;BA.debugLine="End Sub";
+ //BA.debugLineNum = 68;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _activity_keypress(int _keycode) throws Exception{
- //BA.debugLineNum = 82;BA.debugLine="Sub Activity_KeyPress (KeyCode As Int) As Boolean";
- //BA.debugLineNum = 84;BA.debugLine="If KeyCode = KeyCodes.KEYCODE_BACK And sm.isVisib";
+ //BA.debugLineNum = 85;BA.debugLine="Sub Activity_KeyPress (KeyCode As Int) As Boolean";
+ //BA.debugLineNum = 87;BA.debugLine="If KeyCode = KeyCodes.KEYCODE_BACK And sm.isVisib";
 if (_keycode==anywheresoftware.b4a.keywords.Common.KeyCodes.KEYCODE_BACK && mostCurrent._sm._isvisible()) { 
- //BA.debugLineNum = 85;BA.debugLine="sm.Hide";
+ //BA.debugLineNum = 88;BA.debugLine="sm.Hide";
 mostCurrent._sm._hide();
- //BA.debugLineNum = 86;BA.debugLine="Return True";
+ //BA.debugLineNum = 89;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
  };
- //BA.debugLineNum = 90;BA.debugLine="If KeyCode = KeyCodes.KEYCODE_MENU Then";
+ //BA.debugLineNum = 93;BA.debugLine="If KeyCode = KeyCodes.KEYCODE_MENU Then";
 if (_keycode==anywheresoftware.b4a.keywords.Common.KeyCodes.KEYCODE_MENU) { 
- //BA.debugLineNum = 91;BA.debugLine="If sm.isVisible Then sm.Hide Else sm.Show";
+ //BA.debugLineNum = 94;BA.debugLine="If sm.isVisible Then sm.Hide Else sm.Show";
 if (mostCurrent._sm._isvisible()) { 
 mostCurrent._sm._hide();}
 else {
 mostCurrent._sm._show();};
- //BA.debugLineNum = 92;BA.debugLine="Return True";
+ //BA.debugLineNum = 95;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
  };
- //BA.debugLineNum = 94;BA.debugLine="End Sub";
+ //BA.debugLineNum = 97;BA.debugLine="End Sub";
 return false;
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 77;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 79;BA.debugLine="End Sub";
+ //BA.debugLineNum = 80;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 82;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 73;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 75;BA.debugLine="End Sub";
+ //BA.debugLineNum = 76;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 78;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnshow_click() throws Exception{
- //BA.debugLineNum = 97;BA.debugLine="Sub btnShow_Click";
- //BA.debugLineNum = 98;BA.debugLine="sm.Show";
+ //BA.debugLineNum = 100;BA.debugLine="Sub btnShow_Click";
+ //BA.debugLineNum = 101;BA.debugLine="sm.Show";
 mostCurrent._sm._show();
- //BA.debugLineNum = 99;BA.debugLine="End Sub";
+ //BA.debugLineNum = 102;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button1_click() throws Exception{
 String _citizen_id = "";
- //BA.debugLineNum = 126;BA.debugLine="Sub Button1_Click";
- //BA.debugLineNum = 128;BA.debugLine="Dim citizen_id As String";
+ //BA.debugLineNum = 133;BA.debugLine="Sub Button1_Click";
+ //BA.debugLineNum = 135;BA.debugLine="Dim citizen_id As String";
 _citizen_id = "";
- //BA.debugLineNum = 129;BA.debugLine="citizen_id=EditText1.Text";
+ //BA.debugLineNum = 136;BA.debugLine="citizen_id=EditText1.Text";
 _citizen_id = mostCurrent._edittext1.getText();
- //BA.debugLineNum = 132;BA.debugLine="job2.Initialize(\"Job2\", Me)";
+ //BA.debugLineNum = 139;BA.debugLine="job2.Initialize(\"Job2\", Me)";
 mostCurrent._job2._initialize(processBA,"Job2",citizen.getObject());
- //BA.debugLineNum = 133;BA.debugLine="job2.PostString(domain&\"ta_v2/endpoint/citizen_by";
+ //BA.debugLineNum = 140;BA.debugLine="job2.PostString(domain&\"ta_v2/endpoint/citizen_by";
 mostCurrent._job2._poststring(mostCurrent._domain+"ta_v2/endpoint/citizen_by_nik.php","citizen_id="+_citizen_id);
- //BA.debugLineNum = 135;BA.debugLine="End Sub";
+ //BA.debugLineNum = 141;BA.debugLine="WebView1.LoadUrl(domain&\"ta_v2/endpoint/view/land";
+mostCurrent._webview1.LoadUrl(mostCurrent._domain+"ta_v2/endpoint/view/land_owning.php?owner_id="+_citizen_id);
+ //BA.debugLineNum = 143;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -464,8 +471,8 @@ java.util.Arrays.fill(mostCurrent._arr,"");
 mostCurrent._panel2 = new anywheresoftware.b4a.objects.PanelWrapper();
  //BA.debugLineNum = 23;BA.debugLine="Dim domain As String";
 mostCurrent._domain = "";
- //BA.debugLineNum = 24;BA.debugLine="domain=\"http://4e1037e4.ngrok.io/\"";
-mostCurrent._domain = "http://4e1037e4.ngrok.io/";
+ //BA.debugLineNum = 24;BA.debugLine="domain=\"http://2cd30500.ngrok.io/\"";
+mostCurrent._domain = "http://2cd30500.ngrok.io/";
  //BA.debugLineNum = 25;BA.debugLine="Private Panel3 As Panel";
 mostCurrent._panel3 = new anywheresoftware.b4a.objects.PanelWrapper();
  //BA.debugLineNum = 26;BA.debugLine="Dim wvXtender As WebViewXtender";
@@ -492,50 +499,52 @@ mostCurrent._label5 = new anywheresoftware.b4a.objects.LabelWrapper();
 mostCurrent._label6 = new anywheresoftware.b4a.objects.LabelWrapper();
  //BA.debugLineNum = 38;BA.debugLine="Private Panel5 As Panel";
 mostCurrent._panel5 = new anywheresoftware.b4a.objects.PanelWrapper();
- //BA.debugLineNum = 39;BA.debugLine="End Sub";
+ //BA.debugLineNum = 39;BA.debugLine="Private WebView1 As WebView";
+mostCurrent._webview1 = new anywheresoftware.b4a.objects.WebViewWrapper();
+ //BA.debugLineNum = 40;BA.debugLine="End Sub";
 return "";
 }
 public static String  _jobdone(anywheresoftware.b4a.samples.httputils2.httpjob _job) throws Exception{
- //BA.debugLineNum = 138;BA.debugLine="Sub JobDone (Job As HttpJob)";
- //BA.debugLineNum = 139;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
+ //BA.debugLineNum = 146;BA.debugLine="Sub JobDone (Job As HttpJob)";
+ //BA.debugLineNum = 147;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
 anywheresoftware.b4a.keywords.Common.Log("JobName = "+_job._jobname+", Success = "+BA.ObjectToString(_job._success));
- //BA.debugLineNum = 140;BA.debugLine="If Job.Success = True Then";
+ //BA.debugLineNum = 148;BA.debugLine="If Job.Success = True Then";
 if (_job._success==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 142;BA.debugLine="Select Job.JobName";
+ //BA.debugLineNum = 150;BA.debugLine="Select Job.JobName";
 switch (BA.switchObjectToInt(_job._jobname,"Job2")) {
 case 0: {
- //BA.debugLineNum = 145;BA.debugLine="Log(Job.GetString)";
+ //BA.debugLineNum = 153;BA.debugLine="Log(Job.GetString)";
 anywheresoftware.b4a.keywords.Common.Log(_job._getstring());
- //BA.debugLineNum = 146;BA.debugLine="JSON.Initialize(Job.GetString)";
+ //BA.debugLineNum = 154;BA.debugLine="JSON.Initialize(Job.GetString)";
 mostCurrent._json.Initialize(_job._getstring());
- //BA.debugLineNum = 148;BA.debugLine="Map1 = JSON.NextObject";
+ //BA.debugLineNum = 156;BA.debugLine="Map1 = JSON.NextObject";
 mostCurrent._map1 = mostCurrent._json.NextObject();
- //BA.debugLineNum = 149;BA.debugLine="Log(Map1)";
+ //BA.debugLineNum = 157;BA.debugLine="Log(Map1)";
 anywheresoftware.b4a.keywords.Common.Log(BA.ObjectToString(mostCurrent._map1));
- //BA.debugLineNum = 152;BA.debugLine="Label1.Text = \"Nik:\"&Map1.Get(\"nik\")";
+ //BA.debugLineNum = 160;BA.debugLine="Label1.Text = \"Nik:\"&Map1.Get(\"nik\")";
 mostCurrent._label1.setText(BA.ObjectToCharSequence("Nik:"+BA.ObjectToString(mostCurrent._map1.Get((Object)("nik")))));
- //BA.debugLineNum = 153;BA.debugLine="Label2.Text = \"Status:\"&Map1.Get(\"status_name\"";
+ //BA.debugLineNum = 161;BA.debugLine="Label2.Text = \"Status:\"&Map1.Get(\"status_name\"";
 mostCurrent._label2.setText(BA.ObjectToCharSequence("Status:"+BA.ObjectToString(mostCurrent._map1.Get((Object)("status_name")))));
- //BA.debugLineNum = 154;BA.debugLine="Label3.Text = \"Clan\"&Map1.Get(\"clan_name\")";
+ //BA.debugLineNum = 162;BA.debugLine="Label3.Text = \"Clan\"&Map1.Get(\"clan_name\")";
 mostCurrent._label3.setText(BA.ObjectToCharSequence("Clan"+BA.ObjectToString(mostCurrent._map1.Get((Object)("clan_name")))));
- //BA.debugLineNum = 155;BA.debugLine="Label4.Text = \"Name:\"&Map1.Get(\"citizen_name\")";
+ //BA.debugLineNum = 163;BA.debugLine="Label4.Text = \"Name:\"&Map1.Get(\"citizen_name\")";
 mostCurrent._label4.setText(BA.ObjectToCharSequence("Name:"+BA.ObjectToString(mostCurrent._map1.Get((Object)("citizen_name")))));
- //BA.debugLineNum = 156;BA.debugLine="Label5.Text = \"Phone:\"&Map1.Get(\"phone\")";
+ //BA.debugLineNum = 164;BA.debugLine="Label5.Text = \"Phone:\"&Map1.Get(\"phone\")";
 mostCurrent._label5.setText(BA.ObjectToCharSequence("Phone:"+BA.ObjectToString(mostCurrent._map1.Get((Object)("phone")))));
- //BA.debugLineNum = 157;BA.debugLine="Label6.Text = \"Gender:\"&Map1.Get(\"gender\")";
+ //BA.debugLineNum = 165;BA.debugLine="Label6.Text = \"Gender:\"&Map1.Get(\"gender\")";
 mostCurrent._label6.setText(BA.ObjectToCharSequence("Gender:"+BA.ObjectToString(mostCurrent._map1.Get((Object)("gender")))));
  break; }
 }
 ;
  }else {
- //BA.debugLineNum = 162;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
+ //BA.debugLineNum = 170;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
 anywheresoftware.b4a.keywords.Common.Log("Error: "+_job._errormessage);
- //BA.debugLineNum = 163;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
+ //BA.debugLineNum = 171;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage),anywheresoftware.b4a.keywords.Common.True);
  };
- //BA.debugLineNum = 165;BA.debugLine="Job.Release";
+ //BA.debugLineNum = 173;BA.debugLine="Job.Release";
 _job._release();
- //BA.debugLineNum = 166;BA.debugLine="End Sub";
+ //BA.debugLineNum = 174;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{
@@ -546,29 +555,37 @@ _tmrload = new anywheresoftware.b4a.objects.Timer();
 return "";
 }
 public static String  _slidemenu_click(Object _item) throws Exception{
- //BA.debugLineNum = 102;BA.debugLine="Sub SlideMenu_Click(Item As Object)";
- //BA.debugLineNum = 103;BA.debugLine="ToastMessageShow(\"Item clicked: \" & Item, False)";
+ //BA.debugLineNum = 105;BA.debugLine="Sub SlideMenu_Click(Item As Object)";
+ //BA.debugLineNum = 106;BA.debugLine="ToastMessageShow(\"Item clicked: \" & Item, False)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Item clicked: "+BA.ObjectToString(_item)),anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 104;BA.debugLine="If Item=1 Then";
+ //BA.debugLineNum = 107;BA.debugLine="If Item=1 Then";
 if ((_item).equals((Object)(1))) { 
- //BA.debugLineNum = 105;BA.debugLine="Panel4.Left=Panel2.Left";
+ //BA.debugLineNum = 108;BA.debugLine="Panel4.Left=Panel2.Left";
 mostCurrent._panel4.setLeft(mostCurrent._panel2.getLeft());
- //BA.debugLineNum = 106;BA.debugLine="Panel4.Visible=True";
+ //BA.debugLineNum = 109;BA.debugLine="Panel3.Visible=True";
+mostCurrent._panel3.setVisible(anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 110;BA.debugLine="Panel4.Visible=True";
 mostCurrent._panel4.setVisible(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 107;BA.debugLine="Panel4.Width=Panel2.Width";
+ //BA.debugLineNum = 111;BA.debugLine="Panel5.Visible=True";
+mostCurrent._panel5.setVisible(anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 112;BA.debugLine="WebView1.Width=Panel5.Width";
+mostCurrent._webview1.setWidth(mostCurrent._panel5.getWidth());
+ //BA.debugLineNum = 113;BA.debugLine="WebView1.Height=Panel5.Height";
+mostCurrent._webview1.setHeight(mostCurrent._panel5.getHeight());
+ //BA.debugLineNum = 114;BA.debugLine="Panel4.Width=Panel2.Width";
 mostCurrent._panel4.setWidth(mostCurrent._panel2.getWidth());
- //BA.debugLineNum = 108;BA.debugLine="Panel4.Height=Panel2.Height/2";
+ //BA.debugLineNum = 115;BA.debugLine="Panel4.Height=Panel2.Height/2";
 mostCurrent._panel4.setHeight((int) (mostCurrent._panel2.getHeight()/(double)2));
  }else if((_item).equals((Object)(2))) { 
  }else if((_item).equals((Object)(3))) { 
  }else if((_item).equals((Object)(4))) { 
  };
- //BA.debugLineNum = 120;BA.debugLine="End Sub";
+ //BA.debugLineNum = 127;BA.debugLine="End Sub";
 return "";
 }
 public static String  _tmrload_tick() throws Exception{
- //BA.debugLineNum = 68;BA.debugLine="Sub tmrLoad_Tick";
- //BA.debugLineNum = 71;BA.debugLine="End Sub";
+ //BA.debugLineNum = 71;BA.debugLine="Sub tmrLoad_Tick";
+ //BA.debugLineNum = 74;BA.debugLine="End Sub";
 return "";
 }
 }
