@@ -1,20 +1,21 @@
 ﻿Build1=Default,b4a.example
 File1=01.png
-File10=layer.bal
-File11=login.bal
-File12=menu.bal
-File13=stack-512.png
-File14=tempaltaaaeqas-512.png
-File15=wrench.png
-File16=wrench_orange.png
+File10=ic_action_menu.png
+File11=layer.bal
+File12=login.bal
+File13=menu.bal
+File14=stack-512.png
+File15=tempaltaaaeqas-512.png
+File16=wrench.png
+File17=wrench_orange.png
 File2=02.png
-File3=anthony-reungere-1155291-unsplash.jpg
-File4=bomb.png
-File5=book_add.png
-File6=book_open.png
-File7=button.png
-File8=citizen.bal
-File9=ic_action_menu.png
+File3=1.bal
+File4=anthony-reungere-1155291-unsplash.jpg
+File5=bomb.png
+File6=book_add.png
+File7=book_open.png
+File8=button.png
+File9=citizen.bal
 FileGroup1=Default Group
 FileGroup10=Default Group
 FileGroup11=Default Group
@@ -23,6 +24,7 @@ FileGroup13=Default Group
 FileGroup14=Default Group
 FileGroup15=Default Group
 FileGroup16=Default Group
+FileGroup17=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
@@ -38,15 +40,18 @@ Library2=okhttputils2
 Library3=animation
 Library4=webviewxtended
 Library5=json
+Library6=slidingmenuwrapper
+Library7=reflection
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="26"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~~\n~AddApplicationText(~\n~<meta-data~\n~  android:name="com.google.android.geo.API_KEY"~\n~  android:value=""/>~\n~)~\n~
 Module1=Starter
 Module2=menu
 Module3=layer
 Module4=SlideMenu
 Module5=citizen
-NumberOfFiles=16
-NumberOfLibraries=5
-NumberOfModules=5
+Module6=ClsSlidingSidebar
+NumberOfFiles=17
+NumberOfLibraries=7
+NumberOfModules=6
 Version=8.3
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -76,7 +81,7 @@ Sub Globals
 	Private EditText1 As EditText
 	Private EditText2 As EditText
 	Dim domain As String
-	domain="http://2cd30500.ngrok.io/"
+	domain="http://e7ada07d.ngrok.io/"
 
 	
 	Private ImageView1 As ImageView

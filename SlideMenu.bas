@@ -115,6 +115,7 @@ Private Sub mListView_ItemClick (Position As Int, Value As Object)
 	Dim subname As String
 	Hide
 	subname = mEventName & "_Click"
+	'CallSub2(mModule, subname, Value)
 	If SubExists(mModule, subname) Then
 		CallSub2(mModule, subname, Value)
 	End If

@@ -160,10 +160,10 @@ _mslidepanel.setVisible(__c.False);
 return "";
 }
 public boolean  _isvisible() throws Exception{
- //BA.debugLineNum = 118;BA.debugLine="Public Sub isVisible As Boolean";
- //BA.debugLineNum = 119;BA.debugLine="Return mSlidePanel.Visible";
+ //BA.debugLineNum = 119;BA.debugLine="Public Sub isVisible As Boolean";
+ //BA.debugLineNum = 120;BA.debugLine="Return mSlidePanel.Visible";
 if (true) return _mslidepanel.getVisible();
- //BA.debugLineNum = 120;BA.debugLine="End Sub";
+ //BA.debugLineNum = 121;BA.debugLine="End Sub";
 return false;
 }
 public String  _mbackpanel_touch(int _action,float _x,float _y) throws Exception{
@@ -185,12 +185,12 @@ _subname = "";
 _hide();
  //BA.debugLineNum = 111;BA.debugLine="subname = mEventName & \"_Click\"";
 _subname = _meventname+"_Click";
- //BA.debugLineNum = 112;BA.debugLine="If SubExists(mModule, subname) Then";
+ //BA.debugLineNum = 113;BA.debugLine="If SubExists(mModule, subname) Then";
 if (__c.SubExists(ba,_mmodule,_subname)) { 
- //BA.debugLineNum = 113;BA.debugLine="CallSub2(mModule, subname, Value)";
+ //BA.debugLineNum = 114;BA.debugLine="CallSub2(mModule, subname, Value)";
 __c.CallSubNew2(ba,_mmodule,_subname,_value);
  };
- //BA.debugLineNum = 115;BA.debugLine="End Sub";
+ //BA.debugLineNum = 116;BA.debugLine="End Sub";
 return "";
 }
 public String  _out_animationend() throws Exception{

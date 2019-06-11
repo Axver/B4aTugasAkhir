@@ -4,147 +4,115 @@ ModulesStructureVersion=1
 Type=Activity
 Version=8.3
 @EndOfDesignText@
-#Region  Activity Attributes 
+#Region Module Attributes
 	#FullScreen: False
 	#IncludeTitle: False
 #End Region
 
+'Activity module
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-	Dim tmrLoad As Timer
 End Sub
 
 Sub Globals
-	'These global variables will be redeclared each time the activity is created.
-	'These variables can only be accessed from this module.
-	Dim sm As SlideMenu
+	Dim FakeActionBar, UnderActionBar As Panel
+	Dim PanelWithSidebar As ClsSlidingSidebar
+	Dim btnMenu As Button
+	Dim lvMenu As ListView
+	Dim lblInfo As Label
+	Dim Webview1 As WebView
+	Dim domain As String
+	domain="http://e7ada07d.ngrok.io/"
+	
 	Dim job2 As HttpJob
-	Dim EditText1 As EditText
 	Dim JSON As JSONParser
 	Dim Map1 As Map
 	Dim arr() As String
 
-	Private Panel2 As Panel
-	Dim domain As String
-	domain="http://2cd30500.ngrok.io/"
-	Private Panel3 As Panel
-	Dim wvXtender As WebViewXtender
-
-	Private Panel4 As Panel
 	Private EditText1 As EditText
-	Private Button1 As Button
-	Private fakeActionBar As Panel
-	Private Label1 As Label
-	Private Label2 As Label
-	Private Label3 As Label
-	Private Label4 As Label
-	Private Label5 As Label
-	Private Label6 As Label
-	Private Panel5 As Panel
-	Private WebView1 As WebView
+	Private ListView1 As ListView
+	Private ListView2 As ListView
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
-	'Do not forget to load the layout file created with the visual designer. For example:
-	'Activity.LoadLayout("Layout1")
 	Activity.LoadLayout("citizen")
-	Panel4.Visible=False
-	Panel5.Visible=False
-	Panel3.Visible=False
+	Dim BarSize As Int: BarSize = 60dip
+	FakeActionBar.Initialize("")
+	FakeActionBar.Color = Colors.RGB(20, 20, 100) 'Dark blue
+	Activity.AddView(FakeActionBar, 0, 0, 100%x, BarSize)
 	
-	sm.Initialize(Activity, Me, "SlideMenu", 42dip, 180dip)
-
-	sm.AddItem("Citizen", LoadBitmap(File.DirAssets, "user.png"), 1)
-	sm.AddItem("Birth Data", LoadBitmap(File.DirAssets, "baby.png"), 2)
-	sm.AddItem("Mortality Data", LoadBitmap(File.DirAssets, "funeral.png"), 3)
-	sm.AddItem("Family Cards", LoadBitmap(File.DirAssets, "citizen.png"), 4)
+	Dim LightCyan As Int: LightCyan = Colors.RGB(0, 95, 170)
+	UnderActionBar.Initialize("")
+	UnderActionBar.Color = LightCyan
+	Activity.AddView(UnderActionBar, 0, BarSize, 100%x, 100%y - BarSize)
 	
+	PanelWithSidebar.Initialize(UnderActionBar, 190dip, 2, 1, 500, 500)
+	PanelWithSidebar.ContentPanel.Color = LightCyan
+	PanelWithSidebar.Sidebar.Background = PanelWithSidebar.LoadDrawable("popup_inline_error")
+	PanelWithSidebar.SetOnChangeListeners(Me, "Menu_onFullyOpen", "Menu_onFullyClosed", "Menu_onMove")
 
-	Panel2.Width=Activity.Width
-	Panel2.Height=Activity.Height/2
+	lvMenu.Initialize("lvMenu")
+	lvMenu.AddSingleLine("1st option")
+	lvMenu.AddSingleLine("2nd option")
+	lvMenu.AddSingleLine("3rd option")
+	lvMenu.SingleLineLayout.Label.TextColor = Colors.Black
+	lvMenu.Color = Colors.Transparent
+	lvMenu.ScrollingBackgroundColor = Colors.Transparent
+	PanelWithSidebar.Sidebar.AddView(lvMenu, 20dip, 25dip, -1, -1)
 
+	Webview1.Initialize("")
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
+	'lblInfo.Text = "Click the button to open/close the sliding menu."
+	'lblInfo.TextColor = Colors.Black
+	'lblInfo.TextSize = 24
+	PanelWithSidebar.ContentPanel.AddView(Webview1, 0dip, 0dip, 100%x - 0dip, 100%y - 0dip)
+
+	btnMenu.Initialize("")
+	btnMenu.SetBackgroundImage(LoadBitmap(File.DirAssets, "menu.png"))
+	FakeActionBar.AddView(btnMenu, 100%x - BarSize, 0, BarSize, BarSize)
+	PanelWithSidebar.SetOpenCloseButton(btnMenu)
 	
-	Log(domain&"ta_v2/endpoint/view/layers.php")
-	Panel3.Height=Activity.Height/2
-	Panel3.Width=Activity.Width
-	
-	
-
-End Sub
-
-
-Sub tmrLoad_Tick
-
-	
+	Activity.LoadLayout("citizen")
 End Sub
 
 Sub Activity_Resume
-
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
-
 End Sub
 
-'We capture the menu and back keys
-Sub Activity_KeyPress (KeyCode As Int) As Boolean
-	'Pressing the back key while the slidemenu is open will close it
-	If KeyCode = KeyCodes.KEYCODE_BACK And sm.isVisible Then
-		sm.Hide
-		Return True
-	End If
-
-	'Pressing the menu key will open/close the slidemenu
-	If KeyCode = KeyCodes.KEYCODE_MENU Then
-		If sm.isVisible Then sm.Hide Else sm.Show
-		Return True
-	End If
+Sub lvMenu_ItemClick (Position As Int, Value As Object)
+	'lblInfo.Text = "LAST SELECTION: " & Value
+	PanelWithSidebar.CloseSidebar
 End Sub
 
-'Show the slidemenu
-Sub btnShow_Click
-	sm.Show
+Sub Menu_onFullyOpen
+	Log("FULLY OPEN")
 End Sub
 
-'Event sub which is called when an item in the slidemenu is clicked
-Sub SlideMenu_Click(Item As Object)
-	ToastMessageShow("Item clicked: " & Item, False)
-	If Item=1 Then
-		Panel4.Left=Panel2.Left
-		Panel3.Visible=True
-		Panel4.Visible=True
-		Panel5.Visible=True
-		WebView1.Width=Panel5.Width
-		WebView1.Height=Panel5.Height
-		Panel4.Width=Panel2.Width
-		Panel4.Height=Panel2.Height/2
-		
-		
-		
-		
-	Else If Item=2 Then
-	
-	Else If Item=3 Then
-	
-	Else If Item=4 Then
-		
-	End If
+Sub Menu_onFullyClosed
+	Log("FULLY CLOSED")
 End Sub
 
-
-
+Sub Menu_onMove(IsOpening As Boolean)
+	Log("MOVE IsOpening=" & IsOpening)
+End Sub
 
 
 Sub Button1_Click
 	
 	Dim citizen_id As String
 	citizen_id=EditText1.Text
+	
+	If citizen_id=Null Then
+		citizen_id=""
+	End If
 		
 	'Send a POST request
 	job2.Initialize("Job2", Me)
 	job2.PostString(domain&"ta_v2/endpoint/citizen_by_nik.php", "citizen_id=" & citizen_id)
-	WebView1.LoadUrl(domain&"ta_v2/endpoint/view/land_owning.php?owner_id="&citizen_id)
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/land_owning.php?owner_id="&citizen_id)
 	
 End Sub
 
@@ -157,19 +125,34 @@ Sub JobDone (Job As HttpJob)
 			Case "Job2"
 				'print the result to the logs
 				Log(Job.GetString)
-				JSON.Initialize(Job.GetString)
-				'Example
-				Map1 = JSON.NextObject
-				Log(Map1)
-				'arr = Map1.Get("results")
-				'Log(arr)
-				Label1.Text = "Nik:"&Map1.Get("nik")
-				Label2.Text = "Status:"&Map1.Get("status_name")
-				Label3.Text = "Clan:"&Map1.Get("clan_name")
-				Label4.Text = "Name:"&Map1.Get("citizen_name")
-				Label5.Text = "Phone:"&Map1.Get("phone")
-				Label6.Text = "Gender:"&Map1.Get("gender")
+				If Job.GetString="[]" Then
+					
+				Else
+					JSON.Initialize(Job.GetString)
+					'Example
+					Map1 = JSON.NextObject
+					Log(Map1)
+					'arr = Map1.Get("results")
+					'Log(arr)
+					'Label1.Text = "Nik:"&Map1.Get("nik")
+					'Label2.Text = "Status:"&Map1.Get("status_name")
+					'Label3.Text = "Clan:"&Map1.Get("clan_name")
+					'Label4.Text = "Name:"&Map1.Get("citizen_name")
+					'Label5.Text = "Phone:"&Map1.Get("phone")
+					'Label6.Text = "Gender:"&Map1.Get("gender")
+				
+					ListView1.SingleLineLayout.Label.TextColor = Colors.Black
+				
+					ListView1.AddSingleLine( "Nik:"&Map1.Get("nik"))
+					ListView1.AddSingleLine( "Status:"&Map1.Get("status_name"))
+					ListView1.AddSingleLine( "Clan:"&Map1.Get("clan_name"))
+					ListView1.AddSingleLine( "Name:"&Map1.Get("citizen_name"))
+					ListView1.AddSingleLine( "Phone:"&Map1.Get("phone"))
+					ListView1.AddSingleLine( "Gender:"&Map1.Get("gender"))
+					ListView1.SingleLineLayout.Label.TextSize = 14
 			 
+				End If
+				
 				
 		End Select
 	Else
