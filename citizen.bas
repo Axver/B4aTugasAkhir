@@ -23,13 +23,14 @@ Sub Globals
 	Dim lblInfo As Label
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://aaf4fde1.ngrok.io/"
+	domain="http://334473e2.ngrok.io/"
 	Dim i As Int
 	
 	Dim job2 As HttpJob
 	Dim JSON As JSONParser
 	Dim Map1 As Map
 	Dim arr() As String
+	Dim parser As JSONParser
 
 	Private EditText1 As EditText
 	Private ListView1 As ListView
@@ -45,6 +46,10 @@ Sub Globals
 	Private Panel7 As Panel
 	Private Panel9 As Panel
 	Private EditText2 As EditText
+	
+	
+	'Table ScrollView
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -190,6 +195,24 @@ Sub JobDone (Job As HttpJob)
 				If Job.GetString="[]" Then
 					
 				Else
+					Dim lv_size1 As Int
+					lv_size1=ListView1.Size
+					lv_size1=lv_size1-1
+					Log(lv_size1)
+					If lv_size1>0 Then
+						
+						Do While lv_size1>=0
+						
+							Log(lv_size1)
+							ListView1.RemoveAt(lv_size1)
+							lv_size1=lv_size1-1
+						
+						Loop
+					
+						'Still Error
+						
+						'ListView2.RemoveAt(0)
+					End If
 					JSON.Initialize(Job.GetString)
 					'Example
 					Map1 = JSON.NextObject
@@ -216,7 +239,77 @@ Sub JobDone (Job As HttpJob)
 				End If
 				
 				Case "family_card"
-				Log(Job.GetString)
+				If Job.GetString="[]" Then
+					
+					
+				Else
+					JSON.Initialize(Job.GetString)
+					Map1 = JSON.NextObject
+					Log(Map1)
+					'arr = Map1.Get("results")
+					'Log(arr)
+					parser.Initialize(Job.GetString)
+					Dim root As Map = parser.NextObject
+					Dim Type As String = root.Get("type")
+					Dim results As List = root.Get("results")
+					
+					Dim H As Int
+					H=0
+					Dim gd1 As GradientDrawable
+					gd1.Initialize("BOTTOM_TOP", Array As Int (Colors.Magenta, Colors.Magenta, Colors.Magenta))
+					
+					Dim gd2 As GradientDrawable
+					gd2.Initialize("BOTTOM_TOP", Array As Int (Colors.Gray, Colors.Gray, Colors.Gray))
+					
+					Dim lv_size As Int
+					lv_size=ListView2.Size
+					lv_size=lv_size-1
+					Log(lv_size)
+					If lv_size>0 Then
+						
+					Do While lv_size>=0
+						
+						Log(lv_size)
+						ListView2.RemoveAt(lv_size)
+						lv_size=lv_size-1
+						
+					Loop
+					
+					'Still Error
+						
+						'ListView2.RemoveAt(0)
+					End If
+					
+					
+					
+					For Each colresults As Map In results
+						H=H+1
+						Dim clan_name As String = colresults.Get("clan_name")
+						Dim citizen_name As String = colresults.Get("citizen_name")
+						'Log(citizen_name)
+						'Dim address As String = colresults.Get("address")
+						Dim gender As String = colresults.Get("gender")
+						'Dim family_no As String = colresults.Get("family_no")
+						'Dim created_at As String = colresults.Get("created_at")
+						'Dim photos As String = colresults.Get("photos")
+						Dim nik As String = colresults.Get("nik")
+						'Dim family_card_id As String = colresults.Get("family_card_id")
+						'Dim updated_at As String = colresults.Get("updated_at")
+						Dim phone As String = colresults.Get("phone")
+						Dim born_date As String = colresults.Get("born_date")
+						Dim status As String = colresults.Get("status")
+						ListView2.SingleLineLayout.Label.TextColor = Colors.Black
+						If H Mod 2=0 Then
+							ListView2.SingleLineLayout.Background = gd1
+							Else
+							ListView2.SingleLineLayout.Background = gd2
+						End If
+					
+						ListView2.AddSingleLine("Clan: "&clan_name&" "&" Name: "&citizen_name&" Gender: "&gender&" "&" Id: "&nik&" "&" Status: "&status&" "&" Born Date: "&born_date&" "&" Phone: "&phone&" ")
+						ListView2.SingleLineLayout.Label.TextSize = 12
+					Next
+				
+				End If
 				
 		End Select
 	Else
@@ -238,8 +331,8 @@ Sub Button2_Click
 		
 	'Send a POST request
 	job2.Initialize("family_card", Me)
-	job2.PostString(domain&"ta_v2/endpoint/citizen_by_nik.php", "family_no=" & family_no)
-	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/land_owning.php?family_no="&family_no)
+	job2.PostString(domain&"ta_v2/endpoint/family_card.php", "family_no=" & family_no)
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
 	
 	
 End Sub
