@@ -23,7 +23,8 @@ Sub Globals
 	Dim lblInfo As Label
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://e7ada07d.ngrok.io/"
+	domain="http://aaf4fde1.ngrok.io/"
+	Dim i As Int
 	
 	Dim job2 As HttpJob
 	Dim JSON As JSONParser
@@ -33,6 +34,17 @@ Sub Globals
 	Private EditText1 As EditText
 	Private ListView1 As ListView
 	Private ListView2 As ListView
+	Private Button1 As Button
+	Private Label1 As Label
+	Private Panel3 As Panel
+	Private Panel6 As Panel
+	Private Panel4 As Panel
+	Private Panel5 As Panel
+	Private Panel1 As Panel
+	Private Panel8 As Panel
+	Private Panel7 As Panel
+	Private Panel9 As Panel
+	Private EditText2 As EditText
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -53,9 +65,11 @@ Sub Activity_Create(FirstTime As Boolean)
 	PanelWithSidebar.SetOnChangeListeners(Me, "Menu_onFullyOpen", "Menu_onFullyClosed", "Menu_onMove")
 
 	lvMenu.Initialize("lvMenu")
-	lvMenu.AddSingleLine("1st option")
-	lvMenu.AddSingleLine("2nd option")
-	lvMenu.AddSingleLine("3rd option")
+	lvMenu.AddSingleLine("Search Citizen")
+	lvMenu.AddSingleLine("Family Card")
+	lvMenu.AddSingleLine("Birth Data")
+	lvMenu.AddSingleLine("Mortality Data")
+	lvMenu.AddSingleLine("Outcomes")
 	lvMenu.SingleLineLayout.Label.TextColor = Colors.Black
 	lvMenu.Color = Colors.Transparent
 	lvMenu.ScrollingBackgroundColor = Colors.Transparent
@@ -66,14 +80,32 @@ Sub Activity_Create(FirstTime As Boolean)
 	'lblInfo.Text = "Click the button to open/close the sliding menu."
 	'lblInfo.TextColor = Colors.Black
 	'lblInfo.TextSize = 24
-	PanelWithSidebar.ContentPanel.AddView(Webview1, 0dip, 0dip, 100%x - 0dip, 100%y - 0dip)
+	PanelWithSidebar.ContentPanel.AddView(Webview1, 0dip, 0dip, 100%x - 0dip, 100%y - 1dip)
 
 	btnMenu.Initialize("")
 	btnMenu.SetBackgroundImage(LoadBitmap(File.DirAssets, "menu.png"))
 	FakeActionBar.AddView(btnMenu, 100%x - BarSize, 0, BarSize, BarSize)
 	PanelWithSidebar.SetOpenCloseButton(btnMenu)
-	
 	Activity.LoadLayout("citizen")
+	
+	Panel1.Width=Activity.Width
+	
+	'Hidden Component First
+	EditText1.Visible=False
+	Button1.Visible=False
+	Label1.Visible=False
+	ListView1.Visible=False
+	'Family Card
+	'Panel3.Visible=False
+	'Panel6.Visible=False
+	Panel8.Visible=False
+	
+
+	
+	
+	
+	
+	
 End Sub
 
 Sub Activity_Resume
@@ -84,19 +116,49 @@ End Sub
 
 Sub lvMenu_ItemClick (Position As Int, Value As Object)
 	'lblInfo.Text = "LAST SELECTION: " & Value
+	Log(Position)
+	Log(Value)
+	If Position=0 Then
+		'Hidden All Component First
+		Panel8.Visible=False
+		
+		'Show Element
+		Panel1.Visible=True
+		EditText1.Visible=True
+		Button1.Visible=True
+		Label1.Visible=True
+		ListView1.Visible=True
+		
+		
+	
+	Else If Position=1 Then
+		'Hidden All Component First
+		EditText1.Visible=False
+		Button1.Visible=False
+		Label1.Visible=False
+		ListView1.Visible=False
+		
+		'Show Panel
+		Panel1.Visible=False
+		Panel8.Left=Panel1.Left
+	
+		Panel8.Visible=True
+	
+		
+	End If
 	PanelWithSidebar.CloseSidebar
 End Sub
 
 Sub Menu_onFullyOpen
-	Log("FULLY OPEN")
+	'Log("FULLY OPEN")
 End Sub
 
 Sub Menu_onFullyClosed
-	Log("FULLY CLOSED")
+	'Log("FULLY CLOSED")
 End Sub
 
 Sub Menu_onMove(IsOpening As Boolean)
-	Log("MOVE IsOpening=" & IsOpening)
+	'Log("MOVE IsOpening=" & IsOpening)
 End Sub
 
 
@@ -153,6 +215,8 @@ Sub JobDone (Job As HttpJob)
 			 
 				End If
 				
+				Case "family_card"
+				Log(Job.GetString)
 				
 		End Select
 	Else
@@ -160,4 +224,22 @@ Sub JobDone (Job As HttpJob)
 		ToastMessageShow("Error: " & Job.ErrorMessage, True)
 	End If
 	Job.Release
+End Sub
+
+Sub Button2_Click
+	
+	
+	Dim family_no As String
+	family_no=EditText2.Text
+	
+	If family_no=Null Then
+		family_no=""
+	End If
+		
+	'Send a POST request
+	job2.Initialize("family_card", Me)
+	job2.PostString(domain&"ta_v2/endpoint/citizen_by_nik.php", "family_no=" & family_no)
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/land_owning.php?family_no="&family_no)
+	
+	
 End Sub
