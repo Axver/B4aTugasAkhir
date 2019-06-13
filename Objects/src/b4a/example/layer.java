@@ -342,6 +342,7 @@ public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
 public b4a.example.menu _menu = null;
 public b4a.example.citizen _citizen = null;
+public b4a.example.building _building = null;
 
 public static void initializeProcessGlobals() {
              try {
@@ -446,8 +447,8 @@ mostCurrent._webview1 = new anywheresoftware.b4a.objects.WebViewWrapper();
 mostCurrent._panel2 = new anywheresoftware.b4a.objects.PanelWrapper();
  //BA.debugLineNum = 19;BA.debugLine="Dim domain As String";
 mostCurrent._domain = "";
- //BA.debugLineNum = 20;BA.debugLine="domain=\"http://334473e2.ngrok.io/\"";
-mostCurrent._domain = "http://334473e2.ngrok.io/";
+ //BA.debugLineNum = 20;BA.debugLine="domain=\"http://d3e0d215.ngrok.io/\"";
+mostCurrent._domain = "http://d3e0d215.ngrok.io/";
  //BA.debugLineNum = 21;BA.debugLine="Private Panel3 As Panel";
 mostCurrent._panel3 = new anywheresoftware.b4a.objects.PanelWrapper();
  //BA.debugLineNum = 22;BA.debugLine="Dim wvXtender As WebViewXtender";

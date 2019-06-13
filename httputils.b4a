@@ -1,21 +1,22 @@
 ﻿Build1=Default,b4a.example
 File1=01.png
-File10=ic_action_menu.png
-File11=layer.bal
-File12=login.bal
-File13=menu.bal
-File14=stack-512.png
-File15=tempaltaaaeqas-512.png
-File16=wrench.png
-File17=wrench_orange.png
+File10=citizen.bal
+File11=ic_action_menu.png
+File12=layer.bal
+File13=login.bal
+File14=menu.bal
+File15=stack-512.png
+File16=tempaltaaaeqas-512.png
+File17=wrench.png
+File18=wrench_orange.png
 File2=02.png
 File3=1.bal
 File4=anthony-reungere-1155291-unsplash.jpg
 File5=bomb.png
 File6=book_add.png
 File7=book_open.png
-File8=button.png
-File9=citizen.bal
+File8=building.bal
+File9=button.png
 FileGroup1=Default Group
 FileGroup10=Default Group
 FileGroup11=Default Group
@@ -25,6 +26,7 @@ FileGroup14=Default Group
 FileGroup15=Default Group
 FileGroup16=Default Group
 FileGroup17=Default Group
+FileGroup18=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
@@ -49,9 +51,11 @@ Module3=layer
 Module4=SlideMenu
 Module5=citizen
 Module6=ClsSlidingSidebar
-NumberOfFiles=17
+Module7=building
+Module8=SlidingPanels
+NumberOfFiles=18
 NumberOfLibraries=7
-NumberOfModules=6
+NumberOfModules=8
 Version=8.3
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -81,7 +85,7 @@ Sub Globals
 	Private EditText1 As EditText
 	Private EditText2 As EditText
 	Dim domain As String
-	domain="http://334473e2.ngrok.io/"
+	domain="http://d3e0d215.ngrok.io/"
 
 	
 	Private ImageView1 As ImageView

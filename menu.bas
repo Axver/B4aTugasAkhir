@@ -58,7 +58,7 @@ Sub Button2_Click
 End Sub
 
 Sub Button3_Click
-	
+	StartActivity("Building")
 End Sub
 
 Sub Button4_Click

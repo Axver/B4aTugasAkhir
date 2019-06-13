@@ -130,6 +130,7 @@ public b4a.example.main _main = null;
 public b4a.example.menu _menu = null;
 public b4a.example.layer _layer = null;
 public b4a.example.citizen _citizen = null;
+public b4a.example.building _building = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
  //BA.debugLineNum = 28;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
  //BA.debugLineNum = 29;BA.debugLine="Return True";

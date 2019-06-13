@@ -23,7 +23,7 @@ Sub Globals
 	Dim lblInfo As Label
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://334473e2.ngrok.io/"
+	domain="http://d3e0d215.ngrok.io/"
 	Dim i As Int
 	
 	Dim job2 As HttpJob
@@ -49,6 +49,9 @@ Sub Globals
 	
 	
 	'Table ScrollView
+	
+	'Birth Data
+	
 	
 End Sub
 
@@ -104,6 +107,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	'Panel3.Visible=False
 	'Panel6.Visible=False
 	Panel8.Visible=False
+	Panel3.Visible=False
 	
 
 	
@@ -126,6 +130,7 @@ Sub lvMenu_ItemClick (Position As Int, Value As Object)
 	If Position=0 Then
 		'Hidden All Component First
 		Panel8.Visible=False
+		Panel3.Visible=False
 		
 		'Show Element
 		Panel1.Visible=True
@@ -142,12 +147,23 @@ Sub lvMenu_ItemClick (Position As Int, Value As Object)
 		Button1.Visible=False
 		Label1.Visible=False
 		ListView1.Visible=False
+		Panel3.Visible=False
 		
 		'Show Panel
 		Panel1.Visible=False
 		Panel8.Left=Panel1.Left
 	
 		Panel8.Visible=True
+		
+	Else If Position=2 Then
+		'Hidden ALl Componen First
+		Panel1.Visible=False
+		Panel8.Visible=False
+		
+		'Show Panel
+		Panel3.Visible=True
+		Panel3.Left=Panel1.Left
+		Panel3.Top=Panel1.Top
 	
 		
 	End If

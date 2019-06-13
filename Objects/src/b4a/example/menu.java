@@ -340,6 +340,7 @@ public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
 public b4a.example.layer _layer = null;
 public b4a.example.citizen _citizen = null;
+public b4a.example.building _building = null;
 
 public static void initializeProcessGlobals() {
              try {
@@ -387,6 +388,8 @@ return "";
 }
 public static String  _button3_click() throws Exception{
  //BA.debugLineNum = 54;BA.debugLine="Sub Button3_Click";
+ //BA.debugLineNum = 55;BA.debugLine="StartActivity(\"Building\")";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Building"));
  //BA.debugLineNum = 56;BA.debugLine="End Sub";
 return "";
 }
