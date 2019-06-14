@@ -85,7 +85,7 @@ Sub Globals
 	Private EditText1 As EditText
 	Private EditText2 As EditText
 	Dim domain As String
-	domain="http://d3e0d215.ngrok.io/"
+	domain="http://84d4fefa.ngrok.io/"
 
 	
 	Private ImageView1 As ImageView

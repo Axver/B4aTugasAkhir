@@ -16,6 +16,10 @@ Sub Process_Globals
 End Sub
 
 Sub Globals
+	Dim id1 As String
+	Dim id2 As String
+	id1="0"
+	id2="0"
 	Dim FakeActionBar, UnderActionBar As Panel
 	Dim PanelWithSidebar As ClsSlidingSidebar
 	Dim btnMenu As Button
@@ -23,7 +27,7 @@ Sub Globals
 	Dim lblInfo As Label
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://d3e0d215.ngrok.io/"
+	domain="http://84d4fefa.ngrok.io/"
 	Private Panel1 As Panel
 	Private Button1 As Button
 	Private EditText1 As EditText
@@ -32,9 +36,19 @@ Sub Globals
 	
 	'Sliding Panels
 	Dim SD As SlidingPanels
+	Private Panel3 As Panel
+	Private Panel5 As Panel
+	Private Spinner1 As Spinner
+	Private Spinner2 As Spinner
+	Private Button3 As Button
+	
+	Dim Spinner1map As Map
+	Dim Spinner2map As Map
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
+	
 	Dim BarSize As Int: BarSize = 60dip
 	FakeActionBar.Initialize("")
 	FakeActionBar.Color = Colors.RGB(20, 20, 100) 'Dark blue
@@ -51,10 +65,10 @@ Sub Activity_Create(FirstTime As Boolean)
 	PanelWithSidebar.SetOnChangeListeners(Me, "Menu_onFullyOpen", "Menu_onFullyClosed", "Menu_onMove")
 
 	lvMenu.Initialize("lvMenu")
-	lvMenu.AddSingleLine("Building By No House")
 	lvMenu.AddSingleLine("Building By Owner")
-	lvMenu.AddSingleLine("Building Status")
-	lvMenu.AddSingleLine("Building Condition")
+	lvMenu.AddSingleLine("Building By No House")
+	lvMenu.AddSingleLine("Status And Condition")
+	
 	lvMenu.SingleLineLayout.Label.TextColor = Colors.Black
 	lvMenu.Color = Colors.Transparent
 	lvMenu.ScrollingBackgroundColor = Colors.Transparent
@@ -83,6 +97,49 @@ Sub Activity_Create(FirstTime As Boolean)
 	Panel1.Width=Activity.Width
 	Panel1.Height=Activity.Height/3*2
 	
+	'Here it is
+	Panel1.Visible=False
+	Panel3.Visible=False
+	Panel5.Visible=False
+	
+	'Setting Panels
+	Panel3.Height=Panel1.Height
+	Panel3.Width=Panel1.Width
+	Panel3.Left=Panel1.Left
+	Panel5.Width=Panel1.Width
+	Panel5.Left=Panel1.Left
+	
+	
+	
+	
+	'Spinner1 Setting
+	Spinner1map.Initialize
+	Spinner2map.Initialize
+	Spinner1.DropdownBackgroundColor=Colors.White
+	Spinner1.Add("All")
+	Spinner1map.Put("All","0")
+	Spinner1.Add("Non Active")
+	Spinner1map.Put("Non Active","1")
+	Spinner1.Add("Traditional Heritage")
+	Spinner1map.Put("Traditional Heritage","2")
+	Spinner1.Add("Civil Heritage")
+	Spinner1map.Put("Civil Heritage","3")
+	Spinner1.Add("Islamic Heritage")
+	Spinner1map.Put("Islamic Heritage","4")
+	Spinner1.Add("Private Property")
+	Spinner1map.Put("Private Property","5")
+	
+	
+	'Spinnner2 Setting
+	Spinner2.DropdownBackgroundColor=Colors.White
+	Spinner2.Add("All")
+	Spinner2map.Put("All","0")
+	Spinner2.Add("Semi Permanent")
+	Spinner2map.Put("Semi Permanent","1")
+	Spinner2.Add("Permanent")
+	Spinner2map.Put("Permanent","2")
+	
+	
 End Sub
 
 Sub Activity_Resume
@@ -93,6 +150,31 @@ End Sub
 
 Sub lvMenu_ItemClick (Position As Int, Value As Object)
 	'lblInfo.Text = "LAST SELECTION: " & Value
+	If Position=0 Then
+		'Hide All Panel First
+		Panel3.Visible=False
+		Panel5.Visible=False
+		
+		'Show It's selft panel
+		Panel1.Visible=True
+	Else If Position=1 Then
+		'Hide All Panel First
+		Panel1.Visible=False
+		Panel5.Visible=False
+		'SHow Its own Panel
+		Panel3.Visible=True
+		
+		
+	Else If Position=2 Then
+		'Hide ALl Panel First
+		Panel3.Visible=False
+		Panel1.Visible=False
+		'Show Its own Panel
+		Panel5.Visible=True
+	
+
+			
+	End If
 	PanelWithSidebar.CloseSidebar
 End Sub
 
@@ -168,7 +250,7 @@ Sub JobDone (Job As HttpJob)
 					cvs.Initialize(SD.Panels(length))
 					cvs.DrawText("House: "&no_house,SD.panels(length).Width/3,SD.panels(length).Height/3,Typeface.DEFAULT,5%x/Density,Colors.White,"CENTER")
 					cvs.DrawText(x,SD.panels(length).Width/3*2,SD.panels(length).Height/3+40,Typeface.DEFAULT,3%x/Density,Colors.White,"CENTER")
-					cvs.DrawText(y,SD.panels(length).Width/3*2,SD.panels(length).Height/3*2+10,Typeface.DEFAULT,3%x/Density,Colors.White,"CENTER")
+					cvs.DrawText(y,SD.panels(length).Width/3*2,SD.panels(length).Height/3+10,Typeface.DEFAULT,3%x/Density,Colors.White,"CENTER")
 					'SD.Panels(length).Visible=False
 					Log(no_house&x&y)
 				Next
@@ -210,4 +292,37 @@ Sub Button1_Click
 	
 	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/building_bo.php?citizen_id="&citizen_id)
 	
+End Sub
+
+
+'Panel Click
+
+Sub SD_Click (TouchData As TouchData)
+	'Is generated with the Click event.
+	ToastMessageShow("Clicked on Panel: "&TouchData.Tag&" / X: "&TouchData.X&" / Y: "&TouchData.Y,False)
+End Sub
+
+Sub Button3_Click
+	
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/condition_status.php?status="&id1&"&condition="&id2)
+'Show Selected Spinner Value
+	Log(id1)
+	Log(id2)
+	
+	
+End Sub
+
+Sub Spinner1_ItemClick (Position As Int, Value As Object)
+	id1 = Spinner1map.Get(Value)
+	
+'Log(id1)
+'Log(id2)
+End Sub
+
+
+Sub Spinner2_ItemClick (Position As Int, Value As Object)
+	
+	id2 = Spinner2map.Get(Value)
+'Log(id1)
+'Log(id2)
 End Sub

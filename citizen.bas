@@ -23,7 +23,7 @@ Sub Globals
 	Dim lblInfo As Label
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://d3e0d215.ngrok.io/"
+	domain="http://84d4fefa.ngrok.io/"
 	Dim i As Int
 	
 	Dim job2 As HttpJob
