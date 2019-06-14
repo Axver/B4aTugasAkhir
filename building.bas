@@ -45,6 +45,7 @@ Sub Globals
 	Dim Spinner1map As Map
 	Dim Spinner2map As Map
 	
+	Private EditText2 As EditText
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -268,7 +269,8 @@ Sub JobDone (Job As HttpJob)
 				'Next
 				SD.Start(0) 'Start the SlidingPanels.
 				
-				
+			Case "nohouse"
+				Log(Job.GetString)
 			
 		End Select
 	Else
@@ -325,4 +327,17 @@ Sub Spinner2_ItemClick (Position As Int, Value As Object)
 	id2 = Spinner2map.Get(Value)
 'Log(id1)
 'Log(id2)
+End Sub
+
+Sub Button2_Click
+	Dim nohouse As String
+	nohouse=EditText2.Text
+	
+	job2.Initialize("nohouse", Me)
+	job2.PostString(domain&"ta_v2/endpoint/building_no.php", "nohouse="&nohouse)
+	
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/building_nov.php?nohouse="&nohouse)
+	
+	
+	
 End Sub
