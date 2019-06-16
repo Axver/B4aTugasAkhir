@@ -27,7 +27,7 @@ Sub Globals
 	Dim lblInfo As Label
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://84d4fefa.ngrok.io/"
+	domain="http://459a41bc.ngrok.io/"
 	Private Panel1 As Panel
 	Private Button1 As Button
 	Private EditText1 As EditText
@@ -46,6 +46,7 @@ Sub Globals
 	Dim Spinner2map As Map
 	
 	Private EditText2 As EditText
+	Private ListView1 As ListView
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -66,7 +67,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	PanelWithSidebar.SetOnChangeListeners(Me, "Menu_onFullyOpen", "Menu_onFullyClosed", "Menu_onMove")
 
 	lvMenu.Initialize("lvMenu")
-	lvMenu.AddSingleLine("Building By Owner")
+	lvMenu.AddSingleLine("Building By Occupants")
 	lvMenu.AddSingleLine("Building By No House")
 	lvMenu.AddSingleLine("Status And Condition")
 	
@@ -140,6 +141,10 @@ Sub Activity_Create(FirstTime As Boolean)
 	Spinner2.Add("Permanent")
 	Spinner2map.Put("Permanent","2")
 	
+	'Listview1 Setting
+	ListView1.SingleLineLayout.Label.TextColor = Colors.Black
+	ListView1.SingleLineLayout.Label.TextSize = 14
+	
 	
 End Sub
 
@@ -150,6 +155,7 @@ Sub Activity_Pause (UserClosed As Boolean)
 End Sub
 
 Sub lvMenu_ItemClick (Position As Int, Value As Object)
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
 	'lblInfo.Text = "LAST SELECTION: " & Value
 	If Position=0 Then
 		'Hide All Panel First
@@ -270,6 +276,58 @@ Sub JobDone (Job As HttpJob)
 				SD.Start(0) 'Start the SlidingPanels.
 				
 			Case "nohouse"
+				'JSON Parser For Search By No House Job
+				Dim parser As JSONParser
+				parser.Initialize(Job.GetString)
+				Dim root As Map = parser.NextObject
+				Dim features As List = root.Get("features")
+				For Each colfeatures As Map In features
+					Dim geometry As Map = colfeatures.Get("geometry")
+					Dim coordinates As List = geometry.Get("coordinates")
+					For Each colcoordinates As List In coordinates
+						For Each colcolcoordinates As List In colcoordinates
+							For Each colcolcolcoordinates As List In colcolcoordinates
+								For Each colcolcolcolcoordinates As Double In colcolcolcoordinates
+								Next
+							Next
+						Next
+					Next
+					Dim Type As String = geometry.Get("type")
+					Dim Type As String = colfeatures.Get("type")
+					Dim properties As Map = colfeatures.Get("properties")
+					Dim clan_name As String = properties.Get("clan_name")
+					Dim citizen_id As String = properties.Get("citizen_id")
+					Dim gender As String = properties.Get("gender")
+					Dim phone As String = properties.Get("phone")
+					Dim x As String = properties.Get("x")
+					Dim name As String = properties.Get("name")
+					Dim y As String = properties.Get("y")
+					Dim no_house As String = properties.Get("no_house")
+					Dim born_date As String = properties.Get("born_date")
+					
+					Dim lv_size1 As Int
+					lv_size1=ListView1.Size
+					lv_size1=lv_size1-1
+					Log(lv_size1)
+					If lv_size1>0 Then
+						
+						Do While lv_size1>=0
+						
+							Log(lv_size1)
+							ListView1.RemoveAt(lv_size1)
+							lv_size1=lv_size1-1
+						
+						Loop
+					
+						'Still Error
+						
+						'ListView2.RemoveAt(0)
+					End If
+					
+					ListView1.AddSingleLine( "Name: "&name&" "&"Citizen Id: "&citizen_id&" "&"Gender: "&gender&" "&"Phone: "&phone&" "&"Clan Name: "&clan_name&"Born Date: "&born_date)
+					
+				Next
+				Dim Type As String = root.Get("type")
 				Log(Job.GetString)
 			
 		End Select
@@ -282,6 +340,7 @@ End Sub
 
 
 Sub Button1_Click
+	'Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
 	Dim citizen_id As String
 	citizen_id=EditText1.Text
 	
@@ -305,6 +364,7 @@ Sub SD_Click (TouchData As TouchData)
 End Sub
 
 Sub Button3_Click
+	'Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
 	
 	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/condition_status.php?status="&id1&"&condition="&id2)
 'Show Selected Spinner Value
@@ -330,6 +390,7 @@ Sub Spinner2_ItemClick (Position As Int, Value As Object)
 End Sub
 
 Sub Button2_Click
+	'Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
 	Dim nohouse As String
 	nohouse=EditText2.Text
 	

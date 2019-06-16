@@ -353,6 +353,7 @@ public anywheresoftware.b4a.objects.ButtonWrapper _button3 = null;
 public anywheresoftware.b4a.objects.collections.Map _spinner1map = null;
 public anywheresoftware.b4a.objects.collections.Map _spinner2map = null;
 public anywheresoftware.b4a.objects.EditTextWrapper _edittext2 = null;
+public anywheresoftware.b4a.objects.ListViewWrapper _listview1 = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
@@ -370,190 +371,194 @@ public static void initializeProcessGlobals() {
 public static String  _activity_create(boolean _firsttime) throws Exception{
 int _barsize = 0;
 int _lightcyan = 0;
- //BA.debugLineNum = 45;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 47;BA.debugLine="Dim BarSize As Int: BarSize = 60dip";
+ //BA.debugLineNum = 46;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 48;BA.debugLine="Dim BarSize As Int: BarSize = 60dip";
 _barsize = 0;
- //BA.debugLineNum = 47;BA.debugLine="Dim BarSize As Int: BarSize = 60dip";
+ //BA.debugLineNum = 48;BA.debugLine="Dim BarSize As Int: BarSize = 60dip";
 _barsize = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (60));
- //BA.debugLineNum = 48;BA.debugLine="FakeActionBar.Initialize(\"\")";
+ //BA.debugLineNum = 49;BA.debugLine="FakeActionBar.Initialize(\"\")";
 mostCurrent._fakeactionbar.Initialize(mostCurrent.activityBA,"");
- //BA.debugLineNum = 49;BA.debugLine="FakeActionBar.Color = Colors.RGB(20, 20, 100) 'Da";
+ //BA.debugLineNum = 50;BA.debugLine="FakeActionBar.Color = Colors.RGB(20, 20, 100) 'Da";
 mostCurrent._fakeactionbar.setColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (20),(int) (20),(int) (100)));
- //BA.debugLineNum = 50;BA.debugLine="Activity.AddView(FakeActionBar, 0, 0, 100%x, BarS";
+ //BA.debugLineNum = 51;BA.debugLine="Activity.AddView(FakeActionBar, 0, 0, 100%x, BarS";
 mostCurrent._activity.AddView((android.view.View)(mostCurrent._fakeactionbar.getObject()),(int) (0),(int) (0),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA),_barsize);
- //BA.debugLineNum = 52;BA.debugLine="Dim LightCyan As Int: LightCyan = Colors.RGB(0, 9";
+ //BA.debugLineNum = 53;BA.debugLine="Dim LightCyan As Int: LightCyan = Colors.RGB(0, 9";
 _lightcyan = 0;
- //BA.debugLineNum = 52;BA.debugLine="Dim LightCyan As Int: LightCyan = Colors.RGB(0, 9";
+ //BA.debugLineNum = 53;BA.debugLine="Dim LightCyan As Int: LightCyan = Colors.RGB(0, 9";
 _lightcyan = anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (0),(int) (95),(int) (170));
- //BA.debugLineNum = 53;BA.debugLine="UnderActionBar.Initialize(\"\")";
+ //BA.debugLineNum = 54;BA.debugLine="UnderActionBar.Initialize(\"\")";
 mostCurrent._underactionbar.Initialize(mostCurrent.activityBA,"");
- //BA.debugLineNum = 54;BA.debugLine="UnderActionBar.Color = LightCyan";
+ //BA.debugLineNum = 55;BA.debugLine="UnderActionBar.Color = LightCyan";
 mostCurrent._underactionbar.setColor(_lightcyan);
- //BA.debugLineNum = 55;BA.debugLine="Activity.AddView(UnderActionBar, 0, BarSize, 100%";
+ //BA.debugLineNum = 56;BA.debugLine="Activity.AddView(UnderActionBar, 0, BarSize, 100%";
 mostCurrent._activity.AddView((android.view.View)(mostCurrent._underactionbar.getObject()),(int) (0),_barsize,anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA),(int) (anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (40),mostCurrent.activityBA)-_barsize));
- //BA.debugLineNum = 57;BA.debugLine="PanelWithSidebar.Initialize(UnderActionBar, 190di";
+ //BA.debugLineNum = 58;BA.debugLine="PanelWithSidebar.Initialize(UnderActionBar, 190di";
 mostCurrent._panelwithsidebar._initialize(mostCurrent.activityBA,mostCurrent._underactionbar,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (190)),(byte) (2),(byte) (1),(int) (500),(int) (500));
- //BA.debugLineNum = 58;BA.debugLine="PanelWithSidebar.ContentPanel.Color = LightCyan";
+ //BA.debugLineNum = 59;BA.debugLine="PanelWithSidebar.ContentPanel.Color = LightCyan";
 mostCurrent._panelwithsidebar._contentpanel().setColor(_lightcyan);
- //BA.debugLineNum = 59;BA.debugLine="PanelWithSidebar.Sidebar.Background = PanelWithSi";
+ //BA.debugLineNum = 60;BA.debugLine="PanelWithSidebar.Sidebar.Background = PanelWithSi";
 mostCurrent._panelwithsidebar._sidebar().setBackground((android.graphics.drawable.Drawable)(mostCurrent._panelwithsidebar._loaddrawable("popup_inline_error")));
- //BA.debugLineNum = 60;BA.debugLine="PanelWithSidebar.SetOnChangeListeners(Me, \"Menu_o";
+ //BA.debugLineNum = 61;BA.debugLine="PanelWithSidebar.SetOnChangeListeners(Me, \"Menu_o";
 mostCurrent._panelwithsidebar._setonchangelisteners(building.getObject(),"Menu_onFullyOpen","Menu_onFullyClosed","Menu_onMove");
- //BA.debugLineNum = 62;BA.debugLine="lvMenu.Initialize(\"lvMenu\")";
+ //BA.debugLineNum = 63;BA.debugLine="lvMenu.Initialize(\"lvMenu\")";
 mostCurrent._lvmenu.Initialize(mostCurrent.activityBA,"lvMenu");
- //BA.debugLineNum = 63;BA.debugLine="lvMenu.AddSingleLine(\"Building By Owner\")";
-mostCurrent._lvmenu.AddSingleLine(BA.ObjectToCharSequence("Building By Owner"));
- //BA.debugLineNum = 64;BA.debugLine="lvMenu.AddSingleLine(\"Building By No House\")";
+ //BA.debugLineNum = 64;BA.debugLine="lvMenu.AddSingleLine(\"Building By Occupants\")";
+mostCurrent._lvmenu.AddSingleLine(BA.ObjectToCharSequence("Building By Occupants"));
+ //BA.debugLineNum = 65;BA.debugLine="lvMenu.AddSingleLine(\"Building By No House\")";
 mostCurrent._lvmenu.AddSingleLine(BA.ObjectToCharSequence("Building By No House"));
- //BA.debugLineNum = 65;BA.debugLine="lvMenu.AddSingleLine(\"Status And Condition\")";
+ //BA.debugLineNum = 66;BA.debugLine="lvMenu.AddSingleLine(\"Status And Condition\")";
 mostCurrent._lvmenu.AddSingleLine(BA.ObjectToCharSequence("Status And Condition"));
- //BA.debugLineNum = 67;BA.debugLine="lvMenu.SingleLineLayout.Label.TextColor = Colors.";
+ //BA.debugLineNum = 68;BA.debugLine="lvMenu.SingleLineLayout.Label.TextColor = Colors.";
 mostCurrent._lvmenu.getSingleLineLayout().Label.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
- //BA.debugLineNum = 68;BA.debugLine="lvMenu.Color = Colors.Transparent";
+ //BA.debugLineNum = 69;BA.debugLine="lvMenu.Color = Colors.Transparent";
 mostCurrent._lvmenu.setColor(anywheresoftware.b4a.keywords.Common.Colors.Transparent);
- //BA.debugLineNum = 69;BA.debugLine="lvMenu.ScrollingBackgroundColor = Colors.Transpar";
+ //BA.debugLineNum = 70;BA.debugLine="lvMenu.ScrollingBackgroundColor = Colors.Transpar";
 mostCurrent._lvmenu.setScrollingBackgroundColor(anywheresoftware.b4a.keywords.Common.Colors.Transparent);
- //BA.debugLineNum = 70;BA.debugLine="PanelWithSidebar.Sidebar.AddView(lvMenu, 20dip, 2";
+ //BA.debugLineNum = 71;BA.debugLine="PanelWithSidebar.Sidebar.AddView(lvMenu, 20dip, 2";
 mostCurrent._panelwithsidebar._sidebar().AddView((android.view.View)(mostCurrent._lvmenu.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (25)),(int) (-1),(int) (-1));
- //BA.debugLineNum = 79;BA.debugLine="Webview1.Initialize(\"\")";
+ //BA.debugLineNum = 80;BA.debugLine="Webview1.Initialize(\"\")";
 mostCurrent._webview1.Initialize(mostCurrent.activityBA,"");
- //BA.debugLineNum = 80;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/laye";
+ //BA.debugLineNum = 81;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/laye";
 mostCurrent._webview1.LoadUrl(mostCurrent._domain+"ta_v2/endpoint/view/layers.php");
- //BA.debugLineNum = 81;BA.debugLine="PanelWithSidebar.ContentPanel.AddView(Webview1, 0";
+ //BA.debugLineNum = 82;BA.debugLine="PanelWithSidebar.ContentPanel.AddView(Webview1, 0";
 mostCurrent._panelwithsidebar._contentpanel().AddView((android.view.View)(mostCurrent._webview1.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),(int) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA)-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0))),(int) (anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (100),mostCurrent.activityBA)-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1))));
- //BA.debugLineNum = 83;BA.debugLine="btnMenu.Initialize(\"\")";
+ //BA.debugLineNum = 84;BA.debugLine="btnMenu.Initialize(\"\")";
 mostCurrent._btnmenu.Initialize(mostCurrent.activityBA,"");
- //BA.debugLineNum = 84;BA.debugLine="btnMenu.SetBackgroundImage(LoadBitmap(File.DirAss";
+ //BA.debugLineNum = 85;BA.debugLine="btnMenu.SetBackgroundImage(LoadBitmap(File.DirAss";
 mostCurrent._btnmenu.SetBackgroundImageNew((android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"menu.png").getObject()));
- //BA.debugLineNum = 85;BA.debugLine="FakeActionBar.AddView(btnMenu, 100%x - BarSize, 0";
+ //BA.debugLineNum = 86;BA.debugLine="FakeActionBar.AddView(btnMenu, 100%x - BarSize, 0";
 mostCurrent._fakeactionbar.AddView((android.view.View)(mostCurrent._btnmenu.getObject()),(int) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA)-_barsize),(int) (0),_barsize,_barsize);
- //BA.debugLineNum = 86;BA.debugLine="PanelWithSidebar.SetOpenCloseButton(btnMenu)";
+ //BA.debugLineNum = 87;BA.debugLine="PanelWithSidebar.SetOpenCloseButton(btnMenu)";
 mostCurrent._panelwithsidebar._setopenclosebutton((anywheresoftware.b4a.objects.ConcreteViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ConcreteViewWrapper(), (android.view.View)(mostCurrent._btnmenu.getObject())));
- //BA.debugLineNum = 89;BA.debugLine="Activity.LoadLayout(\"building\")";
+ //BA.debugLineNum = 90;BA.debugLine="Activity.LoadLayout(\"building\")";
 mostCurrent._activity.LoadLayout("building",mostCurrent.activityBA);
- //BA.debugLineNum = 92;BA.debugLine="Panel1.Width=Activity.Width";
+ //BA.debugLineNum = 93;BA.debugLine="Panel1.Width=Activity.Width";
 mostCurrent._panel1.setWidth(mostCurrent._activity.getWidth());
- //BA.debugLineNum = 93;BA.debugLine="Panel1.Height=Activity.Height/3*2";
+ //BA.debugLineNum = 94;BA.debugLine="Panel1.Height=Activity.Height/3*2";
 mostCurrent._panel1.setHeight((int) (mostCurrent._activity.getHeight()/(double)3*2));
- //BA.debugLineNum = 96;BA.debugLine="Panel1.Visible=False";
+ //BA.debugLineNum = 97;BA.debugLine="Panel1.Visible=False";
 mostCurrent._panel1.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 97;BA.debugLine="Panel3.Visible=False";
+ //BA.debugLineNum = 98;BA.debugLine="Panel3.Visible=False";
 mostCurrent._panel3.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 98;BA.debugLine="Panel5.Visible=False";
+ //BA.debugLineNum = 99;BA.debugLine="Panel5.Visible=False";
 mostCurrent._panel5.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 101;BA.debugLine="Panel3.Height=Panel1.Height";
+ //BA.debugLineNum = 102;BA.debugLine="Panel3.Height=Panel1.Height";
 mostCurrent._panel3.setHeight(mostCurrent._panel1.getHeight());
- //BA.debugLineNum = 102;BA.debugLine="Panel3.Width=Panel1.Width";
+ //BA.debugLineNum = 103;BA.debugLine="Panel3.Width=Panel1.Width";
 mostCurrent._panel3.setWidth(mostCurrent._panel1.getWidth());
- //BA.debugLineNum = 103;BA.debugLine="Panel3.Left=Panel1.Left";
+ //BA.debugLineNum = 104;BA.debugLine="Panel3.Left=Panel1.Left";
 mostCurrent._panel3.setLeft(mostCurrent._panel1.getLeft());
- //BA.debugLineNum = 104;BA.debugLine="Panel5.Width=Panel1.Width";
+ //BA.debugLineNum = 105;BA.debugLine="Panel5.Width=Panel1.Width";
 mostCurrent._panel5.setWidth(mostCurrent._panel1.getWidth());
- //BA.debugLineNum = 105;BA.debugLine="Panel5.Left=Panel1.Left";
+ //BA.debugLineNum = 106;BA.debugLine="Panel5.Left=Panel1.Left";
 mostCurrent._panel5.setLeft(mostCurrent._panel1.getLeft());
- //BA.debugLineNum = 111;BA.debugLine="Spinner1map.Initialize";
+ //BA.debugLineNum = 112;BA.debugLine="Spinner1map.Initialize";
 mostCurrent._spinner1map.Initialize();
- //BA.debugLineNum = 112;BA.debugLine="Spinner2map.Initialize";
+ //BA.debugLineNum = 113;BA.debugLine="Spinner2map.Initialize";
 mostCurrent._spinner2map.Initialize();
- //BA.debugLineNum = 113;BA.debugLine="Spinner1.DropdownBackgroundColor=Colors.White";
+ //BA.debugLineNum = 114;BA.debugLine="Spinner1.DropdownBackgroundColor=Colors.White";
 mostCurrent._spinner1.setDropdownBackgroundColor(anywheresoftware.b4a.keywords.Common.Colors.White);
- //BA.debugLineNum = 114;BA.debugLine="Spinner1.Add(\"All\")";
+ //BA.debugLineNum = 115;BA.debugLine="Spinner1.Add(\"All\")";
 mostCurrent._spinner1.Add("All");
- //BA.debugLineNum = 115;BA.debugLine="Spinner1map.Put(\"All\",\"0\")";
+ //BA.debugLineNum = 116;BA.debugLine="Spinner1map.Put(\"All\",\"0\")";
 mostCurrent._spinner1map.Put((Object)("All"),(Object)("0"));
- //BA.debugLineNum = 116;BA.debugLine="Spinner1.Add(\"Non Active\")";
+ //BA.debugLineNum = 117;BA.debugLine="Spinner1.Add(\"Non Active\")";
 mostCurrent._spinner1.Add("Non Active");
- //BA.debugLineNum = 117;BA.debugLine="Spinner1map.Put(\"Non Active\",\"1\")";
+ //BA.debugLineNum = 118;BA.debugLine="Spinner1map.Put(\"Non Active\",\"1\")";
 mostCurrent._spinner1map.Put((Object)("Non Active"),(Object)("1"));
- //BA.debugLineNum = 118;BA.debugLine="Spinner1.Add(\"Traditional Heritage\")";
+ //BA.debugLineNum = 119;BA.debugLine="Spinner1.Add(\"Traditional Heritage\")";
 mostCurrent._spinner1.Add("Traditional Heritage");
- //BA.debugLineNum = 119;BA.debugLine="Spinner1map.Put(\"Traditional Heritage\",\"2\")";
+ //BA.debugLineNum = 120;BA.debugLine="Spinner1map.Put(\"Traditional Heritage\",\"2\")";
 mostCurrent._spinner1map.Put((Object)("Traditional Heritage"),(Object)("2"));
- //BA.debugLineNum = 120;BA.debugLine="Spinner1.Add(\"Civil Heritage\")";
+ //BA.debugLineNum = 121;BA.debugLine="Spinner1.Add(\"Civil Heritage\")";
 mostCurrent._spinner1.Add("Civil Heritage");
- //BA.debugLineNum = 121;BA.debugLine="Spinner1map.Put(\"Civil Heritage\",\"3\")";
+ //BA.debugLineNum = 122;BA.debugLine="Spinner1map.Put(\"Civil Heritage\",\"3\")";
 mostCurrent._spinner1map.Put((Object)("Civil Heritage"),(Object)("3"));
- //BA.debugLineNum = 122;BA.debugLine="Spinner1.Add(\"Islamic Heritage\")";
+ //BA.debugLineNum = 123;BA.debugLine="Spinner1.Add(\"Islamic Heritage\")";
 mostCurrent._spinner1.Add("Islamic Heritage");
- //BA.debugLineNum = 123;BA.debugLine="Spinner1map.Put(\"Islamic Heritage\",\"4\")";
+ //BA.debugLineNum = 124;BA.debugLine="Spinner1map.Put(\"Islamic Heritage\",\"4\")";
 mostCurrent._spinner1map.Put((Object)("Islamic Heritage"),(Object)("4"));
- //BA.debugLineNum = 124;BA.debugLine="Spinner1.Add(\"Private Property\")";
+ //BA.debugLineNum = 125;BA.debugLine="Spinner1.Add(\"Private Property\")";
 mostCurrent._spinner1.Add("Private Property");
- //BA.debugLineNum = 125;BA.debugLine="Spinner1map.Put(\"Private Property\",\"5\")";
+ //BA.debugLineNum = 126;BA.debugLine="Spinner1map.Put(\"Private Property\",\"5\")";
 mostCurrent._spinner1map.Put((Object)("Private Property"),(Object)("5"));
- //BA.debugLineNum = 129;BA.debugLine="Spinner2.DropdownBackgroundColor=Colors.White";
+ //BA.debugLineNum = 130;BA.debugLine="Spinner2.DropdownBackgroundColor=Colors.White";
 mostCurrent._spinner2.setDropdownBackgroundColor(anywheresoftware.b4a.keywords.Common.Colors.White);
- //BA.debugLineNum = 130;BA.debugLine="Spinner2.Add(\"All\")";
+ //BA.debugLineNum = 131;BA.debugLine="Spinner2.Add(\"All\")";
 mostCurrent._spinner2.Add("All");
- //BA.debugLineNum = 131;BA.debugLine="Spinner2map.Put(\"All\",\"0\")";
+ //BA.debugLineNum = 132;BA.debugLine="Spinner2map.Put(\"All\",\"0\")";
 mostCurrent._spinner2map.Put((Object)("All"),(Object)("0"));
- //BA.debugLineNum = 132;BA.debugLine="Spinner2.Add(\"Semi Permanent\")";
+ //BA.debugLineNum = 133;BA.debugLine="Spinner2.Add(\"Semi Permanent\")";
 mostCurrent._spinner2.Add("Semi Permanent");
- //BA.debugLineNum = 133;BA.debugLine="Spinner2map.Put(\"Semi Permanent\",\"1\")";
+ //BA.debugLineNum = 134;BA.debugLine="Spinner2map.Put(\"Semi Permanent\",\"1\")";
 mostCurrent._spinner2map.Put((Object)("Semi Permanent"),(Object)("1"));
- //BA.debugLineNum = 134;BA.debugLine="Spinner2.Add(\"Permanent\")";
+ //BA.debugLineNum = 135;BA.debugLine="Spinner2.Add(\"Permanent\")";
 mostCurrent._spinner2.Add("Permanent");
- //BA.debugLineNum = 135;BA.debugLine="Spinner2map.Put(\"Permanent\",\"2\")";
+ //BA.debugLineNum = 136;BA.debugLine="Spinner2map.Put(\"Permanent\",\"2\")";
 mostCurrent._spinner2map.Put((Object)("Permanent"),(Object)("2"));
- //BA.debugLineNum = 138;BA.debugLine="End Sub";
+ //BA.debugLineNum = 139;BA.debugLine="ListView1.SingleLineLayout.Label.TextColor = Colo";
+mostCurrent._listview1.getSingleLineLayout().Label.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
+ //BA.debugLineNum = 140;BA.debugLine="ListView1.SingleLineLayout.Label.TextSize = 14";
+mostCurrent._listview1.getSingleLineLayout().Label.setTextSize((float) (14));
+ //BA.debugLineNum = 143;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 143;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 144;BA.debugLine="End Sub";
+ //BA.debugLineNum = 148;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 149;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 140;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 141;BA.debugLine="End Sub";
+ //BA.debugLineNum = 145;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 146;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button1_click() throws Exception{
 String _citizen_id = "";
- //BA.debugLineNum = 278;BA.debugLine="Sub Button1_Click";
- //BA.debugLineNum = 279;BA.debugLine="Dim citizen_id As String";
+ //BA.debugLineNum = 336;BA.debugLine="Sub Button1_Click";
+ //BA.debugLineNum = 338;BA.debugLine="Dim citizen_id As String";
 _citizen_id = "";
- //BA.debugLineNum = 280;BA.debugLine="citizen_id=EditText1.Text";
+ //BA.debugLineNum = 339;BA.debugLine="citizen_id=EditText1.Text";
 _citizen_id = mostCurrent._edittext1.getText();
- //BA.debugLineNum = 282;BA.debugLine="If citizen_id=Null Then";
+ //BA.debugLineNum = 341;BA.debugLine="If citizen_id=Null Then";
 if (_citizen_id== null) { 
- //BA.debugLineNum = 283;BA.debugLine="citizen_id=\"\"";
+ //BA.debugLineNum = 342;BA.debugLine="citizen_id=\"\"";
 _citizen_id = "";
  };
- //BA.debugLineNum = 286;BA.debugLine="job2.Initialize(\"building\", Me)";
+ //BA.debugLineNum = 345;BA.debugLine="job2.Initialize(\"building\", Me)";
 mostCurrent._job2._initialize(processBA,"building",building.getObject());
- //BA.debugLineNum = 287;BA.debugLine="job2.PostString(domain&\"ta_v2/endpoint/building_b";
+ //BA.debugLineNum = 346;BA.debugLine="job2.PostString(domain&\"ta_v2/endpoint/building_b";
 mostCurrent._job2._poststring(mostCurrent._domain+"ta_v2/endpoint/building_bo.php","citizen_id="+_citizen_id);
- //BA.debugLineNum = 289;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/buil";
+ //BA.debugLineNum = 348;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/buil";
 mostCurrent._webview1.LoadUrl(mostCurrent._domain+"ta_v2/endpoint/view/building_bo.php?citizen_id="+_citizen_id);
- //BA.debugLineNum = 291;BA.debugLine="End Sub";
+ //BA.debugLineNum = 350;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button2_click() throws Exception{
 String _nohouse = "";
- //BA.debugLineNum = 326;BA.debugLine="Sub Button2_Click";
- //BA.debugLineNum = 327;BA.debugLine="Dim nohouse As String";
+ //BA.debugLineNum = 386;BA.debugLine="Sub Button2_Click";
+ //BA.debugLineNum = 388;BA.debugLine="Dim nohouse As String";
 _nohouse = "";
- //BA.debugLineNum = 328;BA.debugLine="nohouse=EditText2.Text";
+ //BA.debugLineNum = 389;BA.debugLine="nohouse=EditText2.Text";
 _nohouse = mostCurrent._edittext2.getText();
- //BA.debugLineNum = 330;BA.debugLine="job2.Initialize(\"nohouse\", Me)";
+ //BA.debugLineNum = 391;BA.debugLine="job2.Initialize(\"nohouse\", Me)";
 mostCurrent._job2._initialize(processBA,"nohouse",building.getObject());
- //BA.debugLineNum = 331;BA.debugLine="job2.PostString(domain&\"ta_v2/endpoint/building_n";
+ //BA.debugLineNum = 392;BA.debugLine="job2.PostString(domain&\"ta_v2/endpoint/building_n";
 mostCurrent._job2._poststring(mostCurrent._domain+"ta_v2/endpoint/building_no.php","nohouse="+_nohouse);
- //BA.debugLineNum = 333;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/buil";
+ //BA.debugLineNum = 394;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/buil";
 mostCurrent._webview1.LoadUrl(mostCurrent._domain+"ta_v2/endpoint/view/building_nov.php?nohouse="+_nohouse);
- //BA.debugLineNum = 337;BA.debugLine="End Sub";
+ //BA.debugLineNum = 398;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button3_click() throws Exception{
- //BA.debugLineNum = 301;BA.debugLine="Sub Button3_Click";
- //BA.debugLineNum = 303;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/cond";
+ //BA.debugLineNum = 360;BA.debugLine="Sub Button3_Click";
+ //BA.debugLineNum = 363;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/cond";
 mostCurrent._webview1.LoadUrl(mostCurrent._domain+"ta_v2/endpoint/view/condition_status.php?status="+mostCurrent._id1+"&condition="+mostCurrent._id2);
- //BA.debugLineNum = 305;BA.debugLine="Log(id1)";
+ //BA.debugLineNum = 365;BA.debugLine="Log(id1)";
 anywheresoftware.b4a.keywords.Common.Log(mostCurrent._id1);
- //BA.debugLineNum = 306;BA.debugLine="Log(id2)";
+ //BA.debugLineNum = 366;BA.debugLine="Log(id2)";
 anywheresoftware.b4a.keywords.Common.Log(mostCurrent._id2);
- //BA.debugLineNum = 309;BA.debugLine="End Sub";
+ //BA.debugLineNum = 369;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -581,8 +586,8 @@ mostCurrent._lblinfo = new anywheresoftware.b4a.objects.LabelWrapper();
 mostCurrent._webview1 = new anywheresoftware.b4a.objects.WebViewWrapper();
  //BA.debugLineNum = 23;BA.debugLine="Dim domain As String";
 mostCurrent._domain = "";
- //BA.debugLineNum = 24;BA.debugLine="domain=\"http://84d4fefa.ngrok.io/\"";
-mostCurrent._domain = "http://84d4fefa.ngrok.io/";
+ //BA.debugLineNum = 24;BA.debugLine="domain=\"http://459a41bc.ngrok.io/\"";
+mostCurrent._domain = "http://459a41bc.ngrok.io/";
  //BA.debugLineNum = 25;BA.debugLine="Private Panel1 As Panel";
 mostCurrent._panel1 = new anywheresoftware.b4a.objects.PanelWrapper();
  //BA.debugLineNum = 26;BA.debugLine="Private Button1 As Button";
@@ -611,7 +616,9 @@ mostCurrent._spinner1map = new anywheresoftware.b4a.objects.collections.Map();
 mostCurrent._spinner2map = new anywheresoftware.b4a.objects.collections.Map();
  //BA.debugLineNum = 42;BA.debugLine="Private EditText2 As EditText";
 mostCurrent._edittext2 = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 43;BA.debugLine="End Sub";
+ //BA.debugLineNum = 43;BA.debugLine="Private ListView1 As ListView";
+mostCurrent._listview1 = new anywheresoftware.b4a.objects.ListViewWrapper();
+ //BA.debugLineNum = 44;BA.debugLine="End Sub";
 return "";
 }
 public static String  _jobdone(anywheresoftware.b4a.samples.httputils2.httpjob _job) throws Exception{
@@ -637,48 +644,49 @@ String _y = "";
 String _no_house = "";
 String _born_date = "";
 anywheresoftware.b4a.objects.drawable.CanvasWrapper _cvs = null;
- //BA.debugLineNum = 191;BA.debugLine="Sub JobDone (Job As HttpJob)";
- //BA.debugLineNum = 192;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
+int _lv_size1 = 0;
+ //BA.debugLineNum = 197;BA.debugLine="Sub JobDone (Job As HttpJob)";
+ //BA.debugLineNum = 198;BA.debugLine="Log(\"JobName = \" & Job.JobName & \", Success = \" &";
 anywheresoftware.b4a.keywords.Common.Log("JobName = "+_job._jobname+", Success = "+BA.ObjectToString(_job._success));
- //BA.debugLineNum = 193;BA.debugLine="If Job.Success = True Then";
+ //BA.debugLineNum = 199;BA.debugLine="If Job.Success = True Then";
 if (_job._success==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 194;BA.debugLine="Select Job.JobName";
+ //BA.debugLineNum = 200;BA.debugLine="Select Job.JobName";
 switch (BA.switchObjectToInt(_job._jobname,"building","nohouse")) {
 case 0: {
- //BA.debugLineNum = 197;BA.debugLine="Log(Job.GetString)";
+ //BA.debugLineNum = 203;BA.debugLine="Log(Job.GetString)";
 anywheresoftware.b4a.keywords.Common.Log(_job._getstring());
- //BA.debugLineNum = 199;BA.debugLine="Dim parser As JSONParser";
+ //BA.debugLineNum = 205;BA.debugLine="Dim parser As JSONParser";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
- //BA.debugLineNum = 200;BA.debugLine="parser.Initialize(Job.GetString)";
+ //BA.debugLineNum = 206;BA.debugLine="parser.Initialize(Job.GetString)";
 _parser.Initialize(_job._getstring());
- //BA.debugLineNum = 201;BA.debugLine="Dim root As Map = parser.NextObject";
+ //BA.debugLineNum = 207;BA.debugLine="Dim root As Map = parser.NextObject";
 _root = new anywheresoftware.b4a.objects.collections.Map();
 _root = _parser.NextObject();
- //BA.debugLineNum = 202;BA.debugLine="Dim features As List = root.Get(\"features\")";
+ //BA.debugLineNum = 208;BA.debugLine="Dim features As List = root.Get(\"features\")";
 _features = new anywheresoftware.b4a.objects.collections.List();
 _features.setObject((java.util.List)(_root.Get((Object)("features"))));
- //BA.debugLineNum = 203;BA.debugLine="Log(length)";
+ //BA.debugLineNum = 209;BA.debugLine="Log(length)";
 anywheresoftware.b4a.keywords.Common.Log(BA.NumberToString(_length));
- //BA.debugLineNum = 205;BA.debugLine="If length>0 Then";
+ //BA.debugLineNum = 211;BA.debugLine="If length>0 Then";
 if (_length>0) { 
- //BA.debugLineNum = 206;BA.debugLine="Do While length>=0";
+ //BA.debugLineNum = 212;BA.debugLine="Do While length>=0";
 while (_length>=0) {
- //BA.debugLineNum = 207;BA.debugLine="Log(length)";
+ //BA.debugLineNum = 213;BA.debugLine="Log(length)";
 anywheresoftware.b4a.keywords.Common.Log(BA.NumberToString(_length));
- //BA.debugLineNum = 208;BA.debugLine="SD.Panels(length).Visible=False";
+ //BA.debugLineNum = 214;BA.debugLine="SD.Panels(length).Visible=False";
 mostCurrent._sd._panels[_length].setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 209;BA.debugLine="length=length-1";
+ //BA.debugLineNum = 215;BA.debugLine="length=length-1";
 _length = (int) (_length-1);
  }
 ;
  };
- //BA.debugLineNum = 213;BA.debugLine="length=0";
+ //BA.debugLineNum = 219;BA.debugLine="length=0";
 _length = (int) (0);
- //BA.debugLineNum = 214;BA.debugLine="SD.Initialize(\"SD\",300,Activity,Me,False) 'Ini";
+ //BA.debugLineNum = 220;BA.debugLine="SD.Initialize(\"SD\",300,Activity,Me,False) 'Ini";
 mostCurrent._sd._initialize(mostCurrent.activityBA,"SD",(int) (300),(anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(mostCurrent._activity.getObject())),building.getObject(),anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 215;BA.debugLine="SD.ModeLittlePanels(15,50%x,50%x,Activity.Heig";
+ //BA.debugLineNum = 221;BA.debugLine="SD.ModeLittlePanels(15,50%x,50%x,Activity.Heig";
 mostCurrent._sd._modelittlepanels((int) (15),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (50),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (50),mostCurrent.activityBA),(int) (mostCurrent._activity.getHeight()/(double)6*5),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20)),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 216;BA.debugLine="For Each colfeatures As Map In features";
+ //BA.debugLineNum = 222;BA.debugLine="For Each colfeatures As Map In features";
 _colfeatures = new anywheresoftware.b4a.objects.collections.Map();
 {
 final anywheresoftware.b4a.BA.IterableList group21 = _features;
@@ -687,13 +695,13 @@ final int groupLen21 = group21.getSize()
 ;
 for (; index21 < groupLen21;index21++){
 _colfeatures.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(group21.Get(index21)));
- //BA.debugLineNum = 217;BA.debugLine="Dim geometry As Map = colfeatures.Get(\"geomet";
+ //BA.debugLineNum = 223;BA.debugLine="Dim geometry As Map = colfeatures.Get(\"geomet";
 _geometry = new anywheresoftware.b4a.objects.collections.Map();
 _geometry.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_colfeatures.Get((Object)("geometry"))));
- //BA.debugLineNum = 218;BA.debugLine="Dim coordinates As List = geometry.Get(\"coord";
+ //BA.debugLineNum = 224;BA.debugLine="Dim coordinates As List = geometry.Get(\"coord";
 _coordinates = new anywheresoftware.b4a.objects.collections.List();
 _coordinates.setObject((java.util.List)(_geometry.Get((Object)("coordinates"))));
- //BA.debugLineNum = 219;BA.debugLine="For Each colcoordinates As List In coordinate";
+ //BA.debugLineNum = 225;BA.debugLine="For Each colcoordinates As List In coordinate";
 _colcoordinates = new anywheresoftware.b4a.objects.collections.List();
 {
 final anywheresoftware.b4a.BA.IterableList group24 = _coordinates;
@@ -702,7 +710,7 @@ final int groupLen24 = group24.getSize()
 ;
 for (; index24 < groupLen24;index24++){
 _colcoordinates.setObject((java.util.List)(group24.Get(index24)));
- //BA.debugLineNum = 220;BA.debugLine="For Each colcolcoordinates As List In colcoo";
+ //BA.debugLineNum = 226;BA.debugLine="For Each colcolcoordinates As List In colcoo";
 _colcolcoordinates = new anywheresoftware.b4a.objects.collections.List();
 {
 final anywheresoftware.b4a.BA.IterableList group25 = _colcoordinates;
@@ -711,7 +719,7 @@ final int groupLen25 = group25.getSize()
 ;
 for (; index25 < groupLen25;index25++){
 _colcolcoordinates.setObject((java.util.List)(group25.Get(index25)));
- //BA.debugLineNum = 221;BA.debugLine="For Each colcolcolcoordinates As List In co";
+ //BA.debugLineNum = 227;BA.debugLine="For Each colcolcolcoordinates As List In co";
 _colcolcolcoordinates = new anywheresoftware.b4a.objects.collections.List();
 {
 final anywheresoftware.b4a.BA.IterableList group26 = _colcolcoordinates;
@@ -720,7 +728,7 @@ final int groupLen26 = group26.getSize()
 ;
 for (; index26 < groupLen26;index26++){
 _colcolcolcoordinates.setObject((java.util.List)(group26.Get(index26)));
- //BA.debugLineNum = 222;BA.debugLine="For Each colcolcolcolcoordinates As Double";
+ //BA.debugLineNum = 228;BA.debugLine="For Each colcolcolcolcoordinates As Double";
 {
 final anywheresoftware.b4a.BA.IterableList group27 = _colcolcolcoordinates;
 final int groupLen27 = group27.getSize()
@@ -734,122 +742,244 @@ _colcolcolcolcoordinates = (double)(BA.ObjectToNumber(group27.Get(index27)));
 };
  }
 };
- //BA.debugLineNum = 226;BA.debugLine="length=length+1";
+ //BA.debugLineNum = 232;BA.debugLine="length=length+1";
 _length = (int) (_length+1);
  }
 };
- //BA.debugLineNum = 228;BA.debugLine="Dim Type As String = geometry.Get(\"type\")";
+ //BA.debugLineNum = 234;BA.debugLine="Dim Type As String = geometry.Get(\"type\")";
 _type = BA.ObjectToString(_geometry.Get((Object)("type")));
- //BA.debugLineNum = 229;BA.debugLine="Dim Type As String = colfeatures.Get(\"type\")";
+ //BA.debugLineNum = 235;BA.debugLine="Dim Type As String = colfeatures.Get(\"type\")";
 _type = BA.ObjectToString(_colfeatures.Get((Object)("type")));
- //BA.debugLineNum = 230;BA.debugLine="Dim properties As Map = colfeatures.Get(\"prop";
+ //BA.debugLineNum = 236;BA.debugLine="Dim properties As Map = colfeatures.Get(\"prop";
 _properties = new anywheresoftware.b4a.objects.collections.Map();
 _properties.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_colfeatures.Get((Object)("properties"))));
- //BA.debugLineNum = 231;BA.debugLine="Dim clan_name As String = properties.Get(\"cla";
+ //BA.debugLineNum = 237;BA.debugLine="Dim clan_name As String = properties.Get(\"cla";
 _clan_name = BA.ObjectToString(_properties.Get((Object)("clan_name")));
- //BA.debugLineNum = 232;BA.debugLine="Dim citizen_id As String = properties.Get(\"ci";
+ //BA.debugLineNum = 238;BA.debugLine="Dim citizen_id As String = properties.Get(\"ci";
 _citizen_id = BA.ObjectToString(_properties.Get((Object)("citizen_id")));
- //BA.debugLineNum = 233;BA.debugLine="Dim gender As String = properties.Get(\"gender";
+ //BA.debugLineNum = 239;BA.debugLine="Dim gender As String = properties.Get(\"gender";
 _gender = BA.ObjectToString(_properties.Get((Object)("gender")));
- //BA.debugLineNum = 234;BA.debugLine="Dim phone As String = properties.Get(\"phone\")";
+ //BA.debugLineNum = 240;BA.debugLine="Dim phone As String = properties.Get(\"phone\")";
 _phone = BA.ObjectToString(_properties.Get((Object)("phone")));
- //BA.debugLineNum = 235;BA.debugLine="Dim x As String = properties.Get(\"x\")";
+ //BA.debugLineNum = 241;BA.debugLine="Dim x As String = properties.Get(\"x\")";
 _x = BA.ObjectToString(_properties.Get((Object)("x")));
- //BA.debugLineNum = 236;BA.debugLine="Dim name As String = properties.Get(\"name\")";
+ //BA.debugLineNum = 242;BA.debugLine="Dim name As String = properties.Get(\"name\")";
 _name = BA.ObjectToString(_properties.Get((Object)("name")));
- //BA.debugLineNum = 237;BA.debugLine="Dim y As String = properties.Get(\"y\")";
+ //BA.debugLineNum = 243;BA.debugLine="Dim y As String = properties.Get(\"y\")";
 _y = BA.ObjectToString(_properties.Get((Object)("y")));
- //BA.debugLineNum = 238;BA.debugLine="Dim no_house As String = properties.Get(\"no_h";
+ //BA.debugLineNum = 244;BA.debugLine="Dim no_house As String = properties.Get(\"no_h";
 _no_house = BA.ObjectToString(_properties.Get((Object)("no_house")));
- //BA.debugLineNum = 239;BA.debugLine="Dim born_date As String = properties.Get(\"bor";
+ //BA.debugLineNum = 245;BA.debugLine="Dim born_date As String = properties.Get(\"bor";
 _born_date = BA.ObjectToString(_properties.Get((Object)("born_date")));
- //BA.debugLineNum = 243;BA.debugLine="SD.panels(length).Color = Colors.RGB(Rnd(0,25";
+ //BA.debugLineNum = 249;BA.debugLine="SD.panels(length).Color = Colors.RGB(Rnd(0,25";
 mostCurrent._sd._panels[_length].setColor(anywheresoftware.b4a.keywords.Common.Colors.RGB(anywheresoftware.b4a.keywords.Common.Rnd((int) (0),(int) (256)),anywheresoftware.b4a.keywords.Common.Rnd((int) (0),(int) (256)),anywheresoftware.b4a.keywords.Common.Rnd((int) (0),(int) (256))));
- //BA.debugLineNum = 244;BA.debugLine="Dim cvs As Canvas";
+ //BA.debugLineNum = 250;BA.debugLine="Dim cvs As Canvas";
 _cvs = new anywheresoftware.b4a.objects.drawable.CanvasWrapper();
- //BA.debugLineNum = 245;BA.debugLine="cvs.Initialize(SD.Panels(length))";
+ //BA.debugLineNum = 251;BA.debugLine="cvs.Initialize(SD.Panels(length))";
 _cvs.Initialize((android.view.View)(mostCurrent._sd._panels[_length].getObject()));
- //BA.debugLineNum = 246;BA.debugLine="cvs.DrawText(\"House: \"&no_house,SD.panels(len";
+ //BA.debugLineNum = 252;BA.debugLine="cvs.DrawText(\"House: \"&no_house,SD.panels(len";
 _cvs.DrawText(mostCurrent.activityBA,"House: "+_no_house,(float) (mostCurrent._sd._panels[_length].getWidth()/(double)3),(float) (mostCurrent._sd._panels[_length].getHeight()/(double)3),anywheresoftware.b4a.keywords.Common.Typeface.DEFAULT,(float) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (5),mostCurrent.activityBA)/(double)anywheresoftware.b4a.keywords.Common.Density),anywheresoftware.b4a.keywords.Common.Colors.White,BA.getEnumFromString(android.graphics.Paint.Align.class,"CENTER"));
- //BA.debugLineNum = 247;BA.debugLine="cvs.DrawText(x,SD.panels(length).Width/3*2,SD";
+ //BA.debugLineNum = 253;BA.debugLine="cvs.DrawText(x,SD.panels(length).Width/3*2,SD";
 _cvs.DrawText(mostCurrent.activityBA,_x,(float) (mostCurrent._sd._panels[_length].getWidth()/(double)3*2),(float) (mostCurrent._sd._panels[_length].getHeight()/(double)3+40),anywheresoftware.b4a.keywords.Common.Typeface.DEFAULT,(float) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (3),mostCurrent.activityBA)/(double)anywheresoftware.b4a.keywords.Common.Density),anywheresoftware.b4a.keywords.Common.Colors.White,BA.getEnumFromString(android.graphics.Paint.Align.class,"CENTER"));
- //BA.debugLineNum = 248;BA.debugLine="cvs.DrawText(y,SD.panels(length).Width/3*2,SD";
+ //BA.debugLineNum = 254;BA.debugLine="cvs.DrawText(y,SD.panels(length).Width/3*2,SD";
 _cvs.DrawText(mostCurrent.activityBA,_y,(float) (mostCurrent._sd._panels[_length].getWidth()/(double)3*2),(float) (mostCurrent._sd._panels[_length].getHeight()/(double)3+10),anywheresoftware.b4a.keywords.Common.Typeface.DEFAULT,(float) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (3),mostCurrent.activityBA)/(double)anywheresoftware.b4a.keywords.Common.Density),anywheresoftware.b4a.keywords.Common.Colors.White,BA.getEnumFromString(android.graphics.Paint.Align.class,"CENTER"));
- //BA.debugLineNum = 250;BA.debugLine="Log(no_house&x&y)";
+ //BA.debugLineNum = 256;BA.debugLine="Log(no_house&x&y)";
 anywheresoftware.b4a.keywords.Common.Log(_no_house+_x+_y);
  }
 };
- //BA.debugLineNum = 252;BA.debugLine="Dim Type As String = root.Get(\"type\")";
+ //BA.debugLineNum = 258;BA.debugLine="Dim Type As String = root.Get(\"type\")";
 _type = BA.ObjectToString(_root.Get((Object)("type")));
- //BA.debugLineNum = 264;BA.debugLine="SD.Start(0) 'Start the SlidingPanels.";
+ //BA.debugLineNum = 270;BA.debugLine="SD.Start(0) 'Start the SlidingPanels.";
 mostCurrent._sd._start((int) (0));
  break; }
 case 1: {
- //BA.debugLineNum = 267;BA.debugLine="Log(Job.GetString)";
+ //BA.debugLineNum = 274;BA.debugLine="Dim parser As JSONParser";
+_parser = new anywheresoftware.b4a.objects.collections.JSONParser();
+ //BA.debugLineNum = 275;BA.debugLine="parser.Initialize(Job.GetString)";
+_parser.Initialize(_job._getstring());
+ //BA.debugLineNum = 276;BA.debugLine="Dim root As Map = parser.NextObject";
+_root = new anywheresoftware.b4a.objects.collections.Map();
+_root = _parser.NextObject();
+ //BA.debugLineNum = 277;BA.debugLine="Dim features As List = root.Get(\"features\")";
+_features = new anywheresoftware.b4a.objects.collections.List();
+_features.setObject((java.util.List)(_root.Get((Object)("features"))));
+ //BA.debugLineNum = 278;BA.debugLine="For Each colfeatures As Map In features";
+_colfeatures = new anywheresoftware.b4a.objects.collections.Map();
+{
+final anywheresoftware.b4a.BA.IterableList group60 = _features;
+final int groupLen60 = group60.getSize()
+;int index60 = 0;
+;
+for (; index60 < groupLen60;index60++){
+_colfeatures.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(group60.Get(index60)));
+ //BA.debugLineNum = 279;BA.debugLine="Dim geometry As Map = colfeatures.Get(\"geomet";
+_geometry = new anywheresoftware.b4a.objects.collections.Map();
+_geometry.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_colfeatures.Get((Object)("geometry"))));
+ //BA.debugLineNum = 280;BA.debugLine="Dim coordinates As List = geometry.Get(\"coord";
+_coordinates = new anywheresoftware.b4a.objects.collections.List();
+_coordinates.setObject((java.util.List)(_geometry.Get((Object)("coordinates"))));
+ //BA.debugLineNum = 281;BA.debugLine="For Each colcoordinates As List In coordinate";
+_colcoordinates = new anywheresoftware.b4a.objects.collections.List();
+{
+final anywheresoftware.b4a.BA.IterableList group63 = _coordinates;
+final int groupLen63 = group63.getSize()
+;int index63 = 0;
+;
+for (; index63 < groupLen63;index63++){
+_colcoordinates.setObject((java.util.List)(group63.Get(index63)));
+ //BA.debugLineNum = 282;BA.debugLine="For Each colcolcoordinates As List In colcoo";
+_colcolcoordinates = new anywheresoftware.b4a.objects.collections.List();
+{
+final anywheresoftware.b4a.BA.IterableList group64 = _colcoordinates;
+final int groupLen64 = group64.getSize()
+;int index64 = 0;
+;
+for (; index64 < groupLen64;index64++){
+_colcolcoordinates.setObject((java.util.List)(group64.Get(index64)));
+ //BA.debugLineNum = 283;BA.debugLine="For Each colcolcolcoordinates As List In co";
+_colcolcolcoordinates = new anywheresoftware.b4a.objects.collections.List();
+{
+final anywheresoftware.b4a.BA.IterableList group65 = _colcolcoordinates;
+final int groupLen65 = group65.getSize()
+;int index65 = 0;
+;
+for (; index65 < groupLen65;index65++){
+_colcolcolcoordinates.setObject((java.util.List)(group65.Get(index65)));
+ //BA.debugLineNum = 284;BA.debugLine="For Each colcolcolcolcoordinates As Double";
+{
+final anywheresoftware.b4a.BA.IterableList group66 = _colcolcolcoordinates;
+final int groupLen66 = group66.getSize()
+;int index66 = 0;
+;
+for (; index66 < groupLen66;index66++){
+_colcolcolcolcoordinates = (double)(BA.ObjectToNumber(group66.Get(index66)));
+ }
+};
+ }
+};
+ }
+};
+ }
+};
+ //BA.debugLineNum = 289;BA.debugLine="Dim Type As String = geometry.Get(\"type\")";
+_type = BA.ObjectToString(_geometry.Get((Object)("type")));
+ //BA.debugLineNum = 290;BA.debugLine="Dim Type As String = colfeatures.Get(\"type\")";
+_type = BA.ObjectToString(_colfeatures.Get((Object)("type")));
+ //BA.debugLineNum = 291;BA.debugLine="Dim properties As Map = colfeatures.Get(\"prop";
+_properties = new anywheresoftware.b4a.objects.collections.Map();
+_properties.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_colfeatures.Get((Object)("properties"))));
+ //BA.debugLineNum = 292;BA.debugLine="Dim clan_name As String = properties.Get(\"cla";
+_clan_name = BA.ObjectToString(_properties.Get((Object)("clan_name")));
+ //BA.debugLineNum = 293;BA.debugLine="Dim citizen_id As String = properties.Get(\"ci";
+_citizen_id = BA.ObjectToString(_properties.Get((Object)("citizen_id")));
+ //BA.debugLineNum = 294;BA.debugLine="Dim gender As String = properties.Get(\"gender";
+_gender = BA.ObjectToString(_properties.Get((Object)("gender")));
+ //BA.debugLineNum = 295;BA.debugLine="Dim phone As String = properties.Get(\"phone\")";
+_phone = BA.ObjectToString(_properties.Get((Object)("phone")));
+ //BA.debugLineNum = 296;BA.debugLine="Dim x As String = properties.Get(\"x\")";
+_x = BA.ObjectToString(_properties.Get((Object)("x")));
+ //BA.debugLineNum = 297;BA.debugLine="Dim name As String = properties.Get(\"name\")";
+_name = BA.ObjectToString(_properties.Get((Object)("name")));
+ //BA.debugLineNum = 298;BA.debugLine="Dim y As String = properties.Get(\"y\")";
+_y = BA.ObjectToString(_properties.Get((Object)("y")));
+ //BA.debugLineNum = 299;BA.debugLine="Dim no_house As String = properties.Get(\"no_h";
+_no_house = BA.ObjectToString(_properties.Get((Object)("no_house")));
+ //BA.debugLineNum = 300;BA.debugLine="Dim born_date As String = properties.Get(\"bor";
+_born_date = BA.ObjectToString(_properties.Get((Object)("born_date")));
+ //BA.debugLineNum = 302;BA.debugLine="Dim lv_size1 As Int";
+_lv_size1 = 0;
+ //BA.debugLineNum = 303;BA.debugLine="lv_size1=ListView1.Size";
+_lv_size1 = mostCurrent._listview1.getSize();
+ //BA.debugLineNum = 304;BA.debugLine="lv_size1=lv_size1-1";
+_lv_size1 = (int) (_lv_size1-1);
+ //BA.debugLineNum = 305;BA.debugLine="Log(lv_size1)";
+anywheresoftware.b4a.keywords.Common.Log(BA.NumberToString(_lv_size1));
+ //BA.debugLineNum = 306;BA.debugLine="If lv_size1>0 Then";
+if (_lv_size1>0) { 
+ //BA.debugLineNum = 308;BA.debugLine="Do While lv_size1>=0";
+while (_lv_size1>=0) {
+ //BA.debugLineNum = 310;BA.debugLine="Log(lv_size1)";
+anywheresoftware.b4a.keywords.Common.Log(BA.NumberToString(_lv_size1));
+ //BA.debugLineNum = 311;BA.debugLine="ListView1.RemoveAt(lv_size1)";
+mostCurrent._listview1.RemoveAt(_lv_size1);
+ //BA.debugLineNum = 312;BA.debugLine="lv_size1=lv_size1-1";
+_lv_size1 = (int) (_lv_size1-1);
+ }
+;
+ };
+ //BA.debugLineNum = 321;BA.debugLine="ListView1.AddSingleLine( \"Name: \"&name&\" \"&\"C";
+mostCurrent._listview1.AddSingleLine(BA.ObjectToCharSequence("Name: "+_name+" "+"Citizen Id: "+_citizen_id+" "+"Gender: "+_gender+" "+"Phone: "+_phone+" "+"Clan Name: "+_clan_name+"Born Date: "+_born_date));
+ }
+};
+ //BA.debugLineNum = 324;BA.debugLine="Dim Type As String = root.Get(\"type\")";
+_type = BA.ObjectToString(_root.Get((Object)("type")));
+ //BA.debugLineNum = 325;BA.debugLine="Log(Job.GetString)";
 anywheresoftware.b4a.keywords.Common.Log(_job._getstring());
  break; }
 }
 ;
  }else {
- //BA.debugLineNum = 271;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
+ //BA.debugLineNum = 329;BA.debugLine="Log(\"Error: \" & Job.ErrorMessage)";
 anywheresoftware.b4a.keywords.Common.Log("Error: "+_job._errormessage);
- //BA.debugLineNum = 272;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
+ //BA.debugLineNum = 330;BA.debugLine="ToastMessageShow(\"Error: \" & Job.ErrorMessage, T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error: "+_job._errormessage),anywheresoftware.b4a.keywords.Common.True);
  };
- //BA.debugLineNum = 274;BA.debugLine="Job.Release";
+ //BA.debugLineNum = 332;BA.debugLine="Job.Release";
 _job._release();
- //BA.debugLineNum = 275;BA.debugLine="End Sub";
+ //BA.debugLineNum = 333;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lvmenu_itemclick(int _position,Object _value) throws Exception{
- //BA.debugLineNum = 146;BA.debugLine="Sub lvMenu_ItemClick (Position As Int, Value As Ob";
- //BA.debugLineNum = 148;BA.debugLine="If Position=0 Then";
+ //BA.debugLineNum = 151;BA.debugLine="Sub lvMenu_ItemClick (Position As Int, Value As Ob";
+ //BA.debugLineNum = 152;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/laye";
+mostCurrent._webview1.LoadUrl(mostCurrent._domain+"ta_v2/endpoint/view/layers.php");
+ //BA.debugLineNum = 154;BA.debugLine="If Position=0 Then";
 if (_position==0) { 
- //BA.debugLineNum = 150;BA.debugLine="Panel3.Visible=False";
+ //BA.debugLineNum = 156;BA.debugLine="Panel3.Visible=False";
 mostCurrent._panel3.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 151;BA.debugLine="Panel5.Visible=False";
+ //BA.debugLineNum = 157;BA.debugLine="Panel5.Visible=False";
 mostCurrent._panel5.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 154;BA.debugLine="Panel1.Visible=True";
+ //BA.debugLineNum = 160;BA.debugLine="Panel1.Visible=True";
 mostCurrent._panel1.setVisible(anywheresoftware.b4a.keywords.Common.True);
  }else if(_position==1) { 
- //BA.debugLineNum = 157;BA.debugLine="Panel1.Visible=False";
+ //BA.debugLineNum = 163;BA.debugLine="Panel1.Visible=False";
 mostCurrent._panel1.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 158;BA.debugLine="Panel5.Visible=False";
+ //BA.debugLineNum = 164;BA.debugLine="Panel5.Visible=False";
 mostCurrent._panel5.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 160;BA.debugLine="Panel3.Visible=True";
+ //BA.debugLineNum = 166;BA.debugLine="Panel3.Visible=True";
 mostCurrent._panel3.setVisible(anywheresoftware.b4a.keywords.Common.True);
  }else if(_position==2) { 
- //BA.debugLineNum = 165;BA.debugLine="Panel3.Visible=False";
+ //BA.debugLineNum = 171;BA.debugLine="Panel3.Visible=False";
 mostCurrent._panel3.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 166;BA.debugLine="Panel1.Visible=False";
+ //BA.debugLineNum = 172;BA.debugLine="Panel1.Visible=False";
 mostCurrent._panel1.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 168;BA.debugLine="Panel5.Visible=True";
+ //BA.debugLineNum = 174;BA.debugLine="Panel5.Visible=True";
 mostCurrent._panel5.setVisible(anywheresoftware.b4a.keywords.Common.True);
  };
- //BA.debugLineNum = 173;BA.debugLine="PanelWithSidebar.CloseSidebar";
+ //BA.debugLineNum = 179;BA.debugLine="PanelWithSidebar.CloseSidebar";
 mostCurrent._panelwithsidebar._closesidebar();
- //BA.debugLineNum = 174;BA.debugLine="End Sub";
+ //BA.debugLineNum = 180;BA.debugLine="End Sub";
 return "";
 }
 public static String  _menu_onfullyclosed() throws Exception{
- //BA.debugLineNum = 180;BA.debugLine="Sub Menu_onFullyClosed";
- //BA.debugLineNum = 181;BA.debugLine="Log(\"FULLY CLOSED\")";
+ //BA.debugLineNum = 186;BA.debugLine="Sub Menu_onFullyClosed";
+ //BA.debugLineNum = 187;BA.debugLine="Log(\"FULLY CLOSED\")";
 anywheresoftware.b4a.keywords.Common.Log("FULLY CLOSED");
- //BA.debugLineNum = 182;BA.debugLine="End Sub";
+ //BA.debugLineNum = 188;BA.debugLine="End Sub";
 return "";
 }
 public static String  _menu_onfullyopen() throws Exception{
- //BA.debugLineNum = 176;BA.debugLine="Sub Menu_onFullyOpen";
- //BA.debugLineNum = 177;BA.debugLine="Log(\"FULLY OPEN\")";
+ //BA.debugLineNum = 182;BA.debugLine="Sub Menu_onFullyOpen";
+ //BA.debugLineNum = 183;BA.debugLine="Log(\"FULLY OPEN\")";
 anywheresoftware.b4a.keywords.Common.Log("FULLY OPEN");
- //BA.debugLineNum = 178;BA.debugLine="End Sub";
+ //BA.debugLineNum = 184;BA.debugLine="End Sub";
 return "";
 }
 public static String  _menu_onmove(boolean _isopening) throws Exception{
- //BA.debugLineNum = 184;BA.debugLine="Sub Menu_onMove(IsOpening As Boolean)";
- //BA.debugLineNum = 185;BA.debugLine="Log(\"MOVE IsOpening=\" & IsOpening)";
+ //BA.debugLineNum = 190;BA.debugLine="Sub Menu_onMove(IsOpening As Boolean)";
+ //BA.debugLineNum = 191;BA.debugLine="Log(\"MOVE IsOpening=\" & IsOpening)";
 anywheresoftware.b4a.keywords.Common.Log("MOVE IsOpening="+BA.ObjectToString(_isopening));
- //BA.debugLineNum = 186;BA.debugLine="End Sub";
+ //BA.debugLineNum = 192;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{
@@ -858,24 +988,24 @@ public static String  _process_globals() throws Exception{
 return "";
 }
 public static String  _sd_click(b4a.example.slidingpanels._touchdata _touchdata) throws Exception{
- //BA.debugLineNum = 296;BA.debugLine="Sub SD_Click (TouchData As TouchData)";
- //BA.debugLineNum = 298;BA.debugLine="ToastMessageShow(\"Clicked on Panel: \"&TouchData.T";
+ //BA.debugLineNum = 355;BA.debugLine="Sub SD_Click (TouchData As TouchData)";
+ //BA.debugLineNum = 357;BA.debugLine="ToastMessageShow(\"Clicked on Panel: \"&TouchData.T";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Clicked on Panel: "+BA.ObjectToString(_touchdata.Tag)+" / X: "+BA.NumberToString(_touchdata.X)+" / Y: "+BA.NumberToString(_touchdata.Y)),anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 299;BA.debugLine="End Sub";
+ //BA.debugLineNum = 358;BA.debugLine="End Sub";
 return "";
 }
 public static String  _spinner1_itemclick(int _position,Object _value) throws Exception{
- //BA.debugLineNum = 311;BA.debugLine="Sub Spinner1_ItemClick (Position As Int, Value As";
- //BA.debugLineNum = 312;BA.debugLine="id1 = Spinner1map.Get(Value)";
+ //BA.debugLineNum = 371;BA.debugLine="Sub Spinner1_ItemClick (Position As Int, Value As";
+ //BA.debugLineNum = 372;BA.debugLine="id1 = Spinner1map.Get(Value)";
 mostCurrent._id1 = BA.ObjectToString(mostCurrent._spinner1map.Get(_value));
- //BA.debugLineNum = 316;BA.debugLine="End Sub";
+ //BA.debugLineNum = 376;BA.debugLine="End Sub";
 return "";
 }
 public static String  _spinner2_itemclick(int _position,Object _value) throws Exception{
- //BA.debugLineNum = 319;BA.debugLine="Sub Spinner2_ItemClick (Position As Int, Value As";
- //BA.debugLineNum = 321;BA.debugLine="id2 = Spinner2map.Get(Value)";
+ //BA.debugLineNum = 379;BA.debugLine="Sub Spinner2_ItemClick (Position As Int, Value As";
+ //BA.debugLineNum = 381;BA.debugLine="id2 = Spinner2map.Get(Value)";
 mostCurrent._id2 = BA.ObjectToString(mostCurrent._spinner2map.Get(_value));
- //BA.debugLineNum = 324;BA.debugLine="End Sub";
+ //BA.debugLineNum = 384;BA.debugLine="End Sub";
 return "";
 }
 }
