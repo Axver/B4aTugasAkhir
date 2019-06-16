@@ -70,6 +70,7 @@ public b4a.example.menu _menu = null;
 public b4a.example.layer _layer = null;
 public b4a.example.citizen _citizen = null;
 public b4a.example.building _building = null;
+public b4a.example.land _land = null;
 public static class _jumpdata{
 public boolean IsInitialized;
 public int Panel;

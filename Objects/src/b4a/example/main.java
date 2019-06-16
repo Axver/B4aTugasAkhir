@@ -342,6 +342,7 @@ public b4a.example.menu _menu = null;
 public b4a.example.layer _layer = null;
 public b4a.example.citizen _citizen = null;
 public b4a.example.building _building = null;
+public b4a.example.land _land = null;
 
 public static boolean isAnyActivityVisible() {
     boolean vis = false;
@@ -350,6 +351,7 @@ vis = vis | (menu.mostCurrent != null);
 vis = vis | (layer.mostCurrent != null);
 vis = vis | (citizen.mostCurrent != null);
 vis = vis | (building.mostCurrent != null);
+vis = vis | (land.mostCurrent != null);
 return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
  //BA.debugLineNum = 36;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
@@ -464,6 +466,7 @@ menu._process_globals();
 layer._process_globals();
 citizen._process_globals();
 building._process_globals();
+land._process_globals();
 		
         } catch (Exception e) {
 			throw new RuntimeException(e);

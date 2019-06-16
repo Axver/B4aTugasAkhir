@@ -62,6 +62,7 @@ public b4a.example.menu _menu = null;
 public b4a.example.layer _layer = null;
 public b4a.example.citizen _citizen = null;
 public b4a.example.building _building = null;
+public b4a.example.land _land = null;
 public String  _addopenclosehandle(anywheresoftware.b4a.objects.ConcreteViewWrapper _hdl,int _position,int _width,int _height,byte _finalmovement) throws Exception{
 anywheresoftware.b4a.agraham.reflection.Reflection _r = null;
  //BA.debugLineNum = 336;BA.debugLine="Public Sub AddOpenCloseHandle(Hdl As View, Positio";

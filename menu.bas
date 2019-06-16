@@ -62,5 +62,5 @@ Sub Button3_Click
 End Sub
 
 Sub Button4_Click
-	
+	StartActivity("land")
 End Sub
