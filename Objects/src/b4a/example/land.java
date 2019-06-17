@@ -336,6 +336,11 @@ public anywheresoftware.b4a.objects.PanelWrapper _underactionbar = null;
 public b4a.example.clsslidingsidebar _panelwithsidebar = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _btnmenu = null;
 public anywheresoftware.b4a.objects.ListViewWrapper _lvmenu = null;
+public anywheresoftware.b4a.objects.PanelWrapper _panel1 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _button1 = null;
+public anywheresoftware.b4a.objects.PanelWrapper _panel3 = null;
+public anywheresoftware.b4a.objects.PanelWrapper _panel5 = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _edittext1 = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
@@ -354,78 +359,107 @@ public static void initializeProcessGlobals() {
 public static String  _activity_create(boolean _firsttime) throws Exception{
 int _barsize = 0;
 int _lightcyan = 0;
- //BA.debugLineNum = 26;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 28;BA.debugLine="Dim BarSize As Int: BarSize = 60dip";
+ //BA.debugLineNum = 31;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 33;BA.debugLine="Dim BarSize As Int: BarSize = 60dip";
 _barsize = 0;
- //BA.debugLineNum = 28;BA.debugLine="Dim BarSize As Int: BarSize = 60dip";
+ //BA.debugLineNum = 33;BA.debugLine="Dim BarSize As Int: BarSize = 60dip";
 _barsize = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (60));
- //BA.debugLineNum = 29;BA.debugLine="FakeActionBar.Initialize(\"\")";
+ //BA.debugLineNum = 34;BA.debugLine="FakeActionBar.Initialize(\"\")";
 mostCurrent._fakeactionbar.Initialize(mostCurrent.activityBA,"");
- //BA.debugLineNum = 30;BA.debugLine="FakeActionBar.Color = Colors.RGB(20, 20, 100) 'Da";
+ //BA.debugLineNum = 35;BA.debugLine="FakeActionBar.Color = Colors.RGB(20, 20, 100) 'Da";
 mostCurrent._fakeactionbar.setColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (20),(int) (20),(int) (100)));
- //BA.debugLineNum = 31;BA.debugLine="Activity.AddView(FakeActionBar, 0, 0, 100%x, BarS";
+ //BA.debugLineNum = 36;BA.debugLine="Activity.AddView(FakeActionBar, 0, 0, 100%x, BarS";
 mostCurrent._activity.AddView((android.view.View)(mostCurrent._fakeactionbar.getObject()),(int) (0),(int) (0),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA),_barsize);
- //BA.debugLineNum = 33;BA.debugLine="Dim LightCyan As Int: LightCyan = Colors.RGB(0, 9";
+ //BA.debugLineNum = 38;BA.debugLine="Dim LightCyan As Int: LightCyan = Colors.RGB(0, 9";
 _lightcyan = 0;
- //BA.debugLineNum = 33;BA.debugLine="Dim LightCyan As Int: LightCyan = Colors.RGB(0, 9";
+ //BA.debugLineNum = 38;BA.debugLine="Dim LightCyan As Int: LightCyan = Colors.RGB(0, 9";
 _lightcyan = anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (0),(int) (95),(int) (170));
- //BA.debugLineNum = 34;BA.debugLine="UnderActionBar.Initialize(\"\")";
+ //BA.debugLineNum = 39;BA.debugLine="UnderActionBar.Initialize(\"\")";
 mostCurrent._underactionbar.Initialize(mostCurrent.activityBA,"");
- //BA.debugLineNum = 35;BA.debugLine="UnderActionBar.Color = LightCyan";
+ //BA.debugLineNum = 40;BA.debugLine="UnderActionBar.Color = LightCyan";
 mostCurrent._underactionbar.setColor(_lightcyan);
- //BA.debugLineNum = 36;BA.debugLine="Activity.AddView(UnderActionBar, 0, BarSize, 100%";
+ //BA.debugLineNum = 41;BA.debugLine="Activity.AddView(UnderActionBar, 0, BarSize, 100%";
 mostCurrent._activity.AddView((android.view.View)(mostCurrent._underactionbar.getObject()),(int) (0),_barsize,anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA),(int) (anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (40),mostCurrent.activityBA)-_barsize));
- //BA.debugLineNum = 38;BA.debugLine="PanelWithSidebar.Initialize(UnderActionBar, 190di";
+ //BA.debugLineNum = 43;BA.debugLine="PanelWithSidebar.Initialize(UnderActionBar, 190di";
 mostCurrent._panelwithsidebar._initialize(mostCurrent.activityBA,mostCurrent._underactionbar,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (190)),(byte) (2),(byte) (1),(int) (500),(int) (500));
- //BA.debugLineNum = 39;BA.debugLine="PanelWithSidebar.ContentPanel.Color = LightCyan";
+ //BA.debugLineNum = 44;BA.debugLine="PanelWithSidebar.ContentPanel.Color = LightCyan";
 mostCurrent._panelwithsidebar._contentpanel().setColor(_lightcyan);
- //BA.debugLineNum = 40;BA.debugLine="PanelWithSidebar.Sidebar.Background = PanelWithSi";
+ //BA.debugLineNum = 45;BA.debugLine="PanelWithSidebar.Sidebar.Background = PanelWithSi";
 mostCurrent._panelwithsidebar._sidebar().setBackground((android.graphics.drawable.Drawable)(mostCurrent._panelwithsidebar._loaddrawable("popup_inline_error")));
- //BA.debugLineNum = 41;BA.debugLine="PanelWithSidebar.SetOnChangeListeners(Me, \"Menu_o";
+ //BA.debugLineNum = 46;BA.debugLine="PanelWithSidebar.SetOnChangeListeners(Me, \"Menu_o";
 mostCurrent._panelwithsidebar._setonchangelisteners(land.getObject(),"Menu_onFullyOpen","Menu_onFullyClosed","Menu_onMove");
- //BA.debugLineNum = 43;BA.debugLine="lvMenu.Initialize(\"lvMenu\")";
+ //BA.debugLineNum = 48;BA.debugLine="lvMenu.Initialize(\"lvMenu\")";
 mostCurrent._lvmenu.Initialize(mostCurrent.activityBA,"lvMenu");
- //BA.debugLineNum = 44;BA.debugLine="lvMenu.AddSingleLine(\"Lands\")";
+ //BA.debugLineNum = 49;BA.debugLine="lvMenu.AddSingleLine(\"Lands\")";
 mostCurrent._lvmenu.AddSingleLine(BA.ObjectToCharSequence("Lands"));
- //BA.debugLineNum = 45;BA.debugLine="lvMenu.AddSingleLine(\"Lands By Owner\")";
+ //BA.debugLineNum = 50;BA.debugLine="lvMenu.AddSingleLine(\"Lands By Owner\")";
 mostCurrent._lvmenu.AddSingleLine(BA.ObjectToCharSequence("Lands By Owner"));
- //BA.debugLineNum = 46;BA.debugLine="lvMenu.AddSingleLine(\"Land By Tax Number\")";
+ //BA.debugLineNum = 51;BA.debugLine="lvMenu.AddSingleLine(\"Land By Tax Number\")";
 mostCurrent._lvmenu.AddSingleLine(BA.ObjectToCharSequence("Land By Tax Number"));
- //BA.debugLineNum = 48;BA.debugLine="lvMenu.SingleLineLayout.Label.TextColor = Colors.";
+ //BA.debugLineNum = 53;BA.debugLine="lvMenu.SingleLineLayout.Label.TextColor = Colors.";
 mostCurrent._lvmenu.getSingleLineLayout().Label.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
- //BA.debugLineNum = 49;BA.debugLine="lvMenu.Color = Colors.Transparent";
+ //BA.debugLineNum = 54;BA.debugLine="lvMenu.Color = Colors.Transparent";
 mostCurrent._lvmenu.setColor(anywheresoftware.b4a.keywords.Common.Colors.Transparent);
- //BA.debugLineNum = 50;BA.debugLine="lvMenu.ScrollingBackgroundColor = Colors.Transpar";
+ //BA.debugLineNum = 55;BA.debugLine="lvMenu.ScrollingBackgroundColor = Colors.Transpar";
 mostCurrent._lvmenu.setScrollingBackgroundColor(anywheresoftware.b4a.keywords.Common.Colors.Transparent);
- //BA.debugLineNum = 51;BA.debugLine="PanelWithSidebar.Sidebar.AddView(lvMenu, 20dip, 2";
+ //BA.debugLineNum = 56;BA.debugLine="PanelWithSidebar.Sidebar.AddView(lvMenu, 20dip, 2";
 mostCurrent._panelwithsidebar._sidebar().AddView((android.view.View)(mostCurrent._lvmenu.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (25)),(int) (-1),(int) (-1));
- //BA.debugLineNum = 60;BA.debugLine="Webview1.Initialize(\"\")";
+ //BA.debugLineNum = 65;BA.debugLine="Webview1.Initialize(\"\")";
 mostCurrent._webview1.Initialize(mostCurrent.activityBA,"");
- //BA.debugLineNum = 61;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/laye";
+ //BA.debugLineNum = 66;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/laye";
 mostCurrent._webview1.LoadUrl(mostCurrent._domain+"ta_v2/endpoint/view/layers.php");
- //BA.debugLineNum = 62;BA.debugLine="PanelWithSidebar.ContentPanel.AddView(Webview1, 0";
+ //BA.debugLineNum = 67;BA.debugLine="PanelWithSidebar.ContentPanel.AddView(Webview1, 0";
 mostCurrent._panelwithsidebar._contentpanel().AddView((android.view.View)(mostCurrent._webview1.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),(int) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA)-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0))),(int) (anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (100),mostCurrent.activityBA)-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1))));
- //BA.debugLineNum = 64;BA.debugLine="btnMenu.Initialize(\"\")";
+ //BA.debugLineNum = 69;BA.debugLine="btnMenu.Initialize(\"\")";
 mostCurrent._btnmenu.Initialize(mostCurrent.activityBA,"");
- //BA.debugLineNum = 65;BA.debugLine="btnMenu.SetBackgroundImage(LoadBitmap(File.DirAss";
+ //BA.debugLineNum = 70;BA.debugLine="btnMenu.SetBackgroundImage(LoadBitmap(File.DirAss";
 mostCurrent._btnmenu.SetBackgroundImageNew((android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"menu.png").getObject()));
- //BA.debugLineNum = 66;BA.debugLine="FakeActionBar.AddView(btnMenu, 100%x - BarSize, 0";
+ //BA.debugLineNum = 71;BA.debugLine="FakeActionBar.AddView(btnMenu, 100%x - BarSize, 0";
 mostCurrent._fakeactionbar.AddView((android.view.View)(mostCurrent._btnmenu.getObject()),(int) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA)-_barsize),(int) (0),_barsize,_barsize);
- //BA.debugLineNum = 67;BA.debugLine="PanelWithSidebar.SetOpenCloseButton(btnMenu)";
+ //BA.debugLineNum = 72;BA.debugLine="PanelWithSidebar.SetOpenCloseButton(btnMenu)";
 mostCurrent._panelwithsidebar._setopenclosebutton((anywheresoftware.b4a.objects.ConcreteViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ConcreteViewWrapper(), (android.view.View)(mostCurrent._btnmenu.getObject())));
- //BA.debugLineNum = 71;BA.debugLine="Activity.LoadLayout(\"land\")";
+ //BA.debugLineNum = 76;BA.debugLine="Activity.LoadLayout(\"land\")";
 mostCurrent._activity.LoadLayout("land",mostCurrent.activityBA);
- //BA.debugLineNum = 73;BA.debugLine="End Sub";
+ //BA.debugLineNum = 79;BA.debugLine="Panel3.Left=Panel1.Left";
+mostCurrent._panel3.setLeft(mostCurrent._panel1.getLeft());
+ //BA.debugLineNum = 80;BA.debugLine="Panel5.Left=Panel1.Left";
+mostCurrent._panel5.setLeft(mostCurrent._panel1.getLeft());
+ //BA.debugLineNum = 83;BA.debugLine="Panel1.Visible=False";
+mostCurrent._panel1.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 84;BA.debugLine="Panel3.Visible=False";
+mostCurrent._panel3.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 85;BA.debugLine="Panel5.Visible=False";
+mostCurrent._panel5.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 89;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 79;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 81;BA.debugLine="End Sub";
+ //BA.debugLineNum = 95;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 97;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 75;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 77;BA.debugLine="End Sub";
+ //BA.debugLineNum = 91;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 93;BA.debugLine="End Sub";
+return "";
+}
+public static String  _button1_click() throws Exception{
+ //BA.debugLineNum = 146;BA.debugLine="Sub Button1_Click";
+ //BA.debugLineNum = 147;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/alll";
+mostCurrent._webview1.LoadUrl(mostCurrent._domain+"ta_v2/endpoint/view/allland.php");
+ //BA.debugLineNum = 148;BA.debugLine="End Sub";
+return "";
+}
+public static String  _button2_click() throws Exception{
+String _owner_id = "";
+ //BA.debugLineNum = 150;BA.debugLine="Sub Button2_Click";
+ //BA.debugLineNum = 151;BA.debugLine="Dim owner_id As String";
+_owner_id = "";
+ //BA.debugLineNum = 152;BA.debugLine="owner_id=EditText1.Text";
+_owner_id = mostCurrent._edittext1.getText();
+ //BA.debugLineNum = 153;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/land";
+mostCurrent._webview1.LoadUrl(mostCurrent._domain+"ta_v2/endpoint/view/land_owner.php?owner_id="+_owner_id);
+ //BA.debugLineNum = 156;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -434,8 +468,8 @@ public static String  _globals() throws Exception{
 mostCurrent._webview1 = new anywheresoftware.b4a.objects.WebViewWrapper();
  //BA.debugLineNum = 17;BA.debugLine="Dim domain As String";
 mostCurrent._domain = "";
- //BA.debugLineNum = 18;BA.debugLine="domain=\"http://459a41bc.ngrok.io/\"";
-mostCurrent._domain = "http://459a41bc.ngrok.io/";
+ //BA.debugLineNum = 18;BA.debugLine="domain=\"http://7a880193.ngrok.io/\"";
+mostCurrent._domain = "http://7a880193.ngrok.io/";
  //BA.debugLineNum = 19;BA.debugLine="Dim FakeActionBar, UnderActionBar As Panel";
 mostCurrent._fakeactionbar = new anywheresoftware.b4a.objects.PanelWrapper();
 mostCurrent._underactionbar = new anywheresoftware.b4a.objects.PanelWrapper();
@@ -445,37 +479,70 @@ mostCurrent._panelwithsidebar = new b4a.example.clsslidingsidebar();
 mostCurrent._btnmenu = new anywheresoftware.b4a.objects.ButtonWrapper();
  //BA.debugLineNum = 22;BA.debugLine="Dim lvMenu As ListView";
 mostCurrent._lvmenu = new anywheresoftware.b4a.objects.ListViewWrapper();
- //BA.debugLineNum = 24;BA.debugLine="End Sub";
+ //BA.debugLineNum = 24;BA.debugLine="Private Panel1 As Panel";
+mostCurrent._panel1 = new anywheresoftware.b4a.objects.PanelWrapper();
+ //BA.debugLineNum = 25;BA.debugLine="Private Button1 As Button";
+mostCurrent._button1 = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 26;BA.debugLine="Private Panel3 As Panel";
+mostCurrent._panel3 = new anywheresoftware.b4a.objects.PanelWrapper();
+ //BA.debugLineNum = 27;BA.debugLine="Private Panel5 As Panel";
+mostCurrent._panel5 = new anywheresoftware.b4a.objects.PanelWrapper();
+ //BA.debugLineNum = 28;BA.debugLine="Private EditText1 As EditText";
+mostCurrent._edittext1 = new anywheresoftware.b4a.objects.EditTextWrapper();
+ //BA.debugLineNum = 29;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lvmenu_itemclick(int _position,Object _value) throws Exception{
- //BA.debugLineNum = 85;BA.debugLine="Sub lvMenu_ItemClick (Position As Int, Value As Ob";
- //BA.debugLineNum = 86;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/laye";
+ //BA.debugLineNum = 101;BA.debugLine="Sub lvMenu_ItemClick (Position As Int, Value As Ob";
+ //BA.debugLineNum = 102;BA.debugLine="Webview1.LoadUrl(domain&\"ta_v2/endpoint/view/laye";
 mostCurrent._webview1.LoadUrl(mostCurrent._domain+"ta_v2/endpoint/view/layers.php");
- //BA.debugLineNum = 89;BA.debugLine="PanelWithSidebar.CloseSidebar";
+ //BA.debugLineNum = 105;BA.debugLine="If Position=0 Then";
+if (_position==0) { 
+ //BA.debugLineNum = 107;BA.debugLine="Panel3.Visible=False";
+mostCurrent._panel3.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 108;BA.debugLine="Panel5.Visible=False";
+mostCurrent._panel5.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 110;BA.debugLine="Panel1.Visible=True";
+mostCurrent._panel1.setVisible(anywheresoftware.b4a.keywords.Common.True);
+ }else if(_position==1) { 
+ //BA.debugLineNum = 114;BA.debugLine="Panel1.Visible=False";
+mostCurrent._panel1.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 115;BA.debugLine="Panel5.Visible=False";
+mostCurrent._panel5.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 118;BA.debugLine="Panel3.Visible=True";
+mostCurrent._panel3.setVisible(anywheresoftware.b4a.keywords.Common.True);
+ }else if(_position==2) { 
+ //BA.debugLineNum = 122;BA.debugLine="Panel1.Visible=False";
+mostCurrent._panel1.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 123;BA.debugLine="Panel3.Visible=False";
+mostCurrent._panel3.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 125;BA.debugLine="Panel5.Visible=True";
+mostCurrent._panel5.setVisible(anywheresoftware.b4a.keywords.Common.True);
+ };
+ //BA.debugLineNum = 129;BA.debugLine="PanelWithSidebar.CloseSidebar";
 mostCurrent._panelwithsidebar._closesidebar();
- //BA.debugLineNum = 90;BA.debugLine="End Sub";
+ //BA.debugLineNum = 130;BA.debugLine="End Sub";
 return "";
 }
 public static String  _menu_onfullyclosed() throws Exception{
- //BA.debugLineNum = 96;BA.debugLine="Sub Menu_onFullyClosed";
- //BA.debugLineNum = 97;BA.debugLine="Log(\"FULLY CLOSED\")";
+ //BA.debugLineNum = 136;BA.debugLine="Sub Menu_onFullyClosed";
+ //BA.debugLineNum = 137;BA.debugLine="Log(\"FULLY CLOSED\")";
 anywheresoftware.b4a.keywords.Common.Log("FULLY CLOSED");
- //BA.debugLineNum = 98;BA.debugLine="End Sub";
+ //BA.debugLineNum = 138;BA.debugLine="End Sub";
 return "";
 }
 public static String  _menu_onfullyopen() throws Exception{
- //BA.debugLineNum = 92;BA.debugLine="Sub Menu_onFullyOpen";
- //BA.debugLineNum = 93;BA.debugLine="Log(\"FULLY OPEN\")";
+ //BA.debugLineNum = 132;BA.debugLine="Sub Menu_onFullyOpen";
+ //BA.debugLineNum = 133;BA.debugLine="Log(\"FULLY OPEN\")";
 anywheresoftware.b4a.keywords.Common.Log("FULLY OPEN");
- //BA.debugLineNum = 94;BA.debugLine="End Sub";
+ //BA.debugLineNum = 134;BA.debugLine="End Sub";
 return "";
 }
 public static String  _menu_onmove(boolean _isopening) throws Exception{
- //BA.debugLineNum = 100;BA.debugLine="Sub Menu_onMove(IsOpening As Boolean)";
- //BA.debugLineNum = 101;BA.debugLine="Log(\"MOVE IsOpening=\" & IsOpening)";
+ //BA.debugLineNum = 140;BA.debugLine="Sub Menu_onMove(IsOpening As Boolean)";
+ //BA.debugLineNum = 141;BA.debugLine="Log(\"MOVE IsOpening=\" & IsOpening)";
 anywheresoftware.b4a.keywords.Common.Log("MOVE IsOpening="+BA.ObjectToString(_isopening));
- //BA.debugLineNum = 102;BA.debugLine="End Sub";
+ //BA.debugLineNum = 142;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{

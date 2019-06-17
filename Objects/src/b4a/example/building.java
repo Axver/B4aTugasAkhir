@@ -25,7 +25,7 @@ public class building extends Activity implements B4AActivity{
     ActivityWrapper _activity;
     java.util.ArrayList<B4AMenuItem> menuItems;
 	public static final boolean fullScreen = false;
-	public static final boolean includeTitle = true;
+	public static final boolean includeTitle = false;
     public static WeakReference<Activity> previousOne;
 
 	@Override
@@ -587,8 +587,8 @@ mostCurrent._lblinfo = new anywheresoftware.b4a.objects.LabelWrapper();
 mostCurrent._webview1 = new anywheresoftware.b4a.objects.WebViewWrapper();
  //BA.debugLineNum = 23;BA.debugLine="Dim domain As String";
 mostCurrent._domain = "";
- //BA.debugLineNum = 24;BA.debugLine="domain=\"http://459a41bc.ngrok.io/\"";
-mostCurrent._domain = "http://459a41bc.ngrok.io/";
+ //BA.debugLineNum = 24;BA.debugLine="domain=\"http://7a880193.ngrok.io/\"";
+mostCurrent._domain = "http://7a880193.ngrok.io/";
  //BA.debugLineNum = 25;BA.debugLine="Private Panel1 As Panel";
 mostCurrent._panel1 = new anywheresoftware.b4a.objects.PanelWrapper();
  //BA.debugLineNum = 26;BA.debugLine="Private Button1 As Button";

@@ -21,12 +21,17 @@ Sub Globals
 	
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://459a41bc.ngrok.io/"
+	domain="http://7a880193.ngrok.io/"
 	Dim FakeActionBar, UnderActionBar As Panel
 	Dim PanelWithSidebar As ClsSlidingSidebar
 	Dim btnMenu As Button
 	Dim lvMenu As ListView
 
+	Private Panel1 As Panel
+	Private Button1 As Button
+	Private Panel3 As Panel
+	Private Panel5 As Panel
+	Private EditText1 As EditText
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -75,6 +80,17 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 
 	Activity.LoadLayout("land")
+	
+	'Setting Panel
+	Panel3.Left=Panel1.Left
+	Panel5.Left=Panel1.Left
+	
+	'Hide All Panel
+	Panel1.Visible=False
+	Panel3.Visible=False
+	Panel5.Visible=False
+	
+	
 
 End Sub
 
@@ -92,6 +108,30 @@ Sub lvMenu_ItemClick (Position As Int, Value As Object)
 	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
 	'lblInfo.Text = "LAST SELECTION: " & Value
 	
+	If Position=0 Then
+		'Hide All Panel First
+		Panel3.Visible=False
+		Panel5.Visible=False
+		'Show Panel
+		Panel1.Visible=True
+		
+	Else If Position=1 Then
+		'Hide All Panel First
+		Panel1.Visible=False
+		Panel5.Visible=False
+		
+		'Show Panel
+		Panel3.Visible=True
+			
+	Else If Position=2 Then
+		'Hide All Panel First
+		Panel1.Visible=False
+		Panel3.Visible=False
+		'Show Panel
+		Panel5.Visible=True
+				
+	End If
+	
 	PanelWithSidebar.CloseSidebar
 End Sub
 
@@ -107,3 +147,16 @@ Sub Menu_onMove(IsOpening As Boolean)
 	Log("MOVE IsOpening=" & IsOpening)
 End Sub
 
+
+
+Sub Button1_Click
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/allland.php")
+End Sub
+
+Sub Button2_Click
+	Dim owner_id As String
+	owner_id=EditText1.Text
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/land_owner.php?owner_id="&owner_id)
+	
+	
+End Sub

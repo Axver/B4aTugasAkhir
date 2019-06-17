@@ -6,7 +6,7 @@ Version=8.3
 @EndOfDesignText@
 #Region Module Attributes
 	#FullScreen: False
-	#IncludeTitle: True
+	#IncludeTitle: False
 #End Region
 
 'Activity module
@@ -27,7 +27,7 @@ Sub Globals
 	Dim lblInfo As Label
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://459a41bc.ngrok.io/"
+	domain="http://7a880193.ngrok.io/"
 	Private Panel1 As Panel
 	Private Button1 As Button
 	Private EditText1 As EditText
