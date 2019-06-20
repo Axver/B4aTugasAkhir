@@ -21,7 +21,7 @@ Sub Globals
 	
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://7a880193.ngrok.io/"
+	domain="http://f7bedc8d.ngrok.io/"
 	Dim FakeActionBar, UnderActionBar As Panel
 	Dim PanelWithSidebar As ClsSlidingSidebar
 	Dim btnMenu As Button
@@ -32,6 +32,25 @@ Sub Globals
 	Private Panel3 As Panel
 	Private Panel5 As Panel
 	Private EditText1 As EditText
+	
+	'Job
+	Dim job2 As HttpJob
+	Private Label8 As Label
+	Private Label7 As Label
+	Private Label6 As Label
+	Private Label5 As Label
+	Private Label2 As Label
+	Private Label3 As Label
+	Private Label4 As Label
+	Private Label1 As Label
+	Private Label12 As Label
+	Private Label13 As Label
+	Private Label14 As Label
+	Private Label16 As Label
+	Private Label9 As Label
+	Private Label10 As Label
+	Private Label11 As Label
+	Private Label15 As Label
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -80,6 +99,27 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 
 	Activity.LoadLayout("land")
+	
+	'Color Setting For Label
+	Dim cd As ColorDrawable
+	cd.Initialize(Colors.Red,5dip)
+	Label1.Background=cd
+	Label2.Background=cd
+	Label3.Background=cd
+	Label4.Background=cd
+	Label9.Background=cd
+	Label10.Background=cd
+	Label11.Background=cd
+	Label15.Background=cd
+	
+	
+	Label9.Width=Activity.Width/3
+	Label10.Width=Activity.Width/3
+	Label11.Width=Activity.Width/3
+	Label12.Width=Activity.Width/3
+	Label13.Width=Activity.Width/3
+	Label14.Width=Activity.Width/3
+	
 	
 	'Setting Panel
 	Panel3.Left=Panel1.Left
@@ -158,5 +198,65 @@ Sub Button2_Click
 	owner_id=EditText1.Text
 	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/land_owner.php?owner_id="&owner_id)
 	
+	'Start Job
+	job2.Initialize("land_owner", Me)
+	job2.PostString(domain&"ta_v2/endpoint/land_owner.php", "owner_id="&owner_id)
 	
+	
+End Sub
+
+
+
+'Job
+
+Sub JobDone (Job As HttpJob)
+	
+	Log("JobName = " & Job.JobName & ", Success = " & Job.Success)
+	If Job.Success = True Then
+		Select Job.JobName
+			Case "land_owner"
+				Log(Job.GetString)
+				
+				'Json Tree
+				Dim parser As JSONParser
+				parser.Initialize(Job.GetString)
+				Dim root As Map = parser.NextObject
+				Dim features As List = root.Get("features")
+				For Each colfeatures As Map In features
+					Dim properties As Map = colfeatures.Get("properties")
+					Dim clan_name As String = properties.Get("clan_name")
+					Dim nik As String = properties.Get("nik")
+					Dim citizen_name As String = properties.Get("citizen_name")
+					Dim address As String = properties.Get("address")
+					Dim gender As String = properties.Get("gender")
+					Dim phone As String = properties.Get("phone")
+					Dim status_name As String = properties.Get("status_name")
+					'Dim clan_id As String = properties.Get("clan_id")
+					Dim born_date As String = properties.Get("born_date")
+					
+					'Adding To Label
+					Label8.Text=nik
+					Label7.Text=citizen_name
+					Label6.Text=clan_name
+					Label5.Text=gender
+					
+					Label12.Text=phone
+					Label13.Text=status_name
+					Label14.Text=born_date
+					Label16.Text=address
+					
+					
+					
+					Label7.Left=Label2.Left
+					Label6.Left=Label3.Left
+					Label5.Left=Label4.Left
+				Next
+				Dim Type As String = root.Get("type")
+			
+		End Select
+	Else
+		Log("Error: " & Job.ErrorMessage)
+		ToastMessageShow("Error: " & Job.ErrorMessage, True)
+	End If
+	Job.Release
 End Sub

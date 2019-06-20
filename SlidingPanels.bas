@@ -47,7 +47,7 @@ Private Sub Timer_Tick
 		Return
 	End If
 	Dim c = Move.PanelNumber,GCP = GetCenterPosition(c) As Int
-	If Abs(GCP-Move.Destination) < Abs(Move.Increase) OR GCP = Move.Destination Then
+	If Abs(GCP-Move.Destination) < Abs(Move.Increase) Or GCP = Move.Destination Then
 		SetLeftPosition(c,Move.Destination)
 		CurrentPanel = Move.PanelNumber
 		SlidingInProgress = False
