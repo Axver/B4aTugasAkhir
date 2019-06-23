@@ -21,7 +21,7 @@ Sub Globals
 	
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://f7bedc8d.ngrok.io/"
+	domain="http://9adecea0.ngrok.io/"
 	Dim FakeActionBar, UnderActionBar As Panel
 	Dim PanelWithSidebar As ClsSlidingSidebar
 	Dim btnMenu As Button
@@ -51,6 +51,7 @@ Sub Globals
 	Private Label10 As Label
 	Private Label11 As Label
 	Private Label15 As Label
+	Private EditText2 As EditText
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -176,15 +177,15 @@ Sub lvMenu_ItemClick (Position As Int, Value As Object)
 End Sub
 
 Sub Menu_onFullyOpen
-	Log("FULLY OPEN")
+	'Log("FULLY OPEN")
 End Sub
 
 Sub Menu_onFullyClosed
-	Log("FULLY CLOSED")
+	'Log("FULLY CLOSED")
 End Sub
 
 Sub Menu_onMove(IsOpening As Boolean)
-	Log("MOVE IsOpening=" & IsOpening)
+	'Log("MOVE IsOpening=" & IsOpening)
 End Sub
 
 
@@ -252,6 +253,40 @@ Sub JobDone (Job As HttpJob)
 					Label5.Left=Label4.Left
 				Next
 				Dim Type As String = root.Get("type")
+				
+			Case "land_tax"
+				Log(Job.GetString)
+				Dim parser As JSONParser
+				parser.Initialize(Job.GetString)
+				Dim root As Map = parser.NextObject
+				Dim features As List = root.Get("features")
+				For Each colfeatures As Map In features
+					Dim geometry As Map = colfeatures.Get("geometry")
+					Dim coordinates As List = geometry.Get("coordinates")
+					For Each colcoordinates As List In coordinates
+						For Each colcolcoordinates As List In colcoordinates
+							For Each colcolcolcoordinates As List In colcolcoordinates
+								For Each colcolcolcolcoordinates As Double In colcolcolcoordinates
+								Next
+							Next
+						Next
+					Next
+					Dim Type As String = geometry.Get("type")
+					Dim Type As String = colfeatures.Get("tyTypepe")
+					Dim properties As Map = colfeatures.Get("properties")
+					Dim clan_name As String = properties.Get("clan_name")
+					Dim owner_name As String = properties.Get("owner_name")
+					Dim gender As String = properties.Get("gender")
+					Dim land_owner As String = properties.Get("land_owner")
+					Dim phone As String = properties.Get("phone")
+					Dim tax_number As String = properties.Get("tax_number")
+					Dim status_name As String = properties.Get("status_name")
+					Dim x As String = properties.Get("x")
+					Dim y As String = properties.Get("y")
+					Dim land_id As String = properties.Get("land_id")
+					Dim born_date As String = properties.Get("born_date")
+				Next
+				Dim Type As String = root.Get("type")
 			
 		End Select
 	Else
@@ -259,4 +294,15 @@ Sub JobDone (Job As HttpJob)
 		ToastMessageShow("Error: " & Job.ErrorMessage, True)
 	End If
 	Job.Release
+End Sub
+
+Sub Button3_Click
+	Dim tax_number As String
+	tax_number=EditText2.Text
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/land_tax_view.php?tax_number="&tax_number)
+	
+	'Start Job
+	job2.Initialize("land_tax", Me)
+	job2.PostString(domain&"ta_v2/endpoint/land_tax.php", "tax_number="&tax_number)
+	
 End Sub

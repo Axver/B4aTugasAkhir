@@ -27,7 +27,7 @@ Sub Globals
 	Dim lblInfo As Label
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://f7bedc8d.ngrok.io/"
+	domain="http://9adecea0.ngrok.io/"
 	Private Panel1 As Panel
 	Private Button1 As Button
 	Private EditText1 As EditText

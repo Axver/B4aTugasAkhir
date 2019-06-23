@@ -23,7 +23,7 @@ Sub Globals
 	Private WebView1 As WebView
 	Private Panel2 As Panel
 	Dim domain As String
-	domain="http://f7bedc8d.ngrok.io/"
+	domain="http://9adecea0.ngrok.io/"
 	Private Panel3 As Panel
 	Dim wvXtender As WebViewXtender
 	Private Label1 As Label
