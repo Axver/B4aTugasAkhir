@@ -21,7 +21,7 @@ Sub Globals
 	
 	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://9adecea0.ngrok.io/"
+	domain="http://0ab75d92.ngrok.io/"
 	Dim FakeActionBar, UnderActionBar As Panel
 	Dim PanelWithSidebar As ClsSlidingSidebar
 	Dim btnMenu As Button

@@ -16,63 +16,82 @@ Sub Process_Globals
 End Sub
 
 Sub Globals
-	'These global variables will be redeclared each time the activity is created.
-	'These variables can only be accessed from this module.
-	Dim sm As SlideMenu
-
-	Private WebView1 As WebView
-	Private Panel2 As Panel
+	Dim Webview1 As WebView
 	Dim domain As String
-	domain="http://9adecea0.ngrok.io/"
+	domain="http://0ab75d92.ngrok.io/"
+	Dim FakeActionBar, UnderActionBar As Panel
+	Dim PanelWithSidebar As ClsSlidingSidebar
+	Dim btnMenu As Button
+	Dim lvMenu As ListView
+
+	Private Panel1 As Panel
+	Private Button1 As Button
 	Private Panel3 As Panel
-	Dim wvXtender As WebViewXtender
-	Private Label1 As Label
+	Private Panel5 As Panel
+	Private EditText1 As EditText
+	
+	'Slide Menu 2
+	Dim sm As SlideMenu
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
-	'Activity.LoadLayout("Layout1")
+	Dim BarSize As Int: BarSize = 60dip
+	FakeActionBar.Initialize("")
+	FakeActionBar.Color = Colors.RGB(20, 20, 100) 'Dark blue
+	Activity.AddView(FakeActionBar, 0, 0, 100%x, BarSize)
+	
+	Dim LightCyan As Int: LightCyan = Colors.RGB(0, 95, 170)
+	UnderActionBar.Initialize("")
+	UnderActionBar.Color = LightCyan
+	Activity.AddView(UnderActionBar, 0, BarSize, 100%x, 40%y - BarSize)
+	
+	PanelWithSidebar.Initialize(UnderActionBar, 190dip, 2, 1, 500, 500)
+	PanelWithSidebar.ContentPanel.Color = LightCyan
+	PanelWithSidebar.Sidebar.Background = PanelWithSidebar.LoadDrawable("popup_inline_error")
+	PanelWithSidebar.SetOnChangeListeners(Me, "Menu_onFullyOpen", "Menu_onFullyClosed", "Menu_onMove")
+
+	lvMenu.Initialize("lvMenu")
+	lvMenu.AddSingleLine("ALL")
+	lvMenu.AddSingleLine("Block A")
+	lvMenu.AddSingleLine("Block B")
+	lvMenu.AddSingleLine("Block C")
+	lvMenu.AddSingleLine("Block D")
+	lvMenu.AddSingleLine("Block E")
+	lvMenu.AddSingleLine("Block F")
+	lvMenu.AddSingleLine("Block G")
+	lvMenu.AddSingleLine("Block H")
+	
+	lvMenu.SingleLineLayout.Label.TextColor = Colors.Black
+	lvMenu.Color = Colors.Transparent
+	lvMenu.ScrollingBackgroundColor = Colors.Transparent
+	PanelWithSidebar.Sidebar.AddView(lvMenu, 20dip, 25dip, -1, -1)
+
+	'lblInfo.Initialize("")
+	'lblInfo.Text = "Click the button to open/close the sliding menu."
+	'lblInfo.TextColor = Colors.Black
+	'lblInfo.TextSize = 24
+	'PanelWithSidebar.ContentPanel.AddView(lblInfo, 30dip, 30dip, 100%x - 60dip, 100%y - 60dip)
+	
+	
+	Webview1.Initialize("")
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
+	PanelWithSidebar.ContentPanel.AddView(Webview1, 0dip, 0dip, 100%x - 0dip, 100%y - 1dip)
+	
+	btnMenu.Initialize("")
+	btnMenu.SetBackgroundImage(LoadBitmap(File.DirAssets, "menu.png"))
+	FakeActionBar.AddView(btnMenu, 100%x - BarSize, 0, BarSize, BarSize)
+	PanelWithSidebar.SetOpenCloseButton(btnMenu)
+	
+	
+	
 	Activity.LoadLayout("layer")
-	sm.Initialize(Activity, Me, "SlideMenu", 42dip, 180dip)
-
-	sm.AddItem("All Items", LoadBitmap(File.DirAssets, "bomb.png"), 1)
-	sm.AddItem("Block A", LoadBitmap(File.DirAssets, "book_add.png"), 2)
-	sm.AddItem("Block B", LoadBitmap(File.DirAssets, "book_add.png"), 3)
-	sm.AddItem("Block C", LoadBitmap(File.DirAssets, "book_add.png"), 4)
-	sm.AddItem("Block D", LoadBitmap(File.DirAssets, "book_add.png"), 5)
-	sm.AddItem("Block E", LoadBitmap(File.DirAssets, "book_add.png"), 6)
-	sm.AddItem("Block F", LoadBitmap(File.DirAssets, "book_add.png"), 7)
-	sm.AddItem("Block G", LoadBitmap(File.DirAssets, "book_add.png"), 8)
-	sm.AddItem("Block H", LoadBitmap(File.DirAssets, "book_add.png"), 9)
-	WebView1.Width=Activity.Width
-	WebView1.Height=Activity.Height
-	Panel2.Width=WebView1.Width
-	Panel2.Height=WebView1.Height
-	tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
-	WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
-	tmrLoad.Enabled = True
-	
-	Log(domain&"ta_v2/endpoint/view/layers.php")
-	Panel3.Height=Activity.Height/2
-	Panel3.Width=Activity.Width
-	
+	'Panel1.Height=Activity.Height-Webview1.Height
 	
 
 End Sub
 
 
-Sub tmrLoad_Tick
-	'Handle tick events
-	DoEvents
-	Label1.Text = "Loading "&wvXtender.getProgress(WebView1) & "%"
-	DoEvents
-	If Label1.Text = "Loading 100%" Then
-		tmrLoad.Enabled = False
-		Label1.Text=""
-		
-	End If
-	
-End Sub
 
 Sub Activity_Resume
 
@@ -82,67 +101,44 @@ Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
 
-'We capture the menu and back keys
-Sub Activity_KeyPress (KeyCode As Int) As Boolean
-	'Pressing the back key while the slidemenu is open will close it
-	If KeyCode = KeyCodes.KEYCODE_BACK And sm.isVisible Then
-		sm.Hide
-		Return True
+'Menu Here
+'Menu
+Sub lvMenu_ItemClick (Position As Int, Value As Object)
+	Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php")
+	'lblInfo.Text = "LAST SELECTION: " & Value
+	
+	If Position=0 Then
+		
+		Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=all")
+	Else If Position=1 Then
+		Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=A")		
+	Else If Position=2 Then
+		Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=B")
+	Else If Position=3 Then
+		Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=C")
+	Else If Position=4 Then
+		Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=D")
+	Else If Position=5 Then
+		Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=E")
+	Else If Position=6 Then
+		Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=F")
+	Else If Position=7 Then
+		Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=G")
+	Else If Position=8 Then
+		Webview1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=H")			
 	End If
-
-	'Pressing the menu key will open/close the slidemenu
-	If KeyCode = KeyCodes.KEYCODE_MENU Then
-		If sm.isVisible Then sm.Hide Else sm.Show
-		Return True
-	End If
+	
+	PanelWithSidebar.CloseSidebar
 End Sub
 
-'Show the slidemenu
-Sub btnShow_Click
-	sm.Show
+Sub Menu_onFullyOpen
+	'Log("FULLY OPEN")
 End Sub
 
-'Event sub which is called when an item in the slidemenu is clicked
-Sub SlideMenu_Click(Item As Object)
-	ToastMessageShow("Item clicked: " & Item, False)
-	If Item=1 Then
-		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
-		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=all")
-		tmrLoad.Enabled = True
-	Else If Item=2 Then
-		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
-	    WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=A")
-		tmrLoad.Enabled = True
-	Else If Item=3 Then
-		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
-		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=B")
-		tmrLoad.Enabled = True
-	Else If Item=4 Then
-		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
-		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=C")
-		tmrLoad.Enabled = True
-	Else If Item=5 Then
-		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
-		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=D")
-		tmrLoad.Enabled = True
-	Else If Item=6 Then
-		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
-		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=E")
-		tmrLoad.Enabled = True
-	Else If Item=7 Then
-		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
-		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=F")
-		tmrLoad.Enabled = True
-	Else If Item=8 Then
-		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
-		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=G")
-		tmrLoad.Enabled = True
-	Else If Item=9 Then
-		tmrLoad.Initialize("tmrLoad", 200) ' 1000 = 1 second
-		WebView1.LoadUrl(domain&"ta_v2/endpoint/view/layers.php?request=H")
-		tmrLoad.Enabled = True
-	End If
+Sub Menu_onFullyClosed
+	'Log("FULLY CLOSED")
 End Sub
 
-
-
+Sub Menu_onMove(IsOpening As Boolean)
+	'Log("MOVE IsOpening=" & IsOpening)
+End Sub

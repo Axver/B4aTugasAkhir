@@ -539,8 +539,8 @@ public static String  _globals() throws Exception{
 mostCurrent._webview1 = new anywheresoftware.b4a.objects.WebViewWrapper();
  //BA.debugLineNum = 17;BA.debugLine="Dim domain As String";
 mostCurrent._domain = "";
- //BA.debugLineNum = 18;BA.debugLine="domain=\"http://9adecea0.ngrok.io/\"";
-mostCurrent._domain = "http://9adecea0.ngrok.io/";
+ //BA.debugLineNum = 18;BA.debugLine="domain=\"http://0ab75d92.ngrok.io/\"";
+mostCurrent._domain = "http://0ab75d92.ngrok.io/";
  //BA.debugLineNum = 19;BA.debugLine="Dim FakeActionBar, UnderActionBar As Panel";
 mostCurrent._fakeactionbar = new anywheresoftware.b4a.objects.PanelWrapper();
 mostCurrent._underactionbar = new anywheresoftware.b4a.objects.PanelWrapper();
